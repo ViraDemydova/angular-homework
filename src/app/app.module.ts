@@ -2,17 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { TodoListModule } from './todo-list/todo-list.module';
+import { HeaderComponent } from './header/header.component';
+import { UserLogInComponent } from './header/user-log-in/user-log-in.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { FooterComponent } from './footer/footer.component';
+import { LogoComponent } from './header/logo/logo.component';
+import { UserLogOffComponent } from './header/user-log-off/user-log-off.component';
+import { SearchComponent } from './search/search.component';
+import { CoursesListItemComponent } from './courses-list/courses-list-item/courses-list-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    UserLogInComponent,
+    BreadcrumbsComponent,
+    CoursesListComponent,
+    FooterComponent,
+    LogoComponent,
+    UserLogOffComponent,
+    SearchComponent,
+    CoursesListItemComponent
   ],
   imports: [
-    BrowserModule,
-    CoreModule,
-    TodoListModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

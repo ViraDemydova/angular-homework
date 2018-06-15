@@ -2,18 +2,45 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import "~font-awesome/css/font-awesome.css";
 
+.body {
+  background: #f4faff;
+  color:#4f646f;
+}
+
+.no-gutters {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .btn-full {
   width: 100%;
 }
 
 header,
-footer,
-main {
+footer{
   padding: 20px;
 }
 
+.header {
+  width: 100%;
+  margin: 0 0 30px;
+  background: #b7adcf;
+}
+
+.breadcrumb {
+  background: none;
+}
+
 .footer {
-  color: white;
+  width: 100%;
+  margin: 30px 0 0;
+  background: #535657;
+  color: #f4faff;
+}
+
+.btn {
+  background: #4f646f;
+  color: #f4faff;
 }
 
 .list {
@@ -28,8 +55,14 @@ main {
 }
 
 .list__block {
-  padding: 10px 15px;
-  border: 1px solid #ebccd1;
+  padding: 30px 20px 0;
+  border: 1px solid #b7adcf;
   border-radius: 3px;
-  color: #a94442;
+  color: #4f646f;
+}
+
+.form-search__input {
+  width: 80%;
+  padding: 5px 5px 5px 10px;
+  margin-right: 10px;
 }

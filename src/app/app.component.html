@@ -1,7 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <script src="app.component.ts"></script>
-<app-header></app-header>
+<!-- starts  markup -->
+<header class="header">
+  <app-header></app-header>
+</header>
 <div class="container">
-  <app-todo-list></app-todo-list>
+  <main>
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-10 no-gutters">
+          <app-search></app-search>
+        </div>
+        <div class="float-right">
+          <button class="btn"><i class="fa fa-plus" aria-hidden="true"></i> Add course</button>
+        </div>
+      </div>
+    </div>
+    <app-courses-list></app-courses-list>
+  </main>
 </div>
-
+<footer class="footer">
+  <app-footer></app-footer>
+</footer>
+<!--ends  markup -->
