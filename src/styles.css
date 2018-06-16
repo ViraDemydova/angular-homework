@@ -10,10 +10,18 @@
 .no-gutters {
   padding-left: 0;
   padding-right: 0;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
-.btn-full {
+table {
   width: 100%;
+  table-layout: fixed;
+}
+
+td {
+  border: 1px solid #b7adcf;
+  padding: 15px;
 }
 
 header,
@@ -41,6 +49,15 @@ footer{
 .btn {
   background: #4f646f;
   color: #f4faff;
+  margin-bottom: 5px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn-secondary {
+  background: #535657;
 }
 
 .list {
@@ -55,14 +72,37 @@ footer{
 }
 
 .list__block {
-  padding: 30px 20px 0;
+  padding: 30px 20px 10px;
   border: 1px solid #b7adcf;
   border-radius: 3px;
   color: #4f646f;
 }
 
+.form-search {
+  display: inline;
+}
+
 .form-search__input {
-  width: 80%;
+  width: 67%;
   padding: 5px 5px 5px 10px;
   margin-right: 10px;
+}
+
+.breadcrumb {
+  padding: 20px 0;
+}
+
+.login {
+  margin-right: 15px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .float-right {
+    float:none !important;
+  }
+  
+  .btn-add {
+    width: 100%;
+  }
 }

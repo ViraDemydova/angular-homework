@@ -11,6 +11,8 @@ import { LogoComponent } from './header/logo/logo.component';
 import { UserLogOffComponent } from './header/user-log-off/user-log-off.component';
 import { SearchComponent } from './search/search.component';
 import { CoursesListItemComponent } from './courses-list/courses-list-item/courses-list-item.component';
+import { UserEntityComponent } from './user/user-entity/user-entity.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CoursesListItemComponent } from './courses-list/courses-list-item/cours
     LogoComponent,
     UserLogOffComponent,
     SearchComponent,
-    CoursesListItemComponent
+    CoursesListItemComponent,
+    UserEntityComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule
