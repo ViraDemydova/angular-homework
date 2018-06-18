@@ -1,4 +1,3 @@
-<script src="app.component.ts"></script>
 <!-- starts  markup -->
 <header class="header">
   <app-header></app-header>
@@ -11,15 +10,11 @@
       </div>
       <div class="row">
         <div class="col-sm-12 no-gutters">
-          <app-search></app-search>
-          <div class="float-right">
-            <button class="btn btn-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add course</button>
-          </div>
+          <app-toolbox></app-toolbox>
         </div>
       </div>
     </div>
-    <app-courses-list></app-courses-list>
-    <app-user></app-user>
+    <app-courses-page-component></app-courses-page-component>
   </main>
 </div>
 <footer class="footer">

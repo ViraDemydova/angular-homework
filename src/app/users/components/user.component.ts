@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserEntityItem } from './user-entity/user-entity-item.model';
-import { UserEntityItemService } from './user-entity/user-entity-item.service';
+import { UserEntityItem } from '../models/user-entity-item.model';
+import { UserEntityItemService } from '../services/user-entity-item.service';
 
 @Component({
   selector: 'app-user',

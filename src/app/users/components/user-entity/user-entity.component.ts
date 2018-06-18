@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserEntityItem } from './user-entity-item.model';
+import { UserEntityItem } from '../../models/user-entity-item.model';
 
 @Component({
   selector: 'app-user-entity',
