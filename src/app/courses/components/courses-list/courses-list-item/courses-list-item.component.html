@@ -3,11 +3,11 @@
   <div class="list__block">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h3>{{listItem.title}}</h3>
+        <h3 #title>{{listItem.title}}{{listItem.id}}</h3>
       </div>
       <div class="col-md-4 col-sm-12">
-        <time class="time">{{listItem.duration}}</time>
-        <span class="date">{{listItem.createDate}}</span>
+        <time class="time" #duration>{{listItem.duration}}</time>
+        <span class="date" #date>{{listItem.createDate}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
         <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
@@ -15,10 +15,10 @@
     </div>
     <div class="row">
       <div class="col-md-10 col-sm-12">
-        <p>{{listItem.description}}</p>
+        <p #description>{{listItem.description}}</p>
       </div>
       <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
+        <button class="btn btn-full" (click)="logText($event)"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
       </div>
     </div>
   </div>

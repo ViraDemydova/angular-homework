@@ -11,12 +11,14 @@ import { SearchComponent } from './components/search/search.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
 import {CoursesModule} from '../courses/courses.module';
 import {UsersModule} from '../users/users.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     UsersModule,
-    CoursesModule
+    CoursesModule,
+    FormsModule
   ],
   declarations: [
     HeaderComponent,
