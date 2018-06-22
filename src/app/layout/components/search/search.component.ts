@@ -6,13 +6,13 @@ import {Component, OnChanges, OnInit} from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  textValue = 'Please, type something';
+  searchText = 'Please, type something';
 
   constructor() {}
 
   ngOnInit() {}
 
-  logText(value: string): void {
+  onLogText(value: string): void {
     console.log( `Text changed to '${value}'\n`);
   }
 }

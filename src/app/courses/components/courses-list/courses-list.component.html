@@ -1,12 +1,11 @@
 <!-- starts course-list -->
 <div class="row">
   <!-- starts course-list-item -->
-  <ul class="list">
+  <div class="list">
     <app-courses-list-item *ngFor="let item of ListItems"
                            [listItem]="item"
-                           [id]="id"
-                           (changeCounter)="change($event)"></app-courses-list-item>
-  </ul>
-  <button class="btn btn-full btn-secondary" (click)="handleclick()"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE</button>
+                           (deleteCourse)="onChangeId($event)"></app-courses-list-item>
+  </div>
+  <button class="btn btn-full btn-secondary" (click)="onHandleclick()"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE</button>
 </div>
 <!-- ends course-list -->

@@ -8,8 +8,7 @@ import { CoursesListItem } from '../../../models/courses-list-item.model';
 })
 export class CoursesListItemComponent implements OnInit, OnChanges {
   @Input() public listItem: CoursesListItem;
-  @Input() id: number;
-  @Output() changeCounter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -21,7 +20,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     console.log('ngOnChange - data is: ', this.listItem.id);
   }
 
-  logText() {
-    this.changeCounter.emit(console.log('VideoId is: ', this.listItem.id));
+  onDelete(event) {
+    this.deleteCourse.emit(this.listItem.id);
   }
 }

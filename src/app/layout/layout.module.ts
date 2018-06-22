@@ -9,15 +9,11 @@ import { LogoComponent } from './components/logo/logo.component';
 import { UserLogOffComponent } from './components/user-log-off/user-log-off.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
-import {CoursesModule} from '../courses/courses.module';
-import {UsersModule} from '../users/users.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    UsersModule,
-    CoursesModule,
     FormsModule
   ],
   declarations: [

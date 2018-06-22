@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { CoursesListItemComponent } from './components/courses-list/courses-list-item/courses-list-item.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
-import { UserComponent } from '../users/components/user.component';
-import { UserEntityComponent } from '../users/components/user-entity/user-entity.component';
 
 @NgModule({
   imports: [
@@ -13,16 +11,12 @@ import { UserEntityComponent } from '../users/components/user-entity/user-entity
   declarations: [
     CoursesListComponent,
     CoursesListItemComponent,
-    CoursesPageComponent,
-    UserComponent,
-    UserEntityComponent
+    CoursesPageComponent
   ],
   exports: [
     CoursesListComponent,
     CoursesListItemComponent,
-    CoursesPageComponent,
-    UserComponent,
-    UserEntityComponent
+    CoursesPageComponent
   ]
 })
 export class CoursesModule { }
