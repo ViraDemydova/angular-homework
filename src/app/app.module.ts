@@ -2,17 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { TodoListModule } from './todo-list/todo-list.module';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './parent/child/child.component';
+import { StockStatusComponent } from './parent/stock-status/stock-status.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ParentComponent,
+    ChildComponent,
+    StockStatusComponent
   ],
   imports: [
     BrowserModule,
-    CoreModule,
-    TodoListModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
