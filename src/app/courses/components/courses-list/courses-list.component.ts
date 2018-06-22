@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input,  OnInit, SimpleChanges} from '@angular/core';
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 
@@ -9,7 +9,7 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 })
 export class CoursesListComponent implements OnInit {
   public ListItems: CoursesListItem[] = [];
-  id = 0;
+  @Input() id = 0;
 
   constructor(private coursesListService: CoursesListItemService) {
     this.ListItems = [];

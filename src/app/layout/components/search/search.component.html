@@ -1,6 +1,5 @@
 <!-- starts search-->
   <form action="" class="form-search">
-    <h1>Text ({{textValue}})</h1>
     <input type="text" #textInput [(ngModel)]="textValue" name="textInput" class="form-search__input" placeholder="Name, etc" >
     <button class="btn btn-secondary" (click)="logText(textInput.value)">
       <i class="fa fa-search" aria-hidden="true"></i>
