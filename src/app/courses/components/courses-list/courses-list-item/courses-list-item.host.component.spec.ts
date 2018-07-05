@@ -7,7 +7,7 @@ import { CoursesListItem } from '../../../models/courses-list-item.model';
 
 @Component({
   template: `
-  <app-courses-list-item [listItem]="item" (deleteCourse)="onChangeId($event)"></app-courses-list-item>`
+    <app-courses-list-item [listItem]="item" (deleteCourse)="onChangeId($event)"></app-courses-list-item>`
 })
 class TestHostComponent {
   public listItem: CoursesListItem = {
@@ -28,13 +28,13 @@ describe('CoursesListItemComponent', () => {
   let testHost: TestHostComponent;
   let fixture: ComponentFixture<TestHostComponent>;
 
-  //let listItem: CoursesListItem;
+  let listItem: CoursesListItem[];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CoursesListItemComponent, TestHostComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -42,10 +42,17 @@ describe('CoursesListItemComponent', () => {
     testHost = fixture.componentInstance;
   });
 
-  it('Deleted list item is: ', () => {
+  it('Should show TEST OUTPUT: ', () => {
     fixture.detectChanges();
 
-    const expectedCoursesListItem = this.listItem.id;
+    const expectedCoursesListItem = {
+      id: 1,
+      title: 'Video Course ',
+      createDate: '05.29.2018',
+      duration: '1h 28min',
+      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+      'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+    };
 
     const deleteButton = fixture.debugElement.query(By.css('.btn-delete'));
     deleteButton.triggerEventHandler('click', null);

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { By } from '@angular/platform-browser';
+
 import { CoursesListItemComponent } from './courses-list-item.component';
+import {CourseModel} from '../../../models/courses-list-item.model';
+import {CoursesListItemService} from '../../../services/courses-list-item.service';
 
 describe('CoursesListItemComponent', () => {
   let component: CoursesListItemComponent;
@@ -10,7 +14,8 @@ describe('CoursesListItemComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         CoursesListItemComponent
-      ]
+      ],
+      providers: [{provide: CoursesListItemService, useValue: CourseModel}]
     })
     .compileComponents();
   }));
@@ -21,13 +26,18 @@ describe('CoursesListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should show @Input', () => {
-    component.listItem.duration = '1h 28min';
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-    component.onDelete(event);
-
+  it('should show TEST INPUT', () => {
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelector('.time').innerText).toEqual('1h 28min');
+    component.listItem.id = 5;
+
+    const deleteButton = fixture.debugElement.query(By.css('.btn-delete'));
+    deleteButton.triggerEventHandler('click', null);
+
+    expect(fixture.nativeElement.querySelector('.id').innerText).toEqual('5');
   });
 });
