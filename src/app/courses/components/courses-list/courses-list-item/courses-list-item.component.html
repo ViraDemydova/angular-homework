@@ -3,7 +3,7 @@
   <div class="list__block">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h3>{{listItem.title}}{{listItem.id}}</h3>
+        <h3 id="id">{{listItem.title}}{{listItem.id}}</h3>
       </div>
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration}}</time>
@@ -18,7 +18,7 @@
         <p>{{listItem.description}}</p>
       </div>
       <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full" (click)="onDelete($event)"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
+        <button class="btn btn-full btn-delete" (click)="onDelete($event)"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
       </div>
     </div>
   </div>

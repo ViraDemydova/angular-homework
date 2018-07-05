@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolboxComponent } from './toolbox.component';
+import {SearchComponent} from '../search/search.component';
+import {FormsModule} from '@angular/forms';
 
 describe('ToolboxComponent', () => {
   let component: ToolboxComponent;
@@ -8,7 +10,11 @@ describe('ToolboxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolboxComponent ]
+      declarations: [
+        ToolboxComponent,
+        SearchComponent
+      ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
