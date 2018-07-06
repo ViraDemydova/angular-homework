@@ -1,21 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 import { CoursesListItemComponent } from './courses-list-item.component';
-import {CourseModel} from '../../../models/courses-list-item.model';
-import {CoursesListItemService} from '../../../services/courses-list-item.service';
 
 describe('CoursesListItemComponent', () => {
-  let component: CoursesListItemComponent;
-  let fixture: ComponentFixture<CoursesListItemComponent>;
+  let component: CoursesListItemComponent,
+  fixture: ComponentFixture<CoursesListItemComponent>,
+  courseId: DebugElement;
+
+  const expectedCourseId = 5;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         CoursesListItemComponent
-      ],
-      providers: [{provide: CoursesListItemService, useValue: CourseModel}]
+      ]
     })
     .compileComponents();
   }));
@@ -26,18 +27,32 @@ describe('CoursesListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+// search course with Id
+  courseId = fixture.debugElement.query(By.css('#id'));
 
-  it('should show TEST INPUT', () => {
+  it('should display video Id: ', () => {
+    // assume that we get course id
+    component.listItem.id = expectedCourseId;
+
+    // detect changes for initial data binding
     fixture.detectChanges();
 
-    component.listItem.id = 5;
+    expect(courseId.nativeElement.textContent).toContain(expectedCourseId);
+  });
+
+  it('should raise event when clicked', () => {
+    let showId: number;
+    // assume that we get course id
+    component.listItem.id = expectedCourseId;
+
+    // detect changes for initial data binding
+    fixture.detectChanges();
+
+    component.deleteCourse.subscribe((listItem: number) => (showId = listItem));
 
     const deleteButton = fixture.debugElement.query(By.css('.btn-delete'));
     deleteButton.triggerEventHandler('click', null);
-
-    expect(fixture.nativeElement.querySelector('.id').innerText).toEqual('5');
+    expect(showId).toBe(expectedCourseId);
   });
+
 });
