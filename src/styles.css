@@ -74,6 +74,14 @@ footer{
   color: #4f646f;
 }
 
+.list__block_fresh {
+  border-color: green;
+}
+
+.list__block_upcoming {
+  border-color: blue;
+}
+
 .form-search {
   display: inline;
 }

@@ -1,6 +1,28 @@
 <!-- starts course-list-item -->
 <div class="list__item">
-  <div class="list__block" appHighlight>
+  <div class="list__block" appHighlight *ngIf="creationDate < currentDate" [ngClass]="'list__block_fresh'">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appHide="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <time class="time">{{listItem.duration  | myTime}}</time>
+        <span class="date">{{listItem.createDate | date:"MM/dd/yy"}}</span>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10 col-sm-12">
+        <p>{{listItem.description}}</p>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <button class="btn btn-full" (click)="onDelete($event)"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="list__block" appHighlight *ngIf="creationDate > currentDate" [ngClass]="'list__block_upcoming'">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appHide="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>

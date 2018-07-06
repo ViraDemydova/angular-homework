@@ -10,6 +10,9 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 export class CoursesListComponent implements OnInit {
   public ListItems: CoursesListItem[] = [];
   id = 0;
+  search: string;
+  currentDate = new Date();
+  creationDate: any;
 
   constructor(private coursesListService: CoursesListItemService) {}
 

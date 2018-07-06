@@ -7,6 +7,7 @@ import { HighlightDirective } from './components/courses-list/courses-list-item/
 import {HideDirective} from './components/courses-list/courses-list-item/hide.directive';
 import {MyTimePipe} from './components/courses-list/courses-list-item/myTime.pipe';
 import {OrderByPipe} from './components/courses-list/courses-list-item/orderBy.pipe';
+import {FilterPipe} from './components/courses-list/courses-list-item/filter.pipe';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {OrderByPipe} from './components/courses-list/courses-list-item/orderBy.p
     HighlightDirective,
     HideDirective,
     MyTimePipe,
-    OrderByPipe
+    OrderByPipe,
+    FilterPipe
   ],
   exports: [
     CoursesListComponent,

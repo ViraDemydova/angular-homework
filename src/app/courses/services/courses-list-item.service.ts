@@ -7,7 +7,7 @@ import { CoursesListItem } from '../models/courses-list-item.model';
 export class CoursesListItemService {
   date1 = new Date('05.29.2018');
   date2 = new Date('05.05.2018');
-  date3 = new Date('01.29.2018');
+  date3 = new Date('01.29.2019');
   date4 = new Date('12.29.2017');
   date5 = new Date('02.01.2016');
 

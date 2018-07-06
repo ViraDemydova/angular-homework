@@ -12,7 +12,7 @@ import { CoursesModule } from './courses/courses.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
