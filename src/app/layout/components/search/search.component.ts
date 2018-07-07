@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit,  Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,8 +6,8 @@ import {Component, OnChanges, OnInit} from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
-  searchText: string;
+  @Output() public searchText: string;
+  @Output() public filterToggle: boolean;
 
   constructor() {}
 
@@ -15,5 +15,10 @@ export class SearchComponent implements OnInit {
 
   onLogText(value: string): void {
     console.log( `Text changed to '${value}'\n`);
+  }
+
+  onSubmit(value: string) {
+    this.filterToggle = !this.filterToggle;
+    console.log( `Submit button clicked '${value}'\n`);
   }
 }
