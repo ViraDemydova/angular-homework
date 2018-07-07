@@ -4,20 +4,21 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'orderBy'
 })
 export class OrderByPipe implements PipeTransform {
+  transform(value: any, args?: any): any {
+    let newVal = value.sort((a: any, b: any) => {
+      let date1 = new Date(a.date);
+      let date2 = new Date(b.date);
 
-  transform(array: Array<string>, args: string): Array<string> {
-
-    if(!array || array === undefined || array.length === 0) return null;
-
-    array.sort((a: any, b: any) => {
-      if (a.date < b.date) {
-        return -1;
-      } else if (a.date > b.date) {
+      if (date1 > date2) {
         return 1;
+      } else if (date1 < date2) {
+        return -1;
       } else {
         return 0;
       }
     });
-    return array;
+
+    return newVal;
   }
+
 }

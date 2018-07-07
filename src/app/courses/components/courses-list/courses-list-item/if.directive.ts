@@ -1,11 +1,11 @@
 import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appHide]'
+  selector: '[appIf]'
 })
-export class HideDirective {
+export class IfDirective {
 
-  @Input() set appHide(condition: boolean) {
+  @Input() set appIf(condition: boolean) {
     if (!condition) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {

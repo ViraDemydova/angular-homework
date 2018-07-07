@@ -1,16 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import { CoursesListItem } from '../../../models/courses-list-item.model';
+
 @Pipe({
   name: 'filter'
 })
+@Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(arr: string[], searchValue: string) {
-    console.log('Pipe "Filter" runs.');
-    if (!searchValue) {
-      return arr;
-    }
-
-    return arr.filter(value => {
-      return value.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
-    });
+  transform(listItems: CoursesListItem[], args: any[]): any {
+    return listItems.filter(listItem => listItem.title.toLowerCase().indexOf(args[0].toLowerCase()) !== -1);
   }
 }

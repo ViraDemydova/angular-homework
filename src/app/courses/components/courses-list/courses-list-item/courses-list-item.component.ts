@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
-import { CoursesListItemService } from '../../../services/courses-list-item.service';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -12,11 +11,13 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
    currentDate = new Date();
    creationDate: any;
+   title: string;
 
   constructor() { }
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
+    this.title = this.listItem.title;
     console.log('onInit');
     console.log('createDate: ', this.creationDate);
     console.log(this.currentDate);
