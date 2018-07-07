@@ -6,8 +6,8 @@ import {Component, OnChanges, OnInit} from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  searchText = 'Please, type something';
-  title: string;
+
+  searchText: string;
 
   constructor() {}
 

@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
+import {FilterPipe} from './courses-list-item/filter.pipe';
 
 @Component({
   selector: 'app-courses-list',
@@ -11,7 +12,6 @@ export class CoursesListComponent implements OnInit {
   public ListItems: CoursesListItem[] = [];
   @Input() public listItem: CoursesListItem;
   id = 0;
-  title: string;
 
   constructor(private coursesListService: CoursesListItemService) {}
 

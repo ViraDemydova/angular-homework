@@ -6,7 +6,12 @@ import { CoursesListItem } from '../../../models/courses-list-item.model';
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(listItems: CoursesListItem[], args: any[]): any {
-    return listItems.filter(listItem => listItem.title.toLowerCase().indexOf(args[0].toLowerCase()) !== -1);
+  transform(items: any[], searchText: string): any[] {
+    if(!items) return [];
+    if(!searchText) return items;
+    searchText = searchText.toLowerCase();
+    return items.filter( it => {
+      return it.toLowerCase().includes(searchText);
+    });
   }
 }
