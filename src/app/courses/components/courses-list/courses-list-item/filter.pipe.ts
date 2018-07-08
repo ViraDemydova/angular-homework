@@ -5,12 +5,16 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(items: any[], searchText: string): any[] {
-    if (!items) return [];
-    if (!searchText) return items;
-    searchText = searchText.toLowerCase();
-    return items.filter( it => {
-      return it.toLowerCase().includes(searchText);
+  transform(array: Array<string>, args: string): Array<string> {
+    array.sort((a: any, b: any) => {
+      if ( a[args] < b[args] ){
+        return -1;
+      }else if( a[args] > b[args] ){
+        return 1;
+      }else{
+        return 0;
+      }
     });
+    return array;
   }
 }

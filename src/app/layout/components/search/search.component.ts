@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit,  Output, EventEmitter} from '@angular/core';
+import {Component, OnInit,  Input} from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,8 +6,8 @@ import {Component, OnChanges, OnInit,  Output, EventEmitter} from '@angular/core
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  @Output() public searchText: string;
-  @Output() public filterToggle: boolean;
+  public filterToggle: boolean;
+  @Input() public searchText: string;
 
   constructor() {}
 
