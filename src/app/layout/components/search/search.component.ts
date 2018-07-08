@@ -17,8 +17,8 @@ export class SearchComponent implements OnInit {
     console.log( `Text changed to '${value}'\n`);
   }
 
-  onSubmit(value: string) {
+  onSubmit() {
     this.filterToggle = !this.filterToggle;
-    console.log( `Submit button clicked '${value}'\n`);
+    console.log( `Submit button clicked ` + this.searchText);
   }
 }

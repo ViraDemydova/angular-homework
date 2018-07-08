@@ -4,9 +4,13 @@
   <div class="row">
     <!-- starts course-list-item -->
     <div class="list">
-        <app-courses-list-item *ngFor="let item of ListItems | orderBy : 'createDate' | filter : searchText: filterToggle"
+
+        <app-courses-list-item  *ngFor="let item of ListItems | orderBy : 'createDate' | filter : searchText: filterToggle"
                              [listItem]="item"
-                             (deleteCourse)="onChangeId($event)" ></app-courses-list-item>
+                             (deleteCourse)="onChangeId($event)" >
+          <ng-container *ngIf="filterToggle"></ng-container>
+        </app-courses-list-item>
+
     </div>
     <button class="btn btn-full btn-secondary" (click)="onHandleclick()"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE</button>
   </div>

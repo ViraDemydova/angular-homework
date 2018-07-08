@@ -1,7 +1,7 @@
 <!-- starts search-->
   <form action="" class="form-search">
     <input type="text" #textInput [(ngModel)]="searchText" name="textInput" class="form-search__input" placeholder="Name, etc" >
-    <button class="btn btn-secondary" (click)="onSubmit(searchText)">
+    <button class="btn btn-secondary" (click)="onSubmit()">
       <i class="fa fa-search" aria-hidden="true"></i>
       Search</button>
   </form>

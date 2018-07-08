@@ -9,8 +9,9 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 })
 export class CoursesListComponent implements OnInit {
   public ListItems: CoursesListItem[] = [];
-  @Input() public listItem: CoursesListItem;
+  @Input() public filterToggle: boolean;
   id = 0;
+  searchText: string;
 
   constructor(private coursesListService: CoursesListItemService) {}
 
