@@ -11,12 +11,14 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
    currentDate = new Date();
    creationDate: any;
+   freshDate: any;
    title: string;
 
   constructor() { }
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
+    this.freshDate = this.creationDate.getDate() - 14;
     this.title = this.listItem.title;
     console.log('onInit');
     console.log('createDate: ', this.creationDate);
