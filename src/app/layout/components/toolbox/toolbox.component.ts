@@ -19,4 +19,5 @@ export class ToolboxComponent implements OnInit {
     this.addCourse.emit(this.str);
   }
 
+
 }

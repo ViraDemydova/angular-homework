@@ -9,9 +9,9 @@ export class FilterPipe implements PipeTransform {
     array.sort((a: any, b: any) => {
       if ( a[args] < b[args] ){
         return -1;
-      }else if( a[args] > b[args] ){
+      } else if( a[args] > b[args] ){
         return 1;
-      }else{
+      } else{
         return 0;
       }
     });

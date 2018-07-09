@@ -12,5 +12,4 @@ export class AppComponent {
   onLogText() {
     console.log('Add new course');
   }
-
 }
