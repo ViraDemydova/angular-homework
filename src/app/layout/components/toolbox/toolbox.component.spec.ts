@@ -25,7 +25,9 @@ describe('ToolboxComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have <button> with "Add course"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const div = bannerElement.querySelector('div');
+    expect(div.textContent).toEqual(' Add course');
   });
 });

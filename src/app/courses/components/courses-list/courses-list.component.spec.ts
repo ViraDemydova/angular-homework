@@ -26,4 +26,10 @@ describe('CoursesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Courses-list component should contain "LOAD MORE:', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    expect(bannerElement.textContent).toContain('LOAD MORE');
+  });
+
 });

@@ -21,7 +21,9 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have <button> with "Search"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const p = bannerElement.querySelector('button');
+    expect(p.textContent).toEqual(' Search');
   });
 });

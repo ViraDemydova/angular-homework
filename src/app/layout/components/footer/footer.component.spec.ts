@@ -19,7 +19,8 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Footer should contain "Copyright @VD" text:', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    expect(bannerElement.textContent).toContain('Copyright @VD');
   });
 });

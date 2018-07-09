@@ -22,4 +22,10 @@ describe('BreadcrumbsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Breadcrumbs should contain "Courses" text:', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    expect(bannerElement.textContent).toContain('Courses');
+  });
+
 });

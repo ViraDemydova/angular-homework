@@ -19,7 +19,9 @@ describe('UserLogOffComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have <button> with "Logout Log-in"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const text = bannerElement.querySelector('button');
+    expect(text.textContent).toEqual(' Logout');
   });
 });

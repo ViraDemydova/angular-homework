@@ -27,7 +27,8 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Header should contain "User Log-in" text:', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    expect(bannerElement.textContent).toContain('User Log-in');
   });
 });

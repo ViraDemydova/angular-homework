@@ -19,7 +19,9 @@ describe('UserLogInComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have <a> with "User Log-in"', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const link = bannerElement.querySelector('a');
+    expect(link.textContent).toEqual('User Log-in');
   });
 });
