@@ -3,11 +3,11 @@
   <div class="list__block" *ngIf="creationDate < currentDate && creationDate >= freshDate"  appBorderHighlight="green">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appIf="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>
+        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'"></span></h5>
       </div>
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration  | myTime}}</time>
-        <span class="date">{{listItem.createDate | date:"MM/dd/yy"}}</span>
+        <span class="date">{{listItem.createDate | date:"MM.dd.yyyy"}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
         <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
@@ -25,7 +25,7 @@
   <div class="list__block" *ngIf="creationDate > currentDate" appBorderHighlight="blue">
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appIf="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>
+        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'">{{listItem.topRated}}</span></h5>
       </div>
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration  | myTime}}</time>

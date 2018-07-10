@@ -105,7 +105,16 @@ footer{
 }
 
 .ico-bg {
+  position:relative;
   color: #cb2e8e;
+}
+
+.ico-bg:before {
+  position:absolute;
+  font-family: FontAwesome;
+  content: "\f005";
+  left: 5px;
+  top: 5px;
 }
 
 /* Small Devices, Tablets */

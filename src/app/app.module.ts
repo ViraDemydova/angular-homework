@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
+import {SharedModule} from './shared/shared.module';
 
 
 
@@ -19,8 +20,10 @@ import { CoursesModule } from './courses/courses.module';
     LayoutModule,
     UsersModule,
     CoursesModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
+  exports: [ SharedModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

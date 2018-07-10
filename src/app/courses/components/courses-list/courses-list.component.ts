@@ -24,8 +24,8 @@ export class CoursesListComponent implements OnInit, OnDestroy {
     this.ListItems = this.coursesListService.getCourseListItems();
    // this.searchText = this.ListItems.title;
     console.log(`ngOnInit - data is: '${this.ListItems}'\n`);
-    this.sub = this.communicatorService.channel$.subscribe(
-      data => (this.input = data)
+    this.sub = this.communicatorService.channel2$.subscribe(
+      data => (this.submit())
     );
   }
 

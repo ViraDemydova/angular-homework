@@ -10,23 +10,13 @@ import { CommunicatorService} from '../../../service/communicator.service';
 export class SearchComponent implements OnInit {
   //@Input() public searchText: string;
   filterToggle: boolean;
-  counter = 0;
 
   constructor(
     private communicatorService: CommunicatorService) {}
 
   ngOnInit() {}
 
-  //onLogText(value: string): void {
-    //console.log( `Text changed to '${value}'\n`);
-  //}
-
   onSubmit() {
-    this.filterToggle = !this.filterToggle;
-  }
-
-  onClick() {
-    this.counter++;
-    this.communicatorService.publishData(`Data from sibling 1(${this.counter})`);
+    this.communicatorService.publishData(`${this.filterToggle}`);
   }
 }

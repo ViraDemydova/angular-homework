@@ -10,6 +10,7 @@ export class CoursesListItemService {
   date3 = new Date('01.29.2019');
   date4 = new Date('12.29.2017');
   date5 = new Date('02.01.2016');
+  date6 = new Date('02.01.2021');
 
   constructor() { }
 
@@ -20,13 +21,14 @@ export class CoursesListItemService {
         title: 'Video Course ',
         createDate: this.date1,
         duration: 120,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        topRated: true
       },
       {
         id: 2,
         title: 'Audio Course ',
         createDate: this.date2,
-        duration: 60,
+        duration: 70,
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
       },
       {
@@ -41,12 +43,21 @@ export class CoursesListItemService {
         title: 'Audio Course ',
         createDate: this.date4,
         duration: 360,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        topRated: true
       },
       {
         id: 5,
         title: 'Video Course ',
         createDate: this.date5,
+        duration: 20,
+        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        topRated: true
+      },
+      {
+        id: 6,
+        title: 'Video Course ',
+        createDate: this.date6,
         duration: 20,
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
       }
