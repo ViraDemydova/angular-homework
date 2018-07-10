@@ -4,7 +4,6 @@ import { CommunicatorService} from '../../../service/communicator.service';
 
 @Component({
   selector: 'app-search',
-  providers: [CommunicatorService],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })

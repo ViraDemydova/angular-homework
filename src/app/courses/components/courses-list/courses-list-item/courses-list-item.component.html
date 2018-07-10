@@ -1,6 +1,6 @@
 <!-- starts course-list-item -->
 <div class="list__item">
-  <div class="list__block" *appIf="creationDate < currentDate && creationDate >= freshDate" [ngClass]="'list__block_fresh'">
+  <div class="list__block" *ngIf="creationDate < currentDate && creationDate >= freshDate"  appBorderHighlight="green">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appIf="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div class="list__block" *appIf="creationDate > currentDate" [ngClass]="'list__block_upcoming'">
+  <div class="list__block" *ngIf="creationDate > currentDate" appBorderHighlight="blue">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <h5>{{listItem.title | uppercase }}{{listItem.id}} | <i *appIf="false" [ngClass]="'ico-bg'" class="fa fa-star" aria-hidden="true"></i></h5>

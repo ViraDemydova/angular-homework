@@ -7,6 +7,7 @@ import {IfDirective} from './components/courses-list/courses-list-item/if.direct
 import {MyTimePipe} from './components/courses-list/courses-list-item/myTime.pipe';
 import {OrderByPipe} from './components/courses-list/courses-list-item/orderBy.pipe';
 import {FilterPipe} from './components/courses-list/courses-list-item/filter.pipe';
+import {BorderHighlightDirective} from './components/courses-list/courses-list-item/borderHighlight.directive';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {FilterPipe} from './components/courses-list/courses-list-item/filter.pip
     IfDirective,
     MyTimePipe,
     OrderByPipe,
-    FilterPipe
+    FilterPipe,
+    BorderHighlightDirective
   ],
   exports: [
     CoursesListComponent,

@@ -7,7 +7,6 @@ import { CommunicatorService } from '../../../service/communicator.service';
 
 @Component({
   selector: 'app-courses-list',
-  providers: [CommunicatorService],
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
