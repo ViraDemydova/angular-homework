@@ -42,8 +42,8 @@ describe('CoursesListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should show id after Angular calls ngOnInit', () => {
-    //component.ngOnInit();
-    //expect(courseServiceStub.id).toContain(1);
+  xit('should show id after Angular calls ngOnInit', () => {
+    component.ngOnInit();
+    expect(courseServiceStub.id).toContain(1);
   });
 });
