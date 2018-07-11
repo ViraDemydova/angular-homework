@@ -1,6 +1,6 @@
 <!-- starts course-list-item -->
 <div class="list__item">
-  <div class="list__block" *ngIf="creationDate < currentDate && creationDate >= freshDate"  appBorderHighlight="green">
+  <div class="list__block" appBorderHighlight={{creationDate}}>
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <h5>{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'"></span></h5>
@@ -8,28 +8,6 @@
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration  | myTime}}</time>
         <span class="date">{{listItem.createDate | date:"MM.dd.yyyy"}}</span>
-      </div>
-      <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-10 col-sm-12">
-        <p>{{listItem.description}}</p>
-      </div>
-      <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full" (click)="onDelete($event)"><i class="fa fa-trash" aria-hidden="true"></i>  Delete</button>
-      </div>
-    </div>
-  </div>
-  <div class="list__block" *ngIf="creationDate > currentDate" appBorderHighlight="blue">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <h5>{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'">{{listItem.topRated}}</span></h5>
-      </div>
-      <div class="col-md-4 col-sm-12">
-        <time class="time">{{listItem.duration  | myTime}}</time>
-        <span class="date">{{listItem.createDate | date:"MM/dd/yy"}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
         <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
