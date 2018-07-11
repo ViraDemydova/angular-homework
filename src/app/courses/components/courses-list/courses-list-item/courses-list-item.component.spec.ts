@@ -22,13 +22,20 @@ describe('CoursesListItemComponent', () => {
 
   it('raises the pass event when clicked', () => {
     const comp = new CoursesListItemComponent();
-    const listItem: CoursesListItem = { id: 5, title: 'Test', createDate: 'Test', duration: 'Test', description: 'Test' };
+    const listItem: CoursesListItem = {
+      id: 5,
+      title: 'Test',
+      createDate: 'Test',
+      duration: 'Test',
+      description: 'Test'
+    };
     comp.listItem = listItem;
     comp.deleteCourse.subscribe(d => {
       console.log('data d:', d);
       expect(d).toBe(listItem.id);
-    } );
-    comp.onDelete(onclick);
-    console.log('test on delete:', comp.onDelete(onclick));
+    });
+    //comp.onDelete(onclick);
+    comp.onDelete({});
+    console.log('test on delete:', comp.onDelete({}));
   });
 });
