@@ -10,7 +10,7 @@
         <span class="date">{{listItem.createDate | date:"MM.dd.yyyy"}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
+        <button class="btn btn-full" (click)="onEdit($event)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
       </div>
     </div>
     <div class="row">

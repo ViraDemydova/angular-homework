@@ -12,10 +12,13 @@ export class CoursesListItemService {
   date5 = new Date('02.01.2016');
   date6 = new Date('02.01.2021');
 
-  constructor() { }
+  private courses: CoursesListItem[] = [];
 
-  public getCourseListItems(): CoursesListItem[] {
-    return [
+  updatedItem: any;
+  updatedVal: any;
+
+  constructor() {
+    this.courses = [
       {
         id: 1,
         title: 'Video Course ',
@@ -63,5 +66,30 @@ export class CoursesListItemService {
       }
     ];
   }
+
+  public getCourseListItems(): CoursesListItem[] {
+    return this.courses;
+  }
+
+  public addData(item: CoursesListItem) {
+    console.log('in service item is:', item);
+    this.courses.push(item);
+  }
+
+  public deleteItem(item: CoursesListItem) {
+    const index: number = this.courses.indexOf(item);
+    if (index !== -1) {
+      this.courses.splice(index, 1);
+    }
+  }
+
+  public editItem() {
+    this.courses.map((item: CoursesListItem, i) => {
+      if (item.id == this.updatedItem.id) {
+        this.courses[i] = this.updatedVal;
+      }
+    });
+  }
+
 }
 

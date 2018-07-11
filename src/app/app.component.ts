@@ -7,9 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  str: string;
 
-  onLogText() {
-    console.log('Add new course');
-  }
 }
