@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
@@ -10,36 +10,23 @@ import { CommunicatorService } from '../../../service/communicator.service';
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
-export class CoursesListComponent implements OnInit, OnDestroy, OnChanges {
+export class CoursesListComponent implements OnInit {
+  // это свойство содержит текст поиска курса по названию
   @Input() searchText: string;
+  // это свойство содержит название поля, по которому необходимо сортировать список курсов.
+  sortField = 'createDate';
+  // 1 - по алфавиту, -1 - в обратном порядке
+  order = -1;
 
   ListItems: CoursesListItem[] = [];
-  filterToggle: boolean;
   id = 0;
   input: string;
 
-  private sub: Subscription;
-
-  constructor(
-    private coursesListService: CoursesListItemService,
-    private communicatorService: CommunicatorService
-  ) {}
+  constructor(private coursesListService: CoursesListItemService) {}
 
   ngOnInit() {
     this.ListItems = this.coursesListService.getCourseListItems();
-    // this.searchText = this.ListItems.title;
     console.log(`ngOnInit - data is: '${this.ListItems}'\n`);
-    this.sub = this.communicatorService.channel2$.subscribe(data =>
-      this.submit()
-    );
-  }
-
-  ngOnChanges() {
-    console.log('CoursesListComponent:: serchText:', this.searchText);
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   onChangeId(event) {
@@ -48,9 +35,5 @@ export class CoursesListComponent implements OnInit, OnDestroy, OnChanges {
 
   onHandleclick() {
     console.log('hey, I am a simple handler with console log\n');
-  }
-
-  submit() {
-    this.filterToggle = !this.filterToggle;
   }
 }
