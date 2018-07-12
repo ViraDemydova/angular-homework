@@ -8,8 +8,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   str: string;
+  searchText: string;
 
   onLogText() {
     console.log('Add new course');
+  }
+
+  // получаем текст поиска
+  onSearch(searchText: string) {
+    this.searchText = searchText;
+    console.log(this.searchText);
   }
 }

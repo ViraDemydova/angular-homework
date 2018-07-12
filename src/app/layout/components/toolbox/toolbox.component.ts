@@ -7,17 +7,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ToolboxComponent implements OnInit {
   @Output() addCourse: EventEmitter<any> = new EventEmitter<any>();
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
   str: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onAddCourse(event) {
     this.addCourse.emit(this.str);
   }
 
-
+  // принимаем текст от search input
+  // и передаем его родительскому компоненту
+  onSearch(searchText: string) {
+    this.search.emit(searchText);
+  }
 }
