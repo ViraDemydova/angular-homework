@@ -23,6 +23,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   ngOnChanges() {
     console.log('ngOnChange - data is: ', this.listItem.id);
     console.log('courses Item: searchText:', this.searchText);
+
   }
 
   onDelete(event) {
