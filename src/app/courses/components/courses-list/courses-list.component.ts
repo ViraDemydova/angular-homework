@@ -1,18 +1,12 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
-import {FilterPipe} from '../../../shared/pipes/filter.pipe';
-import {OrderByPipe} from "../../../shared/pipes/orderBy.pipe";
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.css'],
-  providers: [
-    FilterPipe
-  ]
+  styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit, OnChanges {
   public ListItems: CoursesListItem[] = [];

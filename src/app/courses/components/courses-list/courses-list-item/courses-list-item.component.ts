@@ -10,19 +10,19 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Input() public listItem: CoursesListItem;
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
    creationDate: any;
-   title: string;
+  @Input() searchText: string;
 
   constructor() { }
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
-    this.title = this.listItem.title;
     console.log('onInit');
     console.log('createionDate is: ', this.creationDate);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     console.log('ngOnChange - data is: ', this.listItem.id);
+    console.log('courses Item: searchText:', this.searchText);
   }
 
   onDelete(event) {
