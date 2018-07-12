@@ -5,7 +5,7 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(array: Array<string>, args: string): Array<string> {
+  transform(array: Array<any>, args: string): Array<string> {
     array.sort((a: any, b: any) => {
       if ( a[args] < b[args] ){
         return -1;
