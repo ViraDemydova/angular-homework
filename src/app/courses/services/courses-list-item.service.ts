@@ -14,7 +14,14 @@ export class CoursesListItemService {
 
   private courses: CoursesListItem[] = [];
 
-  updatedItem: any;
+  updatedItem = {
+    id: 5,
+    title: 'I am updated item!!!!',
+    createDate: this.date3,
+    duration: 59,
+    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+  };
+
   updatedVal: any;
 
   constructor() {
@@ -85,11 +92,10 @@ export class CoursesListItemService {
 
   public editItem() {
     this.courses.map((item: CoursesListItem, i) => {
-      if (item.id == this.updatedItem.id) {
-        this.courses[i] = this.updatedVal;
+      if (item.id === this.updatedItem.id) {
+        this.courses[i] = this.updatedItem;
       }
     });
   }
-
 }
 

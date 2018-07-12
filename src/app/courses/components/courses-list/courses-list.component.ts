@@ -34,7 +34,7 @@ export class CoursesListComponent implements OnInit, OnDestroy {
   }
 
   onChangeId(event) {
-    console.log(this.id = event);
+    console.log('Cours with id: ', this.id = event, ' was deleted');
   }
 
   onHandleclick() {

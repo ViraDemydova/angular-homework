@@ -8,12 +8,18 @@ import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
 import {SharedModule} from './shared/shared.module';
+import { LoginComponent } from './login/login.component';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app.routing.module';
+import { LandingModule } from './landing/landing.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -21,9 +27,13 @@ import {SharedModule} from './shared/shared.module';
     UsersModule,
     CoursesModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    LandingModule,
+    RouterModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
-  exports: [ SharedModule ],
+  exports: [ SharedModule, RouterModule, LandingModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

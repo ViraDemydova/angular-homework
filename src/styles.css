@@ -117,6 +117,58 @@ footer{
   top: 5px;
 }
 
+.login-form {
+  padding: 30px;
+  color: #4f646f;
+}
+
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-default {
+  border-color: #ddd;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-bottom-color: transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #b7adcf;
+  border-color: #b7adcf;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.outer {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.outer-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
   .float-right {

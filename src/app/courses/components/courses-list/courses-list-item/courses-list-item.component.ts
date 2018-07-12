@@ -20,13 +20,6 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
     this.title = this.listItem.title;
-    this.updatedItem = {
-      id: 333,
-      title: 'Update ',
-      createDate: this.date3,
-      duration: 59,
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-    };
     console.log('onInit');
     console.log('createionDate is: ', this.creationDate);
   }
@@ -36,12 +29,14 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   }
 
   onDelete(event) {
-    this.coursesListService.deleteItem(this.listItem);
-    //this.deleteCourse.emit(this.listItem.id);
+    if (confirm("Are you sure to delete this course: " + this.listItem.title + " " + this.listItem.id + "?" )) {
+      this.coursesListService.deleteItem(this.listItem);
+    }
+    this.deleteCourse.emit(this.listItem.id);
   }
 
   onEdit(event) {
-    this.coursesListService.editItem(this.updatedItem);
+    this.coursesListService.editItem();
     //this.deleteCourse.emit(this.listItem.id);
   }
 }
