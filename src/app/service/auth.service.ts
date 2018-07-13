@@ -1,31 +1,55 @@
 import { Injectable } from '@angular/core';
-import {Router} from '@angular/router';
-import {Subject} from "rxjs/Rx";
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
-  email: string;
-  password: string;
-  private channel = new Subject<any>();
 
-  public channel1$ = this.channel.asObservable();
+  public tokenKey = 'app_token';
+  public IsAuthenticated: boolean;
 
-  constructor(private router: Router) { }
-
-  // Service message commands
-  publishData(data: any) {
-    this.channel.next(this.login());
+  constructor() {
   }
 
-  public login() {
-    if (this.email === 'test@mail.ru' && this.password === '1') {
-      this.router.navigate(['landing-page']);
+
+  store(content) {
+    console.log('inside local storage store:', content, this.tokenKey);
+    localStorage.setItem(this.tokenKey, JSON.stringify(content));
+    return this.IsAuthenticated = true;
+  }
+
+  retrieve() {
+    console.log('inside local storage store');
+    let storedToken = localStorage.getItem(this.tokenKey);
+    console.log('storedToken:', storedToken);
+    if (!storedToken) {
+      throw 'no token found';
+    }
+    return storedToken;
+  }
+
+  clear() {
+    localStorage.clear();
+    location.reload();
+    this.IsAuthenticated = false;
+    console.log('inside local storage store:', this.tokenKey);
+    console.log('IsAuthenticated:', this.IsAuthenticated);
+  }
+
+  retrieveId() {
+    let storedToken = localStorage.getItem(this.tokenKey);
+    let storedTokenParse = JSON.parse(storedToken);
+    let result = storedTokenParse.map(a => a.login);
+    console.log(result);
+  }
+
+  isAuthenticated(): boolean {
+    if (this.IsAuthenticated) {
+      console.log('user is Authenticated');
+      return true;
     } else {
-      alert('Invalid credentials.');
+      console.log('user is UNAuthenticated, failed to initializ!!!!');
+      return false;
     }
   }
-
 }

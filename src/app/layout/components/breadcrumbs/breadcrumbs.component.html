@@ -1,8 +1,9 @@
 <!-- starts breadcrumbs -->
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" *ngIf="IsAuthenticated" >
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Courses</a></li>
     <li class="breadcrumb-item active" aria-current="page">Item</li>
   </ol>
 </nav>
+<button (click)="IsAuth()">Is auth</button>
 <!-- ends breadcrumbs -->
