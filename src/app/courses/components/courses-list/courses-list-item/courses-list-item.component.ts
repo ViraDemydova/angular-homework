@@ -24,7 +24,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     console.log('createionDate is: ', this.creationDate);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     console.log('ngOnChange - data is: ', this.listItem.id);
   }
 

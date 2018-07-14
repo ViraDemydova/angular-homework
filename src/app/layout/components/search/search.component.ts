@@ -1,4 +1,4 @@
-import {Component, OnInit,  Input} from '@angular/core';
+import {Component, OnInit,  Output, EventEmitter} from '@angular/core';
 import { CommunicatorService} from '../../../service/communicator.service';
 
 
@@ -8,8 +8,8 @@ import { CommunicatorService} from '../../../service/communicator.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  //@Input() public searchText: string;
-  filterToggle: boolean;
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+  searchText: string;
 
   constructor(
     private communicatorService: CommunicatorService) {}
@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.communicatorService.publishData(`${this.filterToggle}`);
+    // передадим родительскому компоненту текст из инпута поиска
+    this.search.emit(this.searchText);
   }
 }

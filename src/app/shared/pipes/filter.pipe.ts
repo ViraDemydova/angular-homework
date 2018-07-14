@@ -1,20 +1,22 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
+import {CoursesListItem} from '../../courses/models/courses-list-item.model';
 
 @Pipe({
   name: 'filter'
 })
 @Injectable()
 export class FilterPipe implements PipeTransform {
-  transform(array: Array<string>, args: string): Array<string> {
-    array.sort((a: any, b: any) => {
-      if ( a[args] < b[args] ){
-        return -1;
-      } else if( a[args] > b[args] ){
-        return 1;
-      } else{
-        return 0;
-      }
-    });
-    return array;
+  transform(
+    array: Array<CoursesListItem>,
+    searchText: string
+  ): Array<CoursesListItem> {
+    // если не задали строку фильтрации, то возвращаем все записи
+    if (!searchText) {
+      return array;
+    }
+
+    return array.filter(elem =>
+      elem.title.toUpperCase().includes(searchText.toUpperCase())
+    );
   }
 }

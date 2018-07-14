@@ -48,11 +48,9 @@ export class AuthService {
   isAuthenticated(): boolean  {
     if (this.IsAuthenticated) {
       console.log('user is Authenticated', this.IsAuthenticated);
-      this.IsAuthenticated = true;
       return true;
     } else {
       console.log('user is UNAuthenticated, failed to initialize!!!!', this.IsAuthenticated);
-      this.IsAuthenticated = false;
       return false;
     }
   }
