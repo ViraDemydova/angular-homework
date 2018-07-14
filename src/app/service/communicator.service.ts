@@ -5,22 +5,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CommunicatorService {
-  filterToggle: boolean;
   // Observable string sources
   private channel = new Subject<string>();
+  searchText: string;
 
   // Observable string streams
-  public channel2$ = this.channel.asObservable();
+  public channel$ = this.channel.asObservable();
 
   // Service message commands
-  publishData(data: string) {
-    this.channel.next(data);
+  publishData(searchText: string) {
+    this.channel.next(searchText);
   }
-
-  // Service message commands
-  toggle() {
-    this.filterToggle = !this.filterToggle;
-  }
-
 
 }

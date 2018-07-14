@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AuthService} from '../service/auth.service';
 
 @Component({
@@ -7,11 +7,17 @@ import {AuthService} from '../service/auth.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
+  searchText: string;
 
   constructor(private serviceAuth: AuthService) {
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+// получаем текст поиска
+  onSearch(searchText: string) {
+    this.searchText = searchText;
+    console.log('show search text from app', this.searchText);
   }
 
   IsAuth() {

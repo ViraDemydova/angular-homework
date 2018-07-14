@@ -13,15 +13,15 @@ export class AuthService {
   }
 
 
-  store(content) {
+  login(content) {
     console.log('inside local storage store:', content, this.tokenKey);
     localStorage.setItem(this.tokenKey, JSON.stringify(content));
     console.log('status from login is:', this.IsAuthenticated);
     return this.IsAuthenticated = true;
   }
 
-  retrieve() {
-    console.log('inside local storage store');
+  retrieveLocalStorage() {
+    console.log('inside local storage store:');
     let storedToken = localStorage.getItem(this.tokenKey);
     console.log('storedToken:', storedToken);
     if (!storedToken) {
@@ -30,15 +30,13 @@ export class AuthService {
     return storedToken;
   }
 
-  clear() {
+  logout () {
     localStorage.clear();
     location.reload();
-    this.IsAuthenticated = false;
-    console.log('inside local storage store:', this.tokenKey);
-    console.log('IsAuthenticated:', this.IsAuthenticated);
+    this.IsAuthenticated = false;;
   }
 
-  retrieveId() {
+  getUserInfo() {
     let storedToken = localStorage.getItem(this.tokenKey);
     let storedTokenParse = JSON.parse(storedToken);
     let result = storedTokenParse.map(a => a.login);

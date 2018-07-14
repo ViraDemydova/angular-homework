@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {AuthService} from "../service/auth.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../service/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +11,7 @@ export class LoginComponent implements OnInit {
   public fakeUsers: any;
   login: string;
   password: string;
-
-  //объявляем переменную
-  @Input() IsAuthenticated: boolean;
-  // передаем статус наверх в виде строки
-  @Output() status: EventEmitter<boolean> = new EventEmitter<boolean>();
+  IsAuthenticated: boolean;
 
   constructor(private router: Router,
               private serviceAuth: AuthService) {}
@@ -30,7 +26,7 @@ export class LoginComponent implements OnInit {
     ];
   }
 
-  public OnLogin() {
+  public OnAuth() {
     if (this.login == 'test@gmail.com' && this.password == '1') {
       this.router.navigate(['landing-page']);
       this.IsAuthenticated = true;
@@ -40,28 +36,26 @@ export class LoginComponent implements OnInit {
       console.log('login', this.login);
       console.log('password', this.password);
     }
-    this.OnStore();
+    this.OnLogin();
   }
 
-  public OnStore() {
-    this.serviceAuth.store(this.fakeUsers);
-    console.log('status is:', this.IsAuthenticated);
+  public OnLogin() {
+    this.serviceAuth.login(this.fakeUsers);
   }
 
   public OnRetrieve() {
-    this.serviceAuth.retrieve();
+    this.serviceAuth.retrieveLocalStorage();
   }
 
-  public OnRetrieveId(login) {
-    this.serviceAuth.retrieveId();
+  public OnGetUserInfo(login) {
+    this.serviceAuth.getUserInfo();
   }
 
-  public OnClear() {
-    this.serviceAuth.clear();
+  public OnLogout() {
+    this.serviceAuth.logout();
   }
 
   public IsAuth() {
-    console.log('from login status is:', this.IsAuthenticated);
     this.serviceAuth.isAuthenticated();
   }
 }

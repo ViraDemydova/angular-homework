@@ -13,8 +13,8 @@ export class UserLogOffComponent implements OnInit{
   ngOnInit() {
   }
 
-  public OnClear() {
-    this.serviceAuth.clear();
+  public OnLogout() {
+    this.serviceAuth.logout();
     console.log('User info was wiped: ');
   }
 
