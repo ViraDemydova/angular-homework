@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {}
 
-// получаем текст поиска
+  // получаем текст поиска
   onSearch(searchText: string) {
     this.searchText = searchText;
     console.log('show search text from app', this.searchText);
