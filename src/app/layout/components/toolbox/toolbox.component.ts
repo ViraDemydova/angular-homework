@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CoursesListItem} from '../../../courses/models/courses-list-item.model';
-import {CoursesListItemService} from "../../../courses/services/courses-list-item.service";
+import {CoursesListItemService} from '../../../courses/services/courses-list-item.service';
 
 @Component({
   selector: 'app-toolbox',

@@ -9,8 +9,13 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   public fakeUsers: any;
-  email: string;
+  login: string;
   password: string;
+
+  //объявляем переменную
+  @Input() IsAuthenticated: boolean;
+  // передаем статус наверх в виде строки
+  @Output() status: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router,
               private serviceAuth: AuthService) {}
@@ -19,31 +24,28 @@ export class LoginComponent implements OnInit {
     this.fakeUsers = [
       {
         id: 1,
-        login: 'login',
-        email: 'test@gmail.com',
-        password: '1'
-      },
-      {
-        id: 2,
-        login: 'login2',
-        email: 'test@gmail.com',
+        login: 'test@gmail.com',
         password: '1'
       }
     ];
   }
 
   public OnLogin() {
-    if (this.email == 'test@gmail.com' && this.password == '1') {
+    if (this.login == 'test@gmail.com' && this.password == '1') {
       this.router.navigate(['landing-page']);
+      this.IsAuthenticated = true;
     } else {
       alert('Invalid credentials.');
-      console.log('email', this.email);
+      this.IsAuthenticated = false;
+      console.log('login', this.login);
       console.log('password', this.password);
     }
+    this.OnStore();
   }
 
   public OnStore() {
     this.serviceAuth.store(this.fakeUsers);
+    console.log('status is:', this.IsAuthenticated);
   }
 
   public OnRetrieve() {
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
   }
 
   public IsAuth() {
+    console.log('from login status is:', this.IsAuthenticated);
     this.serviceAuth.isAuthenticated();
   }
 }

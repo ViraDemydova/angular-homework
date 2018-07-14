@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable,  } from '@angular/core';
+import {Observable} from "rxjs/Rx";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthService {
   store(content) {
     console.log('inside local storage store:', content, this.tokenKey);
     localStorage.setItem(this.tokenKey, JSON.stringify(content));
+    console.log('status from login is:', this.IsAuthenticated);
     return this.IsAuthenticated = true;
   }
 
@@ -43,12 +45,14 @@ export class AuthService {
     console.log(result);
   }
 
-  isAuthenticated(): boolean {
+  isAuthenticated(): boolean  {
     if (this.IsAuthenticated) {
-      console.log('user is Authenticated');
+      console.log('user is Authenticated', this.IsAuthenticated);
+      this.IsAuthenticated = true;
       return true;
     } else {
-      console.log('user is UNAuthenticated, failed to initializ!!!!');
+      console.log('user is UNAuthenticated, failed to initialize!!!!', this.IsAuthenticated);
+      this.IsAuthenticated = false;
       return false;
     }
   }
