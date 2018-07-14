@@ -8,7 +8,6 @@ import { CommunicatorService} from '../../../service/communicator.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  //filterToggle: boolean;
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   searchText: string;
 
@@ -18,7 +17,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    //this.communicatorService.publishData(`${this.filterToggle}`);
     // передадим родительскому компоненту текст из инпута поиска
     this.search.emit(this.searchText);
   }
