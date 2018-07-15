@@ -12,8 +12,6 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
    creationDate: any;
    title: string;
-   updatedItem: CoursesListItem;
-   date3 = new Date('01.29.2019');
 
   constructor(private coursesListService: CoursesListItemService) { }
 
