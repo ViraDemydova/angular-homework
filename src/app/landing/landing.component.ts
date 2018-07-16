@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {AuthService} from '../service/auth.service';
+import {AuthService} from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-landing',
