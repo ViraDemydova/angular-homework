@@ -10,7 +10,7 @@ import {CoursesListItemService} from "../../../services/courses-list-item.servic
 export class CoursesListItemComponent implements OnInit, OnChanges {
   @Input() public listItem: CoursesListItem;
   @Output() deleteCourse: EventEmitter<number> = new EventEmitter<number>();
-   creationDate: any;
+   creationDate: object;
    title: string;
 
   constructor(private coursesListService: CoursesListItemService) { }
@@ -18,8 +18,6 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
     this.title = this.listItem.title;
-    console.log('onInit');
-    console.log('createionDate is: ', this.creationDate);
   }
 
   ngOnChanges() {

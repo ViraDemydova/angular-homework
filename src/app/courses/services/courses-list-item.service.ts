@@ -5,12 +5,12 @@ import { CoursesListItem } from '../models/courses-list-item.model';
   providedIn: 'root'
 })
 export class CoursesListItemService {
-  date1 = new Date('05.29.2018');
-  date2 = new Date('05.05.2018');
-  date3 = new Date('01.29.2019');
-  date4 = new Date('12.29.2017');
-  date5 = new Date('02.01.2016');
-  date6 = new Date('02.01.2021');
+  date1 = new Date('2018-05-29 12:00:00');
+  date2 = new Date('2018-05-05 12:00:00');
+  date3 = new Date('2019-01-29 12:00:00');
+  date4 = new Date('2017-12-29 12:00:00');
+  date5 = new Date('2016-02-01 12:00:00');
+  date6 = new Date('2021-01-02 12:00:00');
 
   private courses: CoursesListItem[] = [];
 

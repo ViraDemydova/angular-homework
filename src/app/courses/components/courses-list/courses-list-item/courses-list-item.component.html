@@ -7,7 +7,7 @@
       </div>
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration  | myTime}}</time>
-        <span class="date">{{listItem.createDate | date:"MM.dd.yyyy"}}</span>
+        <span class="date">{{listItem.createDate | date:"dd.MM.yyyy"}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
         <button class="btn btn-full" (click)="onEdit($event)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
