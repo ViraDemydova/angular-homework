@@ -72,10 +72,6 @@ export class CoursesListItemService {
     ];
   }
 
-  public getCourseListItems(): CoursesListItem[] {
-    return this.courses;
-  }
-
   public addData(item: CoursesListItem) {
     console.log('in service item is:', item);
     this.courses.push(item);
@@ -94,6 +90,10 @@ export class CoursesListItemService {
         this.courses[i] = this.updatedItem;
       }
     });
+  }
+
+  public getCourseListItems(): CoursesListItem[] {
+    return this.courses;
   }
 }
 

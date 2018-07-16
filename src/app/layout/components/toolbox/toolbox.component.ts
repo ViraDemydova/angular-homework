@@ -8,7 +8,7 @@ import {CoursesListItemService} from '../../../courses/services/courses-list-ite
 })
 export class ToolboxComponent implements OnInit {
  @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  date7 = new Date('02.01.2021');
+  date7 = new Date('2015-01-02 12:00:00');
   newItem =  {
     id: 1,
     title: 'New item ',
