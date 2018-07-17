@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {AuthService} from '../shared/services/auth.service';
+import { AuthService } from './../core/services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,8 +9,7 @@ import {AuthService} from '../shared/services/auth.service';
 export class LandingComponent implements OnInit {
   searchText: string;
 
-  constructor(private serviceAuth: AuthService) {
-  }
+  constructor(private serviceAuth: AuthService) {}
 
   ngOnInit() {}
 
@@ -21,7 +20,10 @@ export class LandingComponent implements OnInit {
   }
 
   IsAuth() {
-    console.log('IsAuthenticated from landing page:', this.serviceAuth.isAuthenticated());
+    console.log(
+      'IsAuthenticated from landing page:',
+      this.serviceAuth.isAuthenticated()
+    );
     return this.serviceAuth.isAuthenticated();
   }
 }

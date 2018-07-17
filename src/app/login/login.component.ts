@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../shared/services/auth.service';
-import {Router} from '@angular/router';
+import { AuthService } from './../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +13,7 @@ export class LoginComponent implements OnInit {
   password: string;
   IsAuthenticated: boolean;
 
-  constructor(private router: Router,
-              private serviceAuth: AuthService) {}
+  constructor(private router: Router, private serviceAuth: AuthService) {}
 
   ngOnInit() {
     this.fakeUsers = [
@@ -26,8 +25,8 @@ export class LoginComponent implements OnInit {
     ];
   }
 
-  public OnAuth() {
-    if (this.login == 'test@gmail.com' && this.password == '1') {
+  public onAuth() {
+    if (this.login === 'test@gmail.com' && this.password === '1') {
       this.router.navigate(['landing-page']);
       this.IsAuthenticated = true;
     } else {
@@ -36,26 +35,26 @@ export class LoginComponent implements OnInit {
       console.log('login', this.login);
       console.log('password', this.password);
     }
-    this.OnLogin();
+    this.onLogin();
   }
 
-  public OnLogin() {
+  public onLogin() {
     this.serviceAuth.login(this.fakeUsers);
   }
 
-  public OnRetrieve() {
+  public onRetrieve() {
     this.serviceAuth.retrieveLocalStorage();
   }
 
-  public OnGetUserInfo(login) {
+  public onGetUserInfo() {
     this.serviceAuth.getUserInfo();
   }
 
-  public OnLogout() {
+  public onLogout() {
     this.serviceAuth.logout();
   }
 
-  public IsAuth() {
+  public isAuth() {
     this.serviceAuth.isAuthenticated();
   }
 }
