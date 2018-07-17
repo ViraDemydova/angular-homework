@@ -90,6 +90,11 @@ footer{
 
 .login {
   margin-right: 15px;
+  color: white;
+}
+
+.login:hover {
+  color: #535657;
 }
 
 .time {
