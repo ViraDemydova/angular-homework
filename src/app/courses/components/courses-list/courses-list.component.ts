@@ -43,7 +43,7 @@ export class CoursesListComponent implements OnInit, OnChanges {
 
   onGetCourseById(item: CoursesListItem) {
     this.coursesListService.getCourseById(this.id);
-    console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(4));
+    console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(5));
   }
 
   onHandleclick() {

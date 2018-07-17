@@ -47,7 +47,7 @@ export class CoursesListItemService {
   }
 
   public getCourseById(id: number): CoursesListItem {
-    return this.courses.find(item => item.id === id);
+    return this.courses.find(item => item.id === id) as CoursesListItem;
   }
 }
 
