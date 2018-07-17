@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
-import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {AppRoutingModule} from './app.routing.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -23,14 +24,14 @@ import { LandingModule } from './landing/landing.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    CoreModule,
+    SharedModule,
     LayoutModule,
     UsersModule,
     CoursesModule,
-    FormsModule,
-    SharedModule,
     LandingModule,
-    RouterModule,
-    HttpClientModule,
     AppRoutingModule
   ],
   exports: [ SharedModule, RouterModule, LandingModule ],
