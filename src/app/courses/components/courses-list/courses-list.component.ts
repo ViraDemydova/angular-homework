@@ -33,17 +33,17 @@ export class CoursesListComponent implements OnInit, OnChanges {
 
   onDeleteCourse(item: CoursesListItem) {
     this.coursesListService.deleteItem(item);
-    console.log('Cours with id: ', this.id, ' was deleted');
+    console.log('Cours with id: ', item.id, ' was deleted');
   }
 
   onEditCourse(item: CoursesListItem) {
     this.coursesListService.editItem(item);
-    console.log('Cours with id: ', this.id, ' was edited');
+    console.log('Cours with id: ', item.id, ' was edited');
   }
 
   onGetCourseById(item: CoursesListItem) {
-    this.coursesListService.getCourseById(this.id);
-    console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(5));
+    this.coursesListService.getCourseById(item.id);
+    console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(item.id));
   }
 
   onHandleclick() {
