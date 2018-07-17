@@ -19,13 +19,13 @@
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
                   </div>
-                  <button class="btn btn-default" (click)="OnAuth()">Login</button>
+                  <button class="btn btn-default" (click)="onAuth()">Login</button>
                   <div class="form-group">
-                    <a [routerLink]="" (click)="OnLogin()">Stores fake user info and token to local storage </a><br>
-                    <a [routerLink]="" (click)="OnRetrieve()">Retrive</a><br>
-                    <a [routerLink]="" (click)="OnGetUserInfo()">Retrive Login</a><br>
-                    <a [routerLink]="" (click)="OnLogout()">Wipes fake user info and token from local storage</a><br>
-                    <a [routerLink]="" (click)="IsAuth()">Is auth</a>
+                    <a [routerLink]="" (click)="onLogin()">Stores fake user info and token to local storage </a><br>
+                    <a [routerLink]="" (click)="onRetrieve()">Retrive</a><br>
+                    <a [routerLink]="" (click)="onGetUserInfo()">Retrive Login</a><br>
+                    <a [routerLink]="" (click)="onLogout()">Wipes fake user info and token from local storage</a><br>
+                    <a [routerLink]="" (click)="isAuth()">Is auth</a>
                   </div>
                 </form>
               </div>

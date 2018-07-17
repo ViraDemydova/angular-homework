@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { CoreModule } from './../core.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: CoreModule
 })
 export class CommunicatorService {
   // Observable string sources
@@ -16,5 +17,4 @@ export class CommunicatorService {
   publishData(searchText: string) {
     this.channel.next(searchText);
   }
-
 }

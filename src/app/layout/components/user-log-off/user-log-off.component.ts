@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../../shared/services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-user-log-off',
@@ -7,15 +8,13 @@ import {AuthService} from '../../../shared/services/auth.service';
   styleUrls: ['./user-log-off.component.css']
 })
 export class UserLogOffComponent implements OnInit {
+  constructor(private serviceAuth: AuthService, private router: Router) {}
 
-  constructor(private serviceAuth: AuthService) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  public OnLogout() {
+  public onLogout() {
     this.serviceAuth.logout();
+    this.router.navigate(['/login']);
     console.log('User info was wiped: ');
   }
-
 }

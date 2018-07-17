@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
@@ -28,11 +28,13 @@ export class CoursesListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-     console.log('CoursesListComponent: searchText:', this.searchText);
+    console.log('CoursesListComponent: searchText:', this.searchText);
   }
 
-  onChangeId(event) {
-    console.log('Cours with id: ', this.id = event, ' was deleted');
+  onDeleteCourse(item: CoursesListItem) {
+    // тут надо удалять
+    this.coursesListService.deleteItem(item);
+    // console.log('Cours with id: ', (this.id = event), ' was deleted');
   }
 
   onHandleclick() {

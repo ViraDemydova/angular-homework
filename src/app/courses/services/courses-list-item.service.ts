@@ -1,78 +1,29 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
 
+import { courses } from './course-list-items.data';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesListItemService {
-  date1 = new Date('2018-05-29 12:00:00');
-  date2 = new Date('2018-05-05 12:00:00');
-  date3 = new Date('2019-01-29 12:00:00');
-  date4 = new Date('2017-12-29 12:00:00');
-  date5 = new Date('2016-02-01 12:00:00');
-  date6 = new Date('2021-01-02 12:00:00');
-
   private courses: CoursesListItem[] = [];
 
   updatedItem = {
     id: 5,
     title: 'I am updated item!!!!',
-    createDate: this.date3,
+    createDate: new Date('2019-01-29 12:00:00'),
     duration: 59,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    description:
+      // tslint:disable-next-line:max-line-length
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
   };
 
   constructor() {
-    this.courses = [
-      {
-        id: 1,
-        title: 'Video Course ',
-        createDate: this.date1,
-        duration: 120,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        topRated: true
-      },
-      {
-        id: 2,
-        title: 'Audio Course ',
-        createDate: this.date2,
-        duration: 70,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        id: 3,
-        title: 'Video Course ',
-        createDate: this.date3,
-        duration: 59,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        id: 4,
-        title: 'Audio Course ',
-        createDate: this.date4,
-        duration: 360,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        topRated: true
-      },
-      {
-        id: 5,
-        title: 'Video Course ',
-        createDate: this.date5,
-        duration: 20,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        topRated: true
-      },
-      {
-        id: 6,
-        title: 'Video Course ',
-        createDate: this.date6,
-        duration: 20,
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      }
-    ];
+    this.courses = courses;
   }
 
-  public addData(item: CoursesListItem) {
+  public addItem(item: CoursesListItem) {
     console.log('in service item is:', item);
     this.courses.push(item);
   }
@@ -84,6 +35,7 @@ export class CoursesListItemService {
     }
   }
 
+  // TODO: Обычно в такой метод передается item: CoursesListItem
   public editItem() {
     this.courses.map((item: CoursesListItem, i) => {
       if (item.id === this.updatedItem.id) {
@@ -95,5 +47,9 @@ export class CoursesListItemService {
   public getCourseListItems(): CoursesListItem[] {
     return this.courses;
   }
-}
 
+  public getCourseById(id: number): CoursesListItem {
+    // TODO: надо реализовать
+    return {} as CoursesListItem;
+  }
+}

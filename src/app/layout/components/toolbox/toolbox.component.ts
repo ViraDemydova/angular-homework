@@ -23,7 +23,7 @@ export class ToolboxComponent implements OnInit {
   ngOnInit() {}
 
   onAddCourse() {
-    this.coursesListService.addData(this.newItem);
+    this.coursesListService.addItem(this.newItem);
   }
 
   // принимаем текст от search input
