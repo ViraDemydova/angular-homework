@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../core/services/auth.service';
+import {CoursesListItemService} from '../courses/services/courses-list-item.service';
 
 @Component({
   selector: 'app-landing',
@@ -8,8 +9,10 @@ import {AuthService} from '../core/services/auth.service';
 })
 export class LandingComponent implements OnInit {
   searchText: string;
+  newItem: any;
 
-  constructor(private serviceAuth: AuthService) {
+  constructor(private serviceAuth: AuthService,
+              private coursesListService: CoursesListItemService) {
   }
 
   ngOnInit() {}
@@ -23,5 +26,9 @@ export class LandingComponent implements OnInit {
   IsAuth() {
     console.log('IsAuthenticated from landing page:', this.serviceAuth.isAuthenticated());
     return this.serviceAuth.isAuthenticated();
+  }
+
+  onAddCourse() {
+    this.coursesListService.addItem(this.newItem);
   }
 }

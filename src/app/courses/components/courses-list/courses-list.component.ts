@@ -1,52 +1,43 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
-import { CoursesListItemService } from '../../services/courses-list-item.service';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
-export class CoursesListComponent implements OnInit, OnChanges {
-  public ListItems: CoursesListItem[] = [];
+export class CoursesListComponent implements OnInit {
+  @Input()  public ListItems: CoursesListItem[] = [];
+  @Input() public listItem: CoursesListItem;
+  @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
+  @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
+  @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
+
   // это свойство содержит текст поиска курса по названию
   @Input() searchText: string;
   // это свойство содержит название поля, по которому необходимо сортировать список курсов.
   sortField = 'createDate';
-
   // 1 - по алфавиту, -1 - в обратном порядке
   order = -1;
   input: string;
   id = 0;
+  title: string;
 
-  constructor(private coursesListService: CoursesListItemService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.ListItems = this.coursesListService.getCourseListItems();
-    console.log(`ngOnInit - data is: '${this.ListItems}'\n`);
+  ngOnInit() {}
+
+  onDelete(item: CoursesListItem) {
+   this.deleteCourse.emit(item);
   }
 
-  ngOnChanges() {
-    console.log('CoursesListComponent: searchText:', this.searchText);
-  }
-
-  onDeleteCourse(item: CoursesListItem) {
-    this.coursesListService.deleteItem(item);
-    console.log('Cours with id: ', item.id, ' was deleted');
-  }
-
-  onEditCourse(item: CoursesListItem) {
-    this.coursesListService.editItem(item);
-    console.log('Cours with id: ', item.id, ' was edited');
+  onEdit(item: CoursesListItem) {
+    //this.coursesListService.editItem();
+    this.editCourse.emit(item);
   }
 
   onGetCourseById(item: CoursesListItem) {
-    this.coursesListService.getCourseById(item.id);
-    console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(item.id));
-  }
-
-  onHandleclick() {
-    console.log('hey, I am a simple handler with console log\n');
+   this.getbyId.emit(item);
   }
 }

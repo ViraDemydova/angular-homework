@@ -17,13 +17,22 @@ export class CoursesListItemService {
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
   };
 
+  newItem =  {
+    id: 1,
+    title: 'New item ',
+    createDate: new Date('2015-01-02 12:00:00'),
+    duration: 120,
+    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    topRated: true
+  };
+
   constructor() {
     this.courses = courses;
   }
 
   public addItem(item: CoursesListItem) {
-    console.log('in service item is:', item);
-    this.courses.push(item);
+    console.log('in service item is:', this.newItem);
+    this.courses.push(this.newItem);
   }
 
   public deleteItem(item: CoursesListItem) {

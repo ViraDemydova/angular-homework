@@ -4,13 +4,13 @@ import {Component,
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
-import {CoursesListItemService} from '../../../services/courses-list-item.service';
 
 @Component({
   selector: 'app-courses-list-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-list-item.component.html',
   styleUrls: ['./courses-list-item.component.css']
 })
@@ -21,12 +21,12 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
    creationDate: object;
    title: string;
+   id: number;
 
   constructor() { }
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
-    this.title = this.listItem.title;
   }
 
   ngOnChanges() {

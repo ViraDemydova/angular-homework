@@ -1,34 +1,32 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
-import {CoursesListItemService} from '../../../courses/services/courses-list-item.service';
+import { Component, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {CoursesListItem} from '../../../courses/models/courses-list-item.model';
 
 @Component({
   selector: 'app-toolbox',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './toolbox.component.html',
   styleUrls: ['./toolbox.component.css']
 })
 export class ToolboxComponent implements OnInit {
- @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  date7 = new Date('2015-01-02 12:00:00');
-  newItem =  {
-    id: 1,
-    title: 'New item ',
-    createDate: this.date7,
-    duration: 120,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    topRated: true
-  };
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+  @Output() addCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
+  newItem: any;
 
-  constructor(private coursesListService: CoursesListItemService) { }
+  constructor() { }
 
   ngOnInit() {}
 
-  onAddCourse() {
-    this.coursesListService.addItem(this.newItem);
-  }
+  //onAddCourse() {
+    //this.coursesListService.addItem(this.newItem);
+ // }
 
   // принимаем текст от search input
   // и передаем его родительскому компоненту
   onSearch(searchText: string) {
     this.search.emit(searchText);
+  }
+
+  onAddCourse(event) {
+    this.addCourse.emit(this.newItem);
   }
 }
