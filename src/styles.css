@@ -56,6 +56,14 @@ footer{
   background: #535657;
 }
 
+.btn-group > .btn {
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+  margin-right: 15px;
+}
+
 .list {
   margin: 30px 0;
   padding: 0;
@@ -122,9 +130,27 @@ footer{
   top: 5px;
 }
 
-.login-form {
+.login-form,
+.add-course-form {
   padding: 30px;
   color: #4f646f;
+}
+
+.add-course-form label {
+  display: block;
+}
+
+.date,
+.duration {
+  width: 30%;
+}
+
+.duration {
+  display: inline-block;
+}
+.time {
+  display: inline-block;
+  margin-left: 15px;
 }
 
 .panel {

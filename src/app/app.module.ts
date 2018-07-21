@@ -14,13 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
+import { AddPageComponent } from './add-page/add-page.component';;
+import {AddPageModule} from './add-page/add-page.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AddPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +35,10 @@ import { CoreModule } from './core/core.module';
     UsersModule,
     CoursesModule,
     LandingModule,
+    AddPageModule,
     AppRoutingModule
   ],
-  exports: [ SharedModule, RouterModule, LandingModule ],
+  exports: [ SharedModule, RouterModule, LandingModule, AddPageModule ],
   providers: [],
   bootstrap: [AppComponent]
 })
