@@ -13,16 +13,20 @@ export class CoursesListItemService {
     title: 'I am updated item!!!!',
     createDate: new Date('2019-01-29 12:00:00'),
     duration: 59,
+
     // tslint:disable-next-line:max-line-length
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    description: 'Lorem Ipsum is simply dummy text ...',
+    authors: []
   };
 
-  newItem =  {
+  newItem = {
     id: 1,
     title: 'New item ',
     createDate: new Date('2015-01-02 12:00:00'),
     duration: 120,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ...',
+    authors: [],
     topRated: true
   };
 
@@ -59,4 +63,3 @@ export class CoursesListItemService {
     return this.courses.find(item => item.id === id) as CoursesListItem;
   }
 }
-

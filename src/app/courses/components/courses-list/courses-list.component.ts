@@ -8,7 +8,7 @@ import { CoursesListItem } from '../../models/courses-list-item.model';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  @Input()  public ListItems: CoursesListItem[] = [];
+  @Input() public ListItems: CoursesListItem[] = [];
   @Input() public listItem: CoursesListItem;
   @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
@@ -33,7 +33,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   onEdit(item: CoursesListItem) {
-    //this.coursesListService.editItem();
+    // this.coursesListService.editItem();
     this.editCourse.emit(item);
   }
 
