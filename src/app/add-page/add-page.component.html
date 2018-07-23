@@ -27,12 +27,12 @@
                 <div class="form-group">
                   <label for="author">Author:</label>
                   <select class="form-control" id="author" name="author">
-                    <option>{{newItem.author}}</option>
+                    <option>{{newItem.authors[0]}}</option>
                   </select>
                 </div>
                 <div class="btn-group">
-                  <button class="btn btn-default" (click)="onHandleclick()">Create</button>
-                  <button class="btn btn-secondary"(click)="onHandleclick()">Cancel</button>
+                  <button class="btn btn-default" (click)="onCreateCourse()">Create</button>
+                  <button class="btn btn-secondary"(click)="onCancel()">Cancel</button>
                 </div>
               </form>
             </div>

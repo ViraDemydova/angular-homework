@@ -1,3 +1,5 @@
+// Считаю, что эта модель лишняя, так как есть модель
+// CoursesListItem. Почему бы ее не использовать?
 export interface AddCourse {
   title: string;
   description: string;
