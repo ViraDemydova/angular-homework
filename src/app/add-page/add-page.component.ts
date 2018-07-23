@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {AddCourse} from './models/add-page.model';
-import {AddPage} from './services/add-page.service';
 
 @Component({
   selector: 'app-add-page',
@@ -15,7 +14,7 @@ export class AddPageComponent implements OnInit {
   @Input() public duration: string;
   @Input() public  author: string;
 
-  constructor(private addCourse: AddPage) { }
+  constructor() { }
 
   ngOnInit() {
     this.newItem = {
