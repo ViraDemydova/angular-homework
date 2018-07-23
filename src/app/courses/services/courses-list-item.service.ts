@@ -15,14 +15,17 @@ export class CoursesListItemService {
     duration: 59,
     // tslint:disable-next-line:max-line-length
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    authors: []
   };
 
-  newItem =  {
+  newItem = {
     id: 1,
     title: 'New item ',
     createDate: new Date('2015-01-02 12:00:00'),
     duration: 120,
+    // tslint:disable-next-line:max-line-length
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    authors: [],
     topRated: true
   };
 

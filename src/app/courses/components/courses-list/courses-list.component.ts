@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
 
 @Component({
   selector: 'app-courses-list',
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
@@ -33,7 +34,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   onEdit(item: CoursesListItem) {
-    //this.coursesListService.editItem();
+    // this.coursesListService.editItem();
     this.editCourse.emit(item);
   }
 

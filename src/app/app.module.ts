@@ -14,24 +14,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
-import { AddPageComponent } from './add-page/add-page.component';;
-import {AddPageModule} from './add-page/add-page.module';
+import { AddPageModule } from './add-page/add-page.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AddPageComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+
     CoreModule,
     SharedModule,
     LayoutModule,
+
     UsersModule,
     CoursesModule,
     LandingModule,
@@ -42,4 +42,4 @@ import {AddPageModule} from './add-page/add-page.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
