@@ -22,7 +22,7 @@
                 <div class="form-group">
                   <label for="duration">Duration:</label>
                   <input type="text" class="form-control duration" id="duration" name="duration" [(ngModel)]="newItem.duration">
-                  <span class="time">{{newItem.duration}}</span>
+                  <span class="time">{{newItem.duration  | myTime}}</span>
                 </div>
                 <div class="form-group">
                   <label for="author">Authors:</label>
