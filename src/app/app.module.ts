@@ -9,19 +9,22 @@ import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
 import { AddPageModule } from './add-page/add-page.module';
+import { EditPageModule } from './edit-page/edit-page.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +39,10 @@ import { AddPageModule } from './add-page/add-page.module';
     CoursesModule,
     LandingModule,
     AddPageModule,
+    EditPageModule,
     AppRoutingModule
   ],
-  exports: [ SharedModule, RouterModule, LandingModule, AddPageModule ],
+  exports: [ SharedModule, RouterModule, LandingModule, AddPageModule, EditPageModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@ import {Component,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
+import { Router, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -23,7 +24,11 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
    title: string;
    id: number;
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) => {
+      console.log(event);
+    });
+  }
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
@@ -41,11 +46,16 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   }
 
   onEdit(event) {
-    //this.coursesListService.editItem();
     this.editCourse.emit(this.listItem);
   }
 
   onGetCourseById(event) {
     this.getbyId.emit(this.listItem);
+  }
+
+  public goToPageWithParams() {
+   //this.router.navigate(['edit-page', 5], { queryParams: { redirectedFromClass: true } });
+     this.router.navigateByUrl('/edit-page/' + this.listItem.id, {queryParams: { id: this.listItem.id}});
+
   }
 }

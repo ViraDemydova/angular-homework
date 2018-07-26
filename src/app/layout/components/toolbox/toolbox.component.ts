@@ -1,4 +1,4 @@
-import { Component, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import {CoursesListItem} from '../../../courses/models/courses-list-item.model';
 
 @Component({
@@ -7,10 +7,9 @@ import {CoursesListItem} from '../../../courses/models/courses-list-item.model';
   templateUrl: './toolbox.component.html',
   styleUrls: ['./toolbox.component.css']
 })
-export class ToolboxComponent{
+export class ToolboxComponent {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() addCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  newItem: any;
 
   // принимаем текст от search input
   // и передаем его родительскому компоненту

@@ -1,4 +1,5 @@
 <!-- starts course-list-item -->
+<script src="../../../../../../../AppData/Local/Temp/page-with-params.component.ts"></script>
 <div class="list__item">
   <div class="list__block" appBorderHighlight={{creationDate}}>
     <div class="row">
@@ -10,7 +11,7 @@
         <span class="date">{{listItem.createDate | date:"dd.MM.yyyy"}}</span>
       </div>
       <div class="col-md-2 col-sm-12">
-        <button class="btn btn-full" (click)="onEdit($event)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
+        <button (click)="goToPageWithParams()" class="btn btn-full"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button>
       </div>
     </div>
     <div class="row">
