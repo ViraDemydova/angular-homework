@@ -53,7 +53,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     this.getbyId.emit(this.listItem);
   }
 
-  public goToPageWithParams() {
+  public goToPageWithParams(event) {
    //this.router.navigate(['edit-page', 5], { queryParams: { redirectedFromClass: true } });
      this.router.navigateByUrl('/edit-page/' + this.listItem.id, {queryParams: { id: this.listItem.id}});
 
