@@ -6,11 +6,18 @@ import { LandingComponent } from './landing/landing.component';
 import { AddPageComponent } from './add-page/add-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import { CanActivateGuard } from './guards/canActivateGuard';
+
+// Application wide providers
+const APP_PROVIDERS = [
+  CanActivateGuard
+];
+
 
 const routes: Routes = [
-  { path: 'landing-page', component: LandingComponent },
-  { path: 'add-page', component: AddPageComponent },
-  { path: 'edit-page/:id', component: EditPageComponent, data: { 'security_key': 'key_here' } },
+  { path: 'landing-page', component: LandingComponent, canActivate: [CanActivateGuard] },
+  { path: 'add-page', component: AddPageComponent, canActivate: [CanActivateGuard] },
+  { path: 'edit-page/:id', component: EditPageComponent, data: { 'security_key': 'key_here' }, canActivate: [CanActivateGuard] },
   { path: 'login', component: LoginComponent },
   {
     path: '',
@@ -23,6 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
+  providers: [APP_PROVIDERS],
   exports: [RouterModule],
   declarations: []
 })

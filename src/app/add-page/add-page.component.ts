@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CourseModel } from '../courses/models/courses-list-item.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { CourseModel } from '../courses/models/courses-list-item.model';
 })
 export class AddPageComponent {
   newItem: CourseModel = new CourseModel(null, '', null, null, '');
+  @Input() pageCurrent = 'New Page';
 
   constructor() {}
 

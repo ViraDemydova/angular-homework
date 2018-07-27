@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { EditPageComponent } from './edit-page.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   declarations: [
     EditPageComponent

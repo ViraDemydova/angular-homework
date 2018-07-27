@@ -8,13 +8,15 @@ import { DateControlComponent } from './components/date-control/date-control.com
 import { RoleControlComponent } from './components/role-control/role-control.component';
 import { AddPageComponent } from './add-page.component';
 import { SharedModule } from '../shared/shared.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   declarations: [
     AddPageComponent,

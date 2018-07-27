@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EditPageComponent implements OnInit {
   @Input() public listItem: CoursesListItem;
   id: number;
+  @Input() pageCurrent = 'Edit Page';
 
   constructor(private router: Router,
               private coursesListService: CoursesListItemService) {}

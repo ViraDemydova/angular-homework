@@ -7,7 +7,7 @@ import {Component,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
-import { Router, RouterEvent } from '@angular/router';
+import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -24,7 +24,8 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
    title: string;
    id: number;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
     this.router.events.subscribe((event: RouterEvent) => {
       console.log(event);
     });

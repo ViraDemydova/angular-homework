@@ -4,13 +4,15 @@ import { LayoutModule } from '../layout/layout.module';
 import { UsersModule } from '../users/users.module';
 import { CoursesModule } from '../courses/courses.module';
 import { LandingComponent } from './landing.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutModule,
     UsersModule,
-    CoursesModule
+    CoursesModule,
+    CoreModule
   ],
   declarations: [ LandingComponent ],
   exports: [ LandingComponent ]
