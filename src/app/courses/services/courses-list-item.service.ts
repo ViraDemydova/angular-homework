@@ -8,34 +8,13 @@ import { courses } from './course-list-items.data';
 export class CoursesListItemService {
   private courses: CoursesListItem[] = [];
 
-  updatedItem = {
-    id: 5,
-    title: 'I am updated item!!!!',
-    createDate: new Date('2019-01-29 12:00:00'),
-    duration: 59,
-    // tslint:disable-next-line:max-line-length
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    authors: []
-  };
-
-  newItem = {
-    id: 1,
-    title: 'New item ',
-    createDate: new Date('2015-01-02 12:00:00'),
-    duration: 120,
-    // tslint:disable-next-line:max-line-length
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-    authors: [],
-    topRated: true
-  };
-
   constructor() {
     this.courses = courses;
   }
 
   public addItem(item: CoursesListItem) {
-    console.log('in service item is:', this.newItem);
-    this.courses.push(this.newItem);
+    console.log('in service item is:', item);
+    this.courses.push(item);
   }
 
   public deleteItem(item: CoursesListItem) {
@@ -45,11 +24,11 @@ export class CoursesListItemService {
     }
   }
 
-  // TODO: Обычно в такой метод передается item: CoursesListItem
+  // Обычно в такой метод передается item: CoursesListItem
   public editItem(item: CoursesListItem) {
     this.courses.map((data: CoursesListItem, i) => {
-      if (data.id === this.updatedItem.id) {
-        this.courses[i] = this.updatedItem;
+      if (data.id === item.id) {
+        this.courses[i] = item;
       }
     });
   }

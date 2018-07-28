@@ -34,7 +34,6 @@ export class CoursesListComponent implements OnInit {
   }
 
   onEdit(item: CoursesListItem) {
-    // this.coursesListService.editItem();
     this.editCourse.emit(item);
   }
 

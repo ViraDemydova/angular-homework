@@ -1,4 +1,5 @@
-import {Component,
+import {
+  Component,
   OnInit,
   Input,
   Output,
@@ -7,7 +8,10 @@ import {Component,
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
-import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -54,8 +58,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     this.getbyId.emit(this.listItem);
   }
 
-  public goToPageWithParams(event) {
-   //this.router.navigate(['edit-page', 5], { queryParams: { redirectedFromClass: true } });
+  public goToEditPage(event) {
      this.router.navigateByUrl('/edit-page/' + this.listItem.id, {queryParams: { id: this.listItem.id}});
 
   }
