@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -9,7 +8,7 @@ import {Router} from "@angular/router";
 export class BreadcrumbsComponent implements OnInit {
   @Input() pageCurrent: string;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit() {
   }
