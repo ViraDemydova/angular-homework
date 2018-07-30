@@ -18,6 +18,7 @@ export class CanActivateGuard implements CanActivate {
     if (this.IsAuth()) {
       return true;
     } else {
+      // TODO: если пользователь не залогинился, зачемы вызывать logout?
       this.serviceAuth.logout();
       this.router.navigate(['/login']);
     }
