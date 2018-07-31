@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 offset-1">
-          <app-breadcrumbs [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>
+          <app-breadcrumbs></app-breadcrumbs>
         </div>
       </div>
       <div class="row">
@@ -11,7 +11,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Edit course:</div>
             <div class="panel-body">
-              <form class="add-course-form">
+              <form class="add-course-form" *ngIf="IsEditPageEnabled">
                 <div class="form-group">
                   <label for="title">Title:</label>
                   <input type="text" class="form-control" id="title" name="title" [(ngModel)]="listItem.title">
@@ -38,6 +38,36 @@
                 <div class="btn-group">
                   <button class="btn btn-default" (click)="onSave($event)">Save</button>
                   <button class="btn btn-secondary" routerLink="/landing-page">Cancel</button>
+                </div>
+              </form>
+
+              <form class="add-course-form" *ngIf="IsAddPageEnabled">
+                <div class="form-group">
+                  <label for="title1">Title:</label>
+                  <input type="text" class="form-control" id="title1" name="title1" [(ngModel)]="newItem.title">
+                </div>
+                <div class="form-group">
+                  <label for="description1">Description:</label>
+                  <textarea class="form-control" id="description1" name="description1" rows="4" cols="50" [(ngModel)]="newItem.description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="date1">Date:</label>
+                  <input type="text" class="form-control date" id="date1" name="date1" [(ngModel)]="newItem.createDate">
+                </div>
+                <div class="form-group">
+                  <label for="duration1">Duration:</label>
+                  <input type="text" class="form-control duration" id="duration1" name="duration1" [(ngModel)]="newItem.duration">
+                  <span class="time">{{newItem.duration  | myTime}}</span>
+                </div>
+                <div class="form-group">
+                  <label for="author1">Authors:</label>
+                  <select class="form-control" id="author1" name="author1">
+                    <option>{{newItem.authors[0]}}</option>
+                  </select>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-default" (click)="onCreateCourse()">Create</button>
+                  <button class="btn btn-secondary"(click)="onCancel()">Cancel</button>
                 </div>
               </form>
             </div>

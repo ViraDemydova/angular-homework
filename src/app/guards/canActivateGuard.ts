@@ -18,7 +18,6 @@ export class CanActivateGuard implements CanActivate {
     if (this.IsAuth()) {
       return true;
     } else {
-      this.serviceAuth.logout();
       this.router.navigate(['/login']);
     }
   }

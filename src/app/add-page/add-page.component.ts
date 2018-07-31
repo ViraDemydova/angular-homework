@@ -31,7 +31,7 @@ export class AddPageComponent {
   }
 
   onCancel() {
-    console.log('onCancel');
+    this.router.navigate(['landing-page']);
    }
 
 }

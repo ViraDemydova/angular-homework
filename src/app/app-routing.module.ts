@@ -7,6 +7,7 @@ import { AddPageComponent } from './add-page/add-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { CanActivateGuard } from './guards/canActivateGuard';
+import {AddEditPageComponent} from "./courses/components/add-edit-page/add-edit-page.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'add-page', component: AddPageComponent, canActivate: [CanActivateGuard] },
   { path: 'edit-page/:id', component: EditPageComponent, data: { 'security_key': 'key_here' }, canActivate: [CanActivateGuard] },
   { path: 'login', component: LoginComponent },
+  //{ path: 'add-page', component: AddEditPageComponent, canActivate: [CanActivateGuard] },
+  //{ path: 'edit-page/:id', component: AddEditPageComponent, data: { isEditPageEnabled : true }, canActivate: [CanActivateGuard] },
   {
     path: '',
     redirectTo: '/login',
