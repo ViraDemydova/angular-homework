@@ -10,16 +10,13 @@ import { CourseModel, CoursesListItem } from '../../models/courses-list-item.mod
   styleUrls: ['./add-edit-page.component.css']
 })
 export class AddEditPageComponent implements OnInit {
-  // Default Value
-  @Input() public IsEditPageEnabled: boolean;
-  @Input() public IsAddPageEnabled: boolean;
   // Edit Course
   @Input() public listItem: CoursesListItem;
   id: number;
+  state: string;
   // Add Course
   newItem: CourseModel = new CourseModel(null, '', null, null, '');
   @Input() pageCurrent = 'New Page';
-  state: string;
 
   constructor(
     private router: Router,

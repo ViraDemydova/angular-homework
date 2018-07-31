@@ -3,11 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
-import { AddPageComponent } from './add-page/add-page.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { EditPageComponent } from './edit-page/edit-page.component';
 import { CanActivateGuard } from './guards/canActivateGuard';
-import {AddEditPageComponent} from "./courses/components/add-edit-page/add-edit-page.component";
+import { AddEditPageComponent } from './courses/components/add-edit-page/add-edit-page.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
