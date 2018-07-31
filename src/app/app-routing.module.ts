@@ -17,11 +17,11 @@ const APP_PROVIDERS = [
 
 const routes: Routes = [
   { path: 'landing-page', component: LandingComponent, canActivate: [CanActivateGuard] },
-  { path: 'add-page', component: AddPageComponent, canActivate: [CanActivateGuard] },
-  { path: 'edit-page/:id', component: EditPageComponent, data: { 'security_key': 'key_here' }, canActivate: [CanActivateGuard] },
+  //{ path: 'add-page', component: AddPageComponent, canActivate: [CanActivateGuard] },
+  //{ path: 'edit-page/:id/:IsEditPageEnabled', component: EditPageComponent, data: { 'security_key': 'key_here' }, canActivate: [CanActivateGuard] },
   { path: 'login', component: LoginComponent },
-  //{ path: 'add-page', component: AddEditPageComponent, canActivate: [CanActivateGuard] },
-  //{ path: 'edit-page/:id', component: AddEditPageComponent, data: { isEditPageEnabled : true }, canActivate: [CanActivateGuard] },
+  { path: 'add-page', component: AddEditPageComponent, canActivate: [CanActivateGuard] },
+  { path: 'edit-page/:id/:state', component: AddEditPageComponent,  canActivate: [CanActivateGuard] },
   {
     path: '',
     redirectTo: '/login',

@@ -15,8 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
-import { AddPageModule } from './add-page/add-page.module';
-import { EditPageModule } from './edit-page/edit-page.module';
 
 
 
@@ -38,11 +36,9 @@ import { EditPageModule } from './edit-page/edit-page.module';
     UsersModule,
     CoursesModule,
     LandingModule,
-    AddPageModule,
-    EditPageModule,
     AppRoutingModule
   ],
-  exports: [ SharedModule, RouterModule, LandingModule, AddPageModule, EditPageModule ],
+  exports: [ SharedModule, RouterModule, LandingModule, CoursesModule],
   providers: [],
   bootstrap: [AppComponent]
 })

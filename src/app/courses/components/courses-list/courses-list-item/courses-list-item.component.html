@@ -3,7 +3,7 @@
   <div class="list__block" appBorderHighlight={{creationDate}}>
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h5> <a routerLink="/edit-page/{{listItem.id}}">{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'"></span></a></h5>
+        <h5> <a routerLink="/edit-page/{{listItem.id}}/state">{{listItem.title | uppercase }}{{listItem.id}} | <span [hidden]="!listItem.topRated" [ngClass]="'ico-bg'"></span></a></h5>
       </div>
       <div class="col-md-4 col-sm-12">
         <time class="time">{{listItem.duration  | myTime}}</time>

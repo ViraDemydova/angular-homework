@@ -9,7 +9,7 @@ import { UserLogOffComponent } from './components/user-log-off/user-log-off.comp
 import { SearchComponent } from './components/search/search.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
 import { FormsModule } from '@angular/forms';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CoreModule} from '../core/core.module';
 
 @NgModule({

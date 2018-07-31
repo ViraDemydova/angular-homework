@@ -1,9 +1,9 @@
 <div class="outer">
   <div class="outer-inner">
-    <div class="container">
+    <div class="container" *ngIf="state">
       <div class="row">
         <div class="col-md-10 offset-1">
-          <app-breadcrumbs></app-breadcrumbs>
+          <app-breadcrumbs [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>
         </div>
       </div>
       <div class="row">
@@ -11,7 +11,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Edit course:</div>
             <div class="panel-body">
-              <form class="add-course-form" *ngIf="IsEditPageEnabled">
+              <form class="add-course-form">
                 <div class="form-group">
                   <label for="title">Title:</label>
                   <input type="text" class="form-control" id="title" name="title" [(ngModel)]="listItem.title">
@@ -40,8 +40,23 @@
                   <button class="btn btn-secondary" routerLink="/landing-page">Cancel</button>
                 </div>
               </form>
-
-              <form class="add-course-form" *ngIf="IsAddPageEnabled">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="!state">
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <app-breadcrumbs [pageCurrent]="pageCurrent"></app-breadcrumbs>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 offset-1">
+          <div class="panel panel-default">
+            <div class="panel-heading">Add new course::</div>
+            <div class="panel-body">
+              <form class="add-course-form">
                 <div class="form-group">
                   <label for="title1">Title:</label>
                   <input type="text" class="form-control" id="title1" name="title1" [(ngModel)]="newItem.title">

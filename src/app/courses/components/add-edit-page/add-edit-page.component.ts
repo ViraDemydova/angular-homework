@@ -15,11 +15,11 @@ export class AddEditPageComponent implements OnInit {
   @Input() public IsAddPageEnabled: boolean;
   // Edit Course
   @Input() public listItem: CoursesListItem;
-  // @Input() pageCurrent = 'Edit Page';
   id: number;
   // Add Course
   newItem: CourseModel = new CourseModel(null, '', null, null, '');
-  // @Input() pageCurrent = 'New Page';
+  @Input() pageCurrent = 'New Page';
+  state: string;
 
   constructor(
     private router: Router,
@@ -28,6 +28,7 @@ export class AddEditPageComponent implements OnInit {
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.state = this.route.snapshot.paramMap.get('state');
     this.listItem = this.courseService.getCourseById(this.id);
   }
 

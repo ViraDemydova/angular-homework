@@ -27,6 +27,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
    creationDate: object;
    title: string;
    id: number;
+   state: boolean;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: RouterEvent) => {
@@ -36,6 +37,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
+    this.state = true;
   }
 
   ngOnChanges() {
@@ -58,6 +60,6 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   }
 
   public goToEditPage(event) {
-    this.router.navigateByUrl('/edit-page/' + this.listItem.id, {queryParams: { id: this.listItem.id }});
+    this.router.navigateByUrl('/edit-page/' + this.listItem.id + '/' + this.state);
   }
 }
