@@ -10,10 +10,8 @@ import { CoursesListItem } from '../../../courses/models/courses-list-item.model
 export class ToolboxComponent implements OnInit {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() addCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  IsAddPageEnabled: boolean;
 
   ngOnInit() {
-    this.IsAddPageEnabled = true;
   }
 
   // принимаем текст от search input
