@@ -1,8 +1,9 @@
 // TODO: will replace edit-page and add-page
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
+import {CommunicatorService} from "../../../core/services/communicator.service";
 
 @Component({
   selector: 'app-add-edit-page',
@@ -17,16 +18,19 @@ export class AddEditPageComponent implements OnInit {
   // Add Course
   newItem: CourseModel = new CourseModel(null, '', null, null, '');
   @Input() pageCurrent = 'New Page';
+  @Output() courseToSave;
+  newCourse: any;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private courseService: CoursesListItemService) {}
+    private courseService: CoursesListItemService,
+    private comService: CommunicatorService) {}
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.state = this.route.snapshot.paramMap.get('state');
-    this.listItem = this.courseService.getCourseById(this.id);
+    //this.listItem = this.courseService.getCourseById(this.id);
   }
 
   onSave(item: CoursesListItem) {
@@ -40,13 +44,15 @@ export class AddEditPageComponent implements OnInit {
 
     // донастраиваем то, что пользователь не вводит из формы
     courseToSave.id = 100; // сгенерит сервер
-    courseToSave.createDate = new Date();
+    courseToSave.createDate = '2021-01-02 12:00:00';
 
     // обнуляем newItem
     this.newItem = new CourseModel(null, '', null, null, '');
-    console.log('Создали курс: ', courseToSave);
+    console.log('Создали курсcccccccccccccccccccccccccccccccccccccccccccccccccccccc: ', courseToSave);
+    this.comService.setData(courseToSave);
+    console.log('seeeeeeeeeeeeeeeeeeeeeeeeeeeeeerviceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeCoooooooooorse: ', this.comService.getData());
     // обновили страницу с курсами
-    this.courseService.addItem(courseToSave);
+    //this.courseService.addItem(courseToSave);
     this.router.navigate(['landing-page']);
   }
 

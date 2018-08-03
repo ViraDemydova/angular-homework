@@ -7,15 +7,16 @@ import {Component, OnInit,  Output, EventEmitter} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
  @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  searchText: string;
+  searchText: any;
 
   constructor() {}
 
   ngOnInit() {}
 
-  onSubmit() {
+  onSubmit(value) {
     // передадим родительскому компоненту текст из инпута поиска
-    this.search.emit(this.searchText);
+    console.log('seeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerchText: ', value);
+    this.search.emit(value);
     //this.communicatorService.publishData(this.searchText);
   }
 }

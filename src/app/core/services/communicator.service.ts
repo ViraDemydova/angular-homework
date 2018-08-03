@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import {CoreModule} from '../core.module';
+import { CoreModule } from '../core.module';
 
 @Injectable({
   providedIn: CoreModule
 })
 export class CommunicatorService {
-  // Observable string sources
-  private channel = new Subject<string>();
-  searchText: string;
 
-  // Observable string streams
-  public channel$ = this.channel.asObservable();
+  private data: any = undefined;
 
-  // Service message commands
-  publishData(searchText: string) {
-    this.channel.next(searchText);
+  setData(data: any) {
+    this.data = data;
   }
 
+  getData(): any {
+    return this.data;
+  }
 }
+

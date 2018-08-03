@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CoursesListItem } from '../../models/courses-list-item.model';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-courses-list',
-  //changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css']
 })
@@ -17,21 +15,22 @@ export class CoursesListComponent implements OnInit {
   @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
 
   // это свойство содержит текст поиска курса по названию
-  @Input() searchText: string;
+  //@Input() searchText: string;
   // это свойство содержит название поля, по которому необходимо сортировать список курсов.
   sortField = 'createDate';
   // 1 - по алфавиту, -1 - в обратном порядке
   order = -1;
   input: string;
-  id = 0;
   title: string;
+  @Output() id;
 
   constructor() {}
 
   ngOnInit() {}
 
-  onDelete(item: CoursesListItem) {
-   this.deleteCourse.emit(item);
+  onDelete(id) {
+   console.log('222222222222222222222222222222222222222: ', id);
+   this.deleteCourse.emit(id);
   }
 
   onEdit(item: CoursesListItem) {

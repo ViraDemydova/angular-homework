@@ -15,7 +15,7 @@ import {
 
 @Component({
   selector: 'app-courses-list-item',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-list-item.component.html',
   styleUrls: ['./courses-list-item.component.css']
 })
@@ -24,9 +24,9 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-   creationDate: object;
+  @Output() id: number;
+   creationDate: string;
    title: string;
-   id: number;
    state: boolean;
 
   constructor(private router: Router) {
@@ -37,6 +37,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.creationDate = this.listItem.createDate;
+    this.id = this.listItem.id;
     this.state = true;
   }
 
@@ -44,10 +45,10 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     console.log('ngOnChange - data is: ', this.listItem.id);
   }
 
-  onDelete(event) {
+  onDelete(id) {
     if (confirm('Are you sure to delete this course: ' + this.listItem.title + ' ' + this.listItem.id + '?' )) {
-      // this.coursesListService.deleteItem(this.listItem);
-      this.deleteCourse.emit(this.listItem);
+      console.log('11111111111111111111111111111111111111111111111: ', id);
+      this.deleteCourse.emit(id);
     }
   }
 

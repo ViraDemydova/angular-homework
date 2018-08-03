@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {AuthService} from '../core/services/auth.service';
 import {CoursesListItemService} from '../courses/services/courses-list-item.service';
+import { AddEditPageComponent } from '../courses/components/add-edit-page/add-edit-page.component';
 
 @Component({
   selector: 'app-landing',

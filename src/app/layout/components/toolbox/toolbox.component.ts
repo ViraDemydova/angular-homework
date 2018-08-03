@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CoursesListItem } from '../../../courses/models/courses-list-item.model';
+import { CommunicatorService } from '../../../core/services/communicator.service';
 
 @Component({
   selector: 'app-toolbox',
@@ -11,12 +12,15 @@ export class ToolboxComponent implements OnInit {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   @Output() addCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
 
-  ngOnInit() {
-  }
+  constructor(private comService: CommunicatorService) {}
+
+  ngOnInit() {}
 
   // принимаем текст от search input
   // и передаем его родительскому компоненту
   onSearch(searchText: string) {
+    console.log('tooooooooooooooolbox: ', searchText);
+    //this.comService.setValue(searchText);
     this.search.emit(searchText);
   }
 }

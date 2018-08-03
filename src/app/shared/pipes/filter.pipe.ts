@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import {CoursesListItem} from '../../courses/models/courses-list-item.model';
+import { CoursesListItem } from '../../courses/models/courses-list-item.model';
 
 @Pipe({
   name: 'filter',

@@ -4,13 +4,11 @@
     <!-- starts course-list-item -->
     <div class="list">
       <app-courses-list [ListItems]="ListItems"
-                        [searchText]="searchText"
                         (deleteCourse)="onDeleteCourse($event)"
                         (editCourse)="onEditCourse($event)"
                         (getbyId)="onGetCourseById($event)">
       </app-courses-list>
-    </div>
-    <button class="btn btn-full btn-secondary" (click)="onHandleclick()"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE</button>
+      <button class="btn btn-full btn-secondary" (click)="onLoad()"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE</button>
   </div>
   <!-- ends course-list -->
 </div>

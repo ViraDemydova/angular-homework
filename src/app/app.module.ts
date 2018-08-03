@@ -15,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
+import { CoursesListItemService } from './courses/services/courses-list-item.service';
+import { CommunicatorService } from './core/services/communicator.service';
 
 
 
@@ -39,7 +41,10 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule
   ],
   exports: [ SharedModule, RouterModule, LandingModule, CoursesModule],
-  providers: [],
+  providers: [
+    CoursesListItemService,
+    CommunicatorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
