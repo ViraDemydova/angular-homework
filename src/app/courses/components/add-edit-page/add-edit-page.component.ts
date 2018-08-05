@@ -16,7 +16,8 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   private usersEditSubscription: Subscription;
   // Edit Course
   @Input() public listItem: CoursesListItem;
-  public id: string;
+  public id: number;
+  public indificator: string;
   public createDate: any;
   state: string;
   // Add Course
@@ -32,9 +33,9 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     private comService: CommunicatorService) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.indificator = this.route.snapshot.paramMap.get('id');
     this.state = this.route.snapshot.paramMap.get('state');
-    this.courseService.getCourseById(this.id).subscribe((res: CoursesListItem) => {
+    this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
         this.listItem = res;
       },
       (error: HttpErrorResponse) => console.log(error)
@@ -42,7 +43,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
-    this.usersEditSubscription = this.courseService.editItem(this.listItem, this.id).subscribe((res: CoursesListItem) => {
+    this.usersEditSubscription = this.courseService.editItem(this.listItem, this.indificator).subscribe((res: CoursesListItem) => {
         this.listItem = res;
       },
       (error: HttpErrorResponse) => console.log(error)
@@ -55,8 +56,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     const courseToSave = { ...this.newItem };
 
     // донастраиваем то, что пользователь не вводит из формы
-    courseToSave.id = 100; // сгенерит сервер
-    courseToSave.createDate = JSON.stringify( new Date());
+    courseToSave.createDate = new Date();
 
     // обнуляем newItem
     this.newItem = new CourseModel(null, null, null, null, '');

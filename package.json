@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@types/uuid": "^3.4.3",
     "angular-font-awesome": "^3.1.2",
     "angular-lint": "0.0.2",
     "bootstrap4": "0.0.1-security",

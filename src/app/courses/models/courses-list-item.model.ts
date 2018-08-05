@@ -1,10 +1,10 @@
 export interface CoursesListItem {
   id: number;
   title: string;
-  createDate: string;
+  createDate: object;
   duration: number;
   description: string;
-  author?: string[];
+  authors?: string[];
   topRated?: boolean;
 }
 
@@ -12,10 +12,9 @@ export class CourseModel implements CoursesListItem {
   constructor(
     public id: number,
     public title: string,
-    public createDate: string,
+    public createDate: object,
     public duration: number,
     public description: string,
-    public author?: string[],
-    public topRated?: boolean
+    public authors: string[] = []
   ) {}
 }

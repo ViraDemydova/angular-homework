@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { v4 as uuid } from 'uuid';
 
 const BASE_URL = 'http://localhost:3000/courses';
 
@@ -13,7 +14,7 @@ export class CoursesListItemService {
   constructor(private http: HttpClient) {}
 
   public addItem(item: object): Observable<CoursesListItem> {
-    return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item});
+    return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item, id: uuid()});
   }
 
   public deleteItem(id: string): Observable<CoursesListItem> {
