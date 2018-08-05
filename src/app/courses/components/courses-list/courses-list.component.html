@@ -1,7 +1,6 @@
 <app-courses-list-item  *ngFor="let item of ListItems | orderBy: sortField: order"
                         [listItem]="item"
                         (deleteCourse)="onDelete(item.id)"
-                        (editCourse)="onEdit($event)"
-                        (getbyId)="onGetCourseById($event)">
+                        (editCourse)="onEdit($event)">
 
 </app-courses-list-item>

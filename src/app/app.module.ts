@@ -17,6 +17,7 @@ import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
 import { CoursesListItemService } from './courses/services/courses-list-item.service';
 import { CommunicatorService } from './core/services/communicator.service';
+import { JwtInterceptor } from './helpers/auth-interceptor';
 
 
 
@@ -43,7 +44,8 @@ import { CommunicatorService } from './core/services/communicator.service';
   exports: [ SharedModule, RouterModule, LandingModule, CoursesModule],
   providers: [
     CoursesListItemService,
-    CommunicatorService
+    CommunicatorService,
+    JwtInterceptor
   ],
   bootstrap: [AppComponent]
 })

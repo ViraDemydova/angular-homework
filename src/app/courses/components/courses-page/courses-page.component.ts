@@ -3,9 +3,7 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { Subscription } from '../../../../../node_modules/rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import {AddEditPageComponent} from "../add-edit-page/add-edit-page.component";
-import {CommunicatorService} from "../../../core/services/communicator.service";
-import {Observable} from "rxjs/Rx";
+import { CommunicatorService } from '../../../core/services/communicator.service';
 
 const DEFAULT_START_COUNT = '1';
 const DEFAULT_LOAD_COUNT = '26';
@@ -50,31 +48,16 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
     this.onSearch(e.searchText.currentValue);
   }
 
-
   init(): void {
     this.coursesListService.getCourseListItems(this.countToStart).subscribe((res: CoursesListItem[]) => {
       this.ListItems = res;
     });
   }
 
-  onLoad(): void {
-    this.listItemsParamsSubscription = this.coursesListService.getCourseListItemsWithParams(this.countToStart, this.countToLoad).subscribe((res: CoursesListItem[]) => {
-      this.ListItems = res;
-      console.log(this.ListItems);
-    },
-    (error: HttpErrorResponse) => console.log(error));
-  }
-
   onDeleteCourse(listItem: CoursesListItem): void {
     this.usersDeleteSubscription = this.coursesListService.deleteItem(String(listItem)).subscribe(() => {
       this.init();
     });
-  }
-
-
-  onEditCourse(item: CoursesListItem) {
-    this.coursesListService.editItem(item);
-    console.log('Cours with id: ', item.id, ' was edited');
   }
 
   public onSearch(queryString: string): void {
@@ -85,21 +68,33 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
 
-  onGetCourseById(item: CoursesListItem) {
-    //this.coursesListService.getCourseById(item.id);
-    //console.log('Getting object by ID, result as: ', this.coursesListService.getCourseById(item.id));
-  }
-
   public createUser(data: object): void {
     this.usersCreateSubscription = this.coursesListService.addItem(data).subscribe(() => {
       this.init();
     });
   }
 
+  onLoadMore(): void {
+    this.listItemsParamsSubscription = this.coursesListService.getCourseListItemsWithParams(this.countToStart, this.countToLoad).subscribe((res: CoursesListItem[]) => {
+        this.ListItems = res;
+        console.log(this.ListItems);
+      },
+      (error: HttpErrorResponse) => console.log(error));
+  }
+
+  onLoadLess(): void {
+    this.coursesListService.getCourseListItems(this.countToStart).subscribe((res: CoursesListItem[]) => {
+        this.ListItems = res;
+        console.log(this.ListItems);
+      },
+      (error: HttpErrorResponse) => console.log(error));
+  }
+
+
   public ngOnDestroy(): void {
     //this.listItemsParamsSubscription.unsubscribe();
-    //this.usersWithParamsSubscription.unsubscribe();
-    //this.usersCreateSubscription.unsubscribe();
     //this.usersDeleteSubscription.unsubscribe();
+    //this.usersCreateSubscription.unsubscribe();
+    //this.usersWithParamsSubscription.unsubscribe();
   }
 }

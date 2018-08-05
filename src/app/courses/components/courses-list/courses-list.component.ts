@@ -29,15 +29,10 @@ export class CoursesListComponent implements OnInit {
   ngOnInit() {}
 
   onDelete(id) {
-   console.log('222222222222222222222222222222222222222: ', id);
    this.deleteCourse.emit(id);
   }
 
-  onEdit(item: CoursesListItem) {
-    this.editCourse.emit(item);
-  }
-
-  onGetCourseById(item: CoursesListItem) {
-   this.getbyId.emit(item);
-  }
+  //onEdit(item: CoursesListItem) {
+    //this.editCourse.emit(item);
+  //}
 }

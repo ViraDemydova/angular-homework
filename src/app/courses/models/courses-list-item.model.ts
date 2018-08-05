@@ -4,7 +4,7 @@ export interface CoursesListItem {
   createDate: string;
   duration: number;
   description: string;
-  authors: string[];
+  author?: string[];
   topRated?: boolean;
 }
 
@@ -15,7 +15,7 @@ export class CourseModel implements CoursesListItem {
     public createDate: string,
     public duration: number,
     public description: string,
-    public authors: string[] = [],
+    public author?: string[],
     public topRated?: boolean
   ) {}
 }
