@@ -9,9 +9,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  //public fakeUsers: any;
-  //login: string;
-  //password: string;
   IsAuthenticated: boolean;
   currentUser: any;
   @Input() login: string;
@@ -22,33 +19,7 @@ export class LoginComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  ngOnInit() {
-    //this.fakeUsers = [
-      //{
-      //  id: 1,
-       // login: 'test@gmail.com',
-       // password: '1'
-     // }
-   // ];
-  }
-
- // public onAuth() {
-    //if (this.login === 'test@gmail.com' && this.password === '1') {
-     // this.router.navigate(['landing-page']);
-     // this.IsAuthenticated = true;
-    //} else {
-     // alert('Invalid credentials.');
-    // this.IsAuthenticated = false;
-     // console.log('login', this.login);
-     // console.log('password', this.password);
-   // }
-   // this.onLogin();
-  //}
-
-
- // public onLogin() {
-    //this.serviceAuth.login(this.fakeUsers);
-  //}
+  ngOnInit() {}
 
   onLogin() {
     this.serviceAuth.login(this.login, this.password)

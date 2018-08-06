@@ -1,12 +1,11 @@
 import {Component, Input, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CoursesListItem } from '../../models/courses-list-item.model';
-import { Subscription } from '../../../../../node_modules/rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommunicatorService } from '../../../core/services/communicator.service';
 
-const DEFAULT_START_COUNT = '1';
-const DEFAULT_LOAD_COUNT = '26';
+const DEFAULT_START_COUNT = '10';
+const DEFAULT_LOAD_COUNT = '100';
 
 @Component({
   selector: 'app-courses-page',
@@ -26,18 +25,13 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   @Input() id;
   @Input() searchText: string;
   input: string;
-  newItem: object;
   item: string;
+  createDate = 'createDate';
 
-  constructor(private coursesListService: CoursesListItemService,
-              private comService: CommunicatorService) {}
+  constructor(private coursesListService: CoursesListItemService) {}
 
   public ngOnInit(): void {
     this.init();
-    this.newItem = this.comService.getData();
-    if (this.newItem) {
-      this.createUser(this.newItem);
-    }
   }
 
   ngOnChanges(e) {
@@ -49,7 +43,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   init(): void {
-    this.coursesListService.getCourseListItems(this.countToStart).subscribe((res: CoursesListItem[]) => {
+    this.coursesListService.getCourseListItems(this.countToStart, this.createDate).subscribe((res: CoursesListItem[]) => {
       this.ListItems = res;
     });
   }
@@ -69,13 +63,13 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public createUser(data: object): void {
-    this.usersCreateSubscription = this.coursesListService.addItem(data).subscribe(() => {
+    this.usersCreateSubscription = this.coursesListService.addItem(data).subscribe((res: CoursesListItem) => {
       this.init();
     });
   }
 
   onLoadMore(): void {
-    this.listItemsParamsSubscription = this.coursesListService.getCourseListItemsWithParams(this.countToStart, this.countToLoad).subscribe((res: CoursesListItem[]) => {
+    this.listItemsParamsSubscription = this.coursesListService.getCourseListItemsWithParams(this.countToLoad, this.createDate).subscribe((res: CoursesListItem[]) => {
         this.ListItems = res;
         console.log(this.ListItems);
       },
@@ -83,7 +77,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onLoadLess(): void {
-    this.coursesListService.getCourseListItems(this.countToStart).subscribe((res: CoursesListItem[]) => {
+    this.coursesListService.getCourseListItems(this.countToStart, this.createDate).subscribe((res: CoursesListItem[]) => {
         this.ListItems = res;
         console.log(this.ListItems);
       },
@@ -92,9 +86,17 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
 
   public ngOnDestroy(): void {
-    //this.listItemsParamsSubscription.unsubscribe();
-    //this.usersDeleteSubscription.unsubscribe();
-    //this.usersCreateSubscription.unsubscribe();
-    //this.usersWithParamsSubscription.unsubscribe();
+    if (this.listItemsParamsSubscription) {
+      this.listItemsParamsSubscription.unsubscribe();
+    }
+    if (this.usersDeleteSubscription) {
+      this.usersDeleteSubscription.unsubscribe();
+    }
+    if (this.usersCreateSubscription) {
+      this.usersCreateSubscription.unsubscribe();
+    }
+    if (this.usersWithParamsSubscription) {
+      this.usersWithParamsSubscription.unsubscribe();
+    }
   }
 }

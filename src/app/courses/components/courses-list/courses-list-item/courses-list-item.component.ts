@@ -15,7 +15,7 @@ import {
 
 @Component({
   selector: 'app-courses-list-item',
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-list-item.component.html',
   styleUrls: ['./courses-list-item.component.css']
 })
@@ -36,7 +36,7 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.creationDate = this.listItem.createDate;
+    this.creationDate = String(this.listItem.createDate);
     this.id = this.listItem.id;
     this.state = true;
   }
@@ -47,17 +47,12 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
 
   onDelete(id) {
     if (confirm('Are you sure to delete this course: ' + this.listItem.title + ' ' + this.listItem.id + '?' )) {
-      console.log('11111111111111111111111111111111111111111111111: ', id);
       this.deleteCourse.emit(id);
     }
   }
 
   onEdit(event) {
     this.editCourse.emit(this.listItem);
-  }
-
-  onGetCourseById(event) {
-    this.getbyId.emit(this.listItem);
   }
 
   public goToEditPage(event) {

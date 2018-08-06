@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
@@ -45,7 +45,11 @@ import { JwtInterceptor } from './helpers/auth-interceptor';
   providers: [
     CoursesListItemService,
     CommunicatorService,
-    JwtInterceptor
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

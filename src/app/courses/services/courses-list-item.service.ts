@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { v4 as uuid } from 'uuid';
 
 const BASE_URL = 'http://localhost:3000/courses';
 
@@ -14,7 +13,7 @@ export class CoursesListItemService {
   constructor(private http: HttpClient) {}
 
   public addItem(item: object): Observable<CoursesListItem> {
-    return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item, id: uuid()});
+    return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item});
   }
 
   public deleteItem(id: string): Observable<CoursesListItem> {
@@ -25,12 +24,12 @@ export class CoursesListItemService {
     return this.http.put<CoursesListItem>(`${BASE_URL}/${id}`, {...item});
   }
 
-  public getCourseListItems(_page: string): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_page}});
+  public getCourseListItems(_limit: string, _sort: string ): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_limit, _sort}});
   }
 
-  public getCourseListItemsWithParams(_page, _limit: string): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_page, _limit}});
+  public getCourseListItemsWithParams(_limit: string, _sort: string): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_limit, _sort}});
   }
 
   public getCourseById(id: string): Observable<CoursesListItem> {

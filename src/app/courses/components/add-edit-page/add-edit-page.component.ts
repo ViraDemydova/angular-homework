@@ -3,8 +3,7 @@ import {Component, Input, Output, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
-import { CommunicatorService } from '../../../core/services/communicator.service';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -29,8 +28,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private courseService: CoursesListItemService,
-    private comService: CommunicatorService) {}
+    private courseService: CoursesListItemService) {}
 
   ngOnInit() {
     this.indificator = this.route.snapshot.paramMap.get('id');
@@ -45,25 +43,20 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   onSave() {
     this.usersEditSubscription = this.courseService.editItem(this.listItem, this.indificator).subscribe((res: CoursesListItem) => {
         this.listItem = res;
+        // вернулись к списку курсов
+        this.router.navigate(['landing-page']);
       },
       (error: HttpErrorResponse) => console.log(error)
     );
-    this.router.navigate(['landing-page']);
   }
 
   onCreateCourse() {
-    // делаем копию
-    const courseToSave = { ...this.newItem };
-
     // донастраиваем то, что пользователь не вводит из формы
-    courseToSave.createDate = new Date();
-
-    // обнуляем newItem
-    this.newItem = new CourseModel(null, null, null, null, '');
-    this.comService.setData(courseToSave);
-
-    // вернулись к списку курсов
-    this.router.navigate(['landing-page']);
+    this.newItem.createDate = new Date();
+    this.courseService.addItem(this.newItem).subscribe(() => {
+      // вернулись к списку курсов
+      this.router.navigate(['landing-page']);
+    });
   }
 
   onCancel() {
@@ -71,7 +64,9 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    //this.usersEditSubscription.unsubscribe();
+    if (this.usersEditSubscription) {
+      this.usersEditSubscription.unsubscribe();
+    }
   }
-
 }
+

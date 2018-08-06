@@ -13,16 +13,9 @@ export class CoursesListComponent implements OnInit {
   @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-
-  // это свойство содержит текст поиска курса по названию
-  //@Input() searchText: string;
-  // это свойство содержит название поля, по которому необходимо сортировать список курсов.
-  sortField = 'createDate';
-  // 1 - по алфавиту, -1 - в обратном порядке
-  order = -1;
+  @Output() id;
   input: string;
   title: string;
-  @Output() id;
 
   constructor() {}
 
@@ -31,8 +24,4 @@ export class CoursesListComponent implements OnInit {
   onDelete(id) {
    this.deleteCourse.emit(id);
   }
-
-  //onEdit(item: CoursesListItem) {
-    //this.editCourse.emit(item);
-  //}
 }
