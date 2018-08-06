@@ -8,16 +8,16 @@ import 'rxjs/add/operator/map';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public tokenKey = 'app_token';
   public IsAuthenticated: boolean;
 
+
   login(login: string, password: string) {
-    return this.http.post<any>('http://localhost:3000/user', { login: login, password: password })
+    return this.http.post<any>('http://localhost:3000/user', { login: login, password: password , tokenKey: 'app_token'})
       .map(user => {
         // login successful if there's a jwt token in the response
-        if (user && this.tokenKey) {
+        if (user && user.tokenKey) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }

@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   @Input() login: string;
   @Input() password: string;
 
-  constructor(private router: Router,
+  constructor(
+              private router: Router,
               private serviceAuth: AuthService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
