@@ -130,6 +130,24 @@
       "login": "test@gmail.com",
       "password": "1",
       "id": "9P~UYhB"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "CExWXdZ"
+    },
+    {
+      "login": "vera.demidova@gmail.com",
+      "password": "2",
+      "tokenKey": "stale_auth_token",
+      "id": "926QYIN"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "H_IYVRQ"
     }
   ],
   "courses": [

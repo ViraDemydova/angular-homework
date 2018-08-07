@@ -26,12 +26,15 @@ export class LoginComponent implements OnInit {
     this.serviceAuth.login(this.login, this.password)
       .subscribe(
         data => {
-          this.router.navigate(['landing-page']);
-          this.IsAuthenticated = true;
+          if (this.login === 'test@gmail.com' && this.password === '1') {
+            this.router.navigate(['landing-page']);
+          } else {
+            return;
+          }
         },
         error => {
           console.log('error');
-          this.IsAuthenticated = false;
+          this.serviceAuth.logout();
         });
   }
 

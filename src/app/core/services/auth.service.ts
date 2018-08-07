@@ -30,10 +30,10 @@ export class AuthService {
 
 
   login(login: string, password: string) {
-    return this.http.post<any>('http://localhost:3000/user', { login: login, password: password })
+    return this.http.post<any>('http://localhost:3000/user', { login: login, password: password, tokenKey: this.authTokenStale })
       .map(user => {
         // login successful if there's a jwt token in the response
-        if (user && user.token) {
+        if (user && user.tokenKey) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
