@@ -24,6 +24,7 @@
     "@types/uuid": "^3.4.3",
     "angular-font-awesome": "^3.1.2",
     "angular-lint": "0.0.2",
+    "angular2-jwt": "^0.2.3",
     "bootstrap4": "0.0.1-security",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",

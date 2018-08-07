@@ -55,6 +55,81 @@
       "password": "1",
       "tokenKey": "stale_auth_token",
       "id": "M85jrvv"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "5zktpMM"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "NG8TCb6"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "H8LdtPu"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "vMFMqSi"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "hlrp3rp"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "gmBd6a9"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "Zrs3qOt"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "iFVpxcA"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "217J9qe"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "N0VZuso"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "id": "3mFAC0r"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "id": "NoDCpEO"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "id": "9P~UYhB"
     }
   ],
   "courses": [
@@ -266,6 +341,14 @@
       "createDate": "2018-08-06T14:12:48.533Z",
       "duration": null,
       "description": "tokenKey",
+      "authors": []
+    },
+    {
+      "id": 27,
+      "title": "XXX20",
+      "createDate": "2018-08-07T08:58:35.933Z",
+      "duration": "333333333333",
+      "description": "xxx20",
       "authors": []
     }
   ]
