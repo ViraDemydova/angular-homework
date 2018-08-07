@@ -37,6 +37,24 @@
       "password": "1",
       "tokenKey": "app_token",
       "id": "BUhMC0G"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "q0LR8ow"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "egUupmn"
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "tokenKey": "stale_auth_token",
+      "id": "M85jrvv"
     }
   ],
   "courses": [
