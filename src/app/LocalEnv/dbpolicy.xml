@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phxDatabasePolicies>
+    <policy name="iPlanner">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_W23;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="iPlannerRO">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadUncommitted</isolation_level>
+        <read_only>true</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_W23;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="iPlannerDM">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadUncommitted</isolation_level>
+        <read_only>true</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_IPIC_DM;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="iPlannerAU">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_W23_AU;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="iPlannerSessionDB">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=SessionDB;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="IPDavosLibrary">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=DavosLibrary;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="IPProfileBuilderLibrary">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=IPProfileBuilderLibrary;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="PBDavosLibrary">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0605\SQL2012;Initial Catalog=DavosLibrary;uid=mpg;pwd=Password1;Enlist=false
+            </connection>
+        </connections>
+    </policy>
+    <policy name="ProfileBuilder">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0605\SQL2012;Initial Catalog=ProfileBuilder;uid=mpg;pwd=Password1;Enlist=false
+            </connection>
+        </connections>
+    </policy>
+    <policy name="ProfileBuilderAnalyst">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0605\SQL2012;Initial Catalog=ProfileBuilderAnalyst;uid=mpg;pwd=Password1;Enlist=false
+            </connection>
+        </connections>
+    </policy>
+    <policy name="Permission">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_W23;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="SessionDB">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=SessionDB;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+    <policy name="IpreoAuth">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadCommitted</isolation_level>
+        <read_only>false</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0605\SQL2012;Initial Catalog=Ipreo_Horizon;uid=mpg;pwd=Password1;Enlist=false
+            </connection>
+        </connections>
+    </policy>
+    <!--Need for FAAS report: /IP/DavosWebService/DavosServices/API/Services/HitRatio.svc-->
+    <policy name="PhoenixRO">
+        <deadlock_retry_count>3</deadlock_retry_count>
+        <isolation_level>ReadUncommitted</isolation_level>
+        <read_only>true</read_only>
+        <timeout>120</timeout>
+        <strategy>SingleSource</strategy>
+        <connections type="explicit">
+            <connection>
+                Data Source=EPUAKYIW0867.kyiv.epam.com\DEV1;Initial Catalog=Phoenix_W23;User ID=epam;Password=Password1;
+            </connection>
+        </connections>
+    </policy>
+</phxDatabasePolicies>

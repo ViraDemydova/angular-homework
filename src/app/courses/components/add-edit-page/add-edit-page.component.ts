@@ -13,16 +13,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AddEditPageComponent implements OnInit, OnDestroy {
   private usersEditSubscription: Subscription;
+  private usersIdSubscription: Subscription;
   // Edit Course
-  @Input() public listItem: CoursesListItem;
+  public listItem: CoursesListItem;
   public id: number;
   public indificator: string;
   public createDate: any;
   state: string;
-  // Add Course
-  newItem: CourseModel = new CourseModel(null, null, null, null, '');
-  @Input() pageCurrent = 'New Page';
-  @Output() courseToSave;
+  newItem: CourseModel;
+  pageCurrent = 'New Page';
 
 
   constructor(
@@ -31,32 +30,36 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     private courseService: CoursesListItemService) {}
 
   ngOnInit() {
+    // Add Course
+    this.newItem = new CourseModel(null, null, null, null, '');
     this.indificator = this.route.snapshot.paramMap.get('id');
     this.state = this.route.snapshot.paramMap.get('state');
-    this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
-        this.listItem = res;
-      },
-      (error: HttpErrorResponse) => console.log(error)
-    );
+    if (this.indificator) {
+      this.usersIdSubscription = this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
+          this.listItem = res;
+        },
+        (error: HttpErrorResponse) => console.log(error)
+      );
+    }
   }
 
   onSave() {
-    this.usersEditSubscription = this.courseService.editItem(this.listItem, this.indificator).subscribe((res: CoursesListItem) => {
-        this.listItem = res;
+    if (this.usersIdSubscription) {
+      this.usersEditSubscription = this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
+          this.listItem = res;
+          // вернулись к списку курсов
+          this.router.navigate(['landing-page']);
+        },
+        (error: HttpErrorResponse) => console.log(error)
+      );
+    } else {
+      // донастраиваем то, что пользователь не вводит из формы
+      this.newItem.createDate = new Date();
+      this.courseService.addItem(this.newItem).subscribe(() => {
         // вернулись к списку курсов
         this.router.navigate(['landing-page']);
-      },
-      (error: HttpErrorResponse) => console.log(error)
-    );
-  }
-
-  onCreateCourse() {
-    // донастраиваем то, что пользователь не вводит из формы
-    this.newItem.createDate = new Date();
-    this.courseService.addItem(this.newItem).subscribe(() => {
-      // вернулись к списку курсов
-      this.router.navigate(['landing-page']);
-    });
+      });
+    }
   }
 
   onCancel() {

@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <app-courses-page [searchText]="searchText"></app-courses-page>
+    <app-courses-page [searchText]="searchText" [isSearchAvailable]="searchText?.length > 0"></app-courses-page>
     <app-user *ngIf="IsAuth()"></app-user>
   </main>
 </div>

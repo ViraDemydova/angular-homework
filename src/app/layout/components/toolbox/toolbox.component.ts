@@ -19,8 +19,6 @@ export class ToolboxComponent implements OnInit {
   // принимаем текст от search input
   // и передаем его родительскому компоненту
   onSearch(searchText: string) {
-    console.log('tooooooooooooooolbox: ', searchText);
-    //this.comService.setValue(searchText);
     this.search.emit(searchText);
   }
 }

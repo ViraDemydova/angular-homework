@@ -1,0 +1,210 @@
+BODY {
+	FONT-WEIGHT: normal; MARGIN: 0px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+TD {
+	FONT-WEIGHT: normal; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+DIV {
+	FONT-WEIGHT: normal; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:visited {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:active {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+B {
+	FONT-WEIGHT: bold; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+#logosDiv {
+	FLOAT: left
+}
+#globalnavDiv {
+	MARGIN-TOP: 3px; FLOAT: right
+}
+.gnav {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Arial,Helvetica,sans-serif; WHITE-SPACE: nowrap; TEXT-ALIGN: right
+}
+A.globalnav:link {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666; TEXT-DECORATION: none
+}
+A.globalnav:visited {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #666; TEXT-DECORATION: none
+}
+A.globalnav:hover {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #f30; TEXT-DECORATION: none
+}
+.actif {
+	COLOR: #f30
+}
+.tableSpacer {
+	BACKGROUND-COLOR: #fff
+}
+.headerCell {
+	BACKGROUND-COLOR: #003366
+}
+.headerCell .txtBold {
+	COLOR: #ffffff
+}
+.resultsTable {
+	BACKGROUND-COLOR: #666
+}
+.resultsRowA {
+	BACKGROUND-COLOR: #fff
+}
+.resultsRowB {
+	BACKGROUND-COLOR: #eee
+}
+.resultsRowC {
+	BACKGROUND-COLOR: #fff
+}
+.resultsRowD {
+	BACKGROUND-COLOR: #ff0
+}
+.resultsRowA A {
+	COLOR: #000000
+}
+.resultsRowB A {
+	COLOR: #000000
+}
+.resultsRowC A {
+	COLOR: #000000
+}
+.resultsRowD A {
+	COLOR: #000000
+}
+.headerCellB {
+	BACKGROUND-COLOR: #a9a9a9
+}
+.txtBold {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.headerCellB .txtBold {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.headerCell {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.txtRegular {
+	COLOR: #000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A.txtRegular {
+	COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.fastfind {
+	BACKGROUND-COLOR: #003366
+}
+.fastfind .txtBold {
+	COLOR: #fff
+}
+.currentTab {
+	BACKGROUND-COLOR: #8b9a87
+}
+TD.selectTab {
+	BACKGROUND-COLOR: #ffffff
+}
+.topWelcomeArea {
+	COLOR: #fff; HEIGHT: 28px; BACKGROUND-COLOR: #36c
+}
+.legalFooter {
+	BACKGROUND-COLOR: #36c
+}
+.txtRed {
+	FONT-SIZE: 11px; COLOR: red
+}
+.userRole {
+	COLOR: #039
+}
+.fineright {
+	COLOR: #666; TEXT-ALIGN: right
+}
+.footerLinks {
+	COLOR: #555555
+}
+A.footerLinks {
+	COLOR: #555555
+}
+A.footerLinks:hover {
+	COLOR: #555555
+}
+.stdButton_R2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	color: #003366;
+	background: #e6e6e6;
+	width: 80px;
+	height: 19px;
+}
+.txtIcon {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: blue 1px solid; 
+	BORDER-TOP: blue 1px solid; 
+	BORDER-LEFT: blue 1px solid; 
+	BORDER-BOTTOM: blue 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	COLOR: blue; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	CURSOR: hand;
+}
+
+.txtIconBlack {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: black 1px solid; 
+	BORDER-TOP: black 1px solid; 
+	BORDER-LEFT: black 1px solid; 
+	BORDER-BOTTOM: black 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	COLOR: black; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	CURSOR: hand;
+}
+
+.txtIconGreen {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: green 1px solid; 
+	BORDER-TOP: green 1px solid; 
+	BORDER-LEFT: green 1px solid; 
+	BORDER-BOTTOM: green 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	COLOR: green; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+}
+
+
+.txtIconRed {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: red 1px solid; 
+	BORDER-TOP: red 1px solid; 
+	BORDER-LEFT: red 1px solid; 
+	BORDER-BOTTOM: red 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold;  
+	COLOR: red; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	CURSOR: hand;
+}
+
+TABLE.t { 
+  	WIDTH: 100%;
+  	BORDER-COLLAPSE: collapse;
+}
+
+TD.t1 { 
+	TEXT-ALIGN: right;
+  	WHITE-SPACE: nowrap;
+}

@@ -1,0 +1,226 @@
+SELECT
+{
+    FONT-WEIGHT: normal;
+    FONT-FAMILY: arial
+}
+INPUT
+{
+    FONT-WEIGHT: normal;
+    FONT-FAMILY: arial;
+	FONT-SIZE:10px;
+}
+TEXTAREA
+{
+    FONT-WEIGHT: normal;
+    FONT-FAMILY: arial;
+	FONT-SIZE:10px;
+}
+.wideElement
+{
+    WIDTH: 100%
+}
+A.menuLink
+{
+    FONT-WEIGHT: normal;
+    VERTICAL-ALIGN: bottom;
+    TEXT-DECORATION: none;
+	COLOR: #000000;
+    FONT-FAMILY: arial;
+}
+A.menuLink:hover
+{
+    FONT-WEIGHT: normal;
+    TEXT-DECORATION: underline;
+    A: top;
+	COLOR: #000000;
+}
+
+A.menuRecentLink:hover
+{
+    COLOR: #000000
+}
+
+.tabTop
+{
+    BACKGROUND-IMAGE: url(../images/tabtop.gif)
+}
+.tabBottom
+{
+    BACKGROUND-IMAGE: url(../images/tabbottom.gif)
+}
+
+.txtBold
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px
+}
+A.txtBold:visited
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px;
+	TEXT-DECORATION: underline;
+}
+A.txtBold:hover
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px;
+	TEXT-DECORATION: underline;
+}
+A.txtBold:active
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px;
+	TEXT-DECORATION: underline;
+}
+
+.txtRegular
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    PADDING-BOTTOM: 5px;
+    PADDING-TOP: 5px
+}
+A.txtRegular
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    PADDING-BOTTOM: 5px;
+    PADDING-TOP: 5px
+}
+.txtBold
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px
+}
+A.txtBold
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 1px;
+    PADDING-TOP: 1px
+}
+.cellPadding
+{
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    PADDING-BOTTOM: 5px;
+    PADDING-TOP: 5px
+}
+.subDivC
+{
+    BORDER-RIGHT: black 1px solid;
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    PADDING-BOTTOM: 5px;
+    BORDER-LEFT: black 1px solid;
+    WIDTH: 100%;
+    PADDING-TOP: 5px;
+    BORDER-BOTTOM: black 1px solid;
+    BACKGROUND-COLOR: #ffffff
+}
+.fixed
+{
+    TABLE-LAYOUT: fixed
+}
+
+
+
+.fastfind
+{
+    HEIGHT: 20px
+}
+UNKNOWN
+{
+    COLOR: #000000;
+    FONT-FAMILY: verdana, arial
+}
+
+
+A.menuRecentLink
+{
+    COLOR: #000000;
+    FONT-FAMILY: arial
+}
+
+
+
+.userRole
+{
+    FONT-WEIGHT: bold;
+    FONT-FAMILY: arial, verdana
+}
+
+.txtRed
+{
+    FONT-SIZE: 10px;
+    COLOR: red
+}
+
+div.tree {
+	DISPLAY: none;
+}
+
+table.tree {
+	BORDER: 0px;
+}
+
+td.tree {
+	PADDING-LEFT: 5px;
+	VERTICAL-ALIGN: middle;
+}
+
+input.chbTree {
+	HEIGHT: 15px;
+	WIDTH: 15px;
+	CURSOR: default;
+}
+
+.activeTopicCaption
+{
+    HEIGHT: 20px;
+	FONT-FAMILY: arial, verdana
+}
+
+.profileIcon {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: blue 1px solid; 
+	BORDER-TOP: blue 1px solid; 
+	BORDER-LEFT: blue 1px solid; 
+	BORDER-BOTTOM: blue 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	COLOR: blue; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN:center;
+}
+
+.profileIconBlack {
+	WIDTH: 11px; 
+	HEIGHT: 12px; 
+	BORDER-RIGHT: black 1px solid; 
+	BORDER-TOP: black 1px solid; 
+	BORDER-LEFT: black 1px solid; 
+	BORDER-BOTTOM: black 1px solid; 
+	FONT-SIZE: 10px; 
+	FONT-WEIGHT: bold; 
+	COLOR: black; 
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN:center;
+}

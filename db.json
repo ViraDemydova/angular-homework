@@ -229,7 +229,7 @@
     },
     {
       "id": 11,
-      "title": "Video Course ",
+      "title": "Video Course XXX Edited",
       "createDate": "2016-02-01 12:00:00",
       "duration": 20,
       "authors": [],
@@ -314,22 +314,6 @@
       "topRated": true
     },
     {
-      "id": 21,
-      "title": "XXX",
-      "createDate": "2018-08-06T10:32:58.415Z",
-      "duration": "333333333333",
-      "description": "XXX",
-      "authors": []
-    },
-    {
-      "id": 22,
-      "title": "XXX2",
-      "createDate": "2018-08-06T10:36:23.053Z",
-      "duration": "333333333333",
-      "description": "XXX2",
-      "authors": []
-    },
-    {
       "id": 23,
       "title": "XXX3",
       "createDate": "2018-08-06T10:37:30.468Z",
@@ -367,6 +351,54 @@
       "createDate": "2018-08-07T08:58:35.933Z",
       "duration": "333333333333",
       "description": "xxx20",
+      "authors": []
+    },
+    {
+      "id": 29,
+      "title": "XXX7800 ",
+      "createDate": "2018-08-08T08:53:36.055Z",
+      "duration": "222",
+      "description": "XXX500",
+      "authors": []
+    },
+    {
+      "id": 30,
+      "title": "XXX9000",
+      "createDate": "2018-08-08T09:01:18.556Z",
+      "duration": "222",
+      "description": "XXX9000",
+      "authors": []
+    },
+    {
+      "id": 31,
+      "title": "XXX8000",
+      "createDate": "2018-08-08T11:27:38.120Z",
+      "duration": "333333333333",
+      "description": "XXX8000",
+      "authors": []
+    },
+    {
+      "id": 32,
+      "title": "XXX20 ",
+      "createDate": "2018-08-08T11:28:18.634Z",
+      "duration": "12000000",
+      "description": "XXX20 ",
+      "authors": []
+    },
+    {
+      "id": 33,
+      "title": "test new item",
+      "createDate": "2018-08-08T12:45:04.536Z",
+      "duration": "333333333333",
+      "description": "xxxxx",
+      "authors": []
+    },
+    {
+      "id": 34,
+      "title": "XXX2888",
+      "createDate": "2018-08-08T14:52:49.596Z",
+      "duration": "222",
+      "description": "XXX2999",
       "authors": []
     }
   ]

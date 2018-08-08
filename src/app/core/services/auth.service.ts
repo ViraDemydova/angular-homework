@@ -1,8 +1,10 @@
 import { Injectable  } from '@angular/core';
 import { CoreModule } from '../core.module';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable, of } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { delay } from 'rxjs/operators';
+import { map } from 'rxjs/internal/operators';
 
 
 @Injectable({
@@ -25,13 +27,13 @@ export class AuthService {
 
   refreshToken(): Observable<string> {
     this.currentToken = this.authTokenNew;
-    return Observable.of(this.authTokenNew).delay(200);
+    return of(this.authTokenNew).pipe(delay(200));
   }
 
 
   login(login: string, password: string) {
-    return this.http.post<any>('http://localhost:3000/user', { login: login, password: password, tokenKey: this.authTokenStale })
-      .map(user => {
+    return this.http.get<any>('http://localhost:3000/user')
+      .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.tokenKey) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -39,7 +41,7 @@ export class AuthService {
         }
 
         return user && (this.IsAuthenticated = true);
-      });
+      }));
   }
 
   retrieveLocalStorage() {

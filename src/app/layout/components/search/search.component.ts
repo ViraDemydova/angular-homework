@@ -14,9 +14,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(value) {
-    // передадим родительскому компоненту текст из инпута поиска
-    console.log('seeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerchText: ', value);
     this.search.emit(value);
-    //this.communicatorService.publishData(this.searchText);
   }
 }

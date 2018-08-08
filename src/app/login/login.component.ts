@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  IsAuthenticated: boolean;
   currentUser: any;
-  @Input() login: string;
-  @Input() password: string;
+  login: string;
+  password: string;
 
   constructor(
               private router: Router,

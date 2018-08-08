@@ -1,0 +1,25 @@
+<phxFileStreamerPolicies>
+
+  <!--policy name="CommonFileStreamer">
+		<location>storage\content</location>
+	</policy-->
+
+  <policy name="CommonFileStreamer">
+    <location>\\EPUAKYIW0867\Events_CommonFileStreamer_Storage</location>
+  </policy>
+
+<!-- DFS root will be taken from Active Directory
+
+	<policy name="EquityFileStreamer">
+		<location>storage\EQTY</location>
+	</policy>
+-->
+
+<!-- Full DFS location (no Active Directory queries)
+
+	<policy name="EquityFileStreamer2">
+		<location>\\dev.com\storage\EQTY2</location>
+	</policy>
+-->
+
+</phxFileStreamerPolicies>
