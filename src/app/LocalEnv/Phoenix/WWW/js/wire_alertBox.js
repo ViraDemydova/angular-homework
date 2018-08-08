@@ -1,5 +1,0 @@
-<!-- 
-function onPageLoad()
-{
-window.focus();
-}
