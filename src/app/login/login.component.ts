@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   IsAuthenticated: boolean;
   currentUser: any;
+
+  // Почему тут используется декоратор @Input()?
+  // Он используется, если компонент получает что-то на вход.
+  // В твоем случае этот компонент загружается роутером и ничего на вход не получает.
   @Input() login: string;
   @Input() password: string;
 

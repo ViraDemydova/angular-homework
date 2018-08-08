@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
-import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 const BASE_URL = 'http://localhost:3000/courses';
@@ -9,37 +9,58 @@ const BASE_URL = 'http://localhost:3000/courses';
   providedIn: 'root'
 })
 export class CoursesListItemService {
-
   constructor(private http: HttpClient) {}
 
+  // Не нужно для методов писать public. Они и так public по умолчанию
+  // Если нужен приватный метод, то тогда написать private
+  // Почему параметр object. Надо использовать модель курса.
   public addItem(item: object): Observable<CoursesListItem> {
-    return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item});
+    return this.http.post<CoursesListItem>(`${BASE_URL}`, { ...item });
   }
 
   public deleteItem(id: string): Observable<CoursesListItem> {
     return this.http.delete<CoursesListItem>(`${BASE_URL}/${id}`);
   }
 
+  // Тут id лишний параметр. Если этот метод вызывается для редактирования
+  // курса, то у курса уже есть id. Его можно взять из item.id
+  // Вместо object использовать модель курса.
   public editItem(item: object, id: string): Observable<CoursesListItem> {
-    return this.http.put<CoursesListItem>(`${BASE_URL}/${id}`, {...item});
+    return this.http.put<CoursesListItem>(`${BASE_URL}/${id}`, { ...item });
   }
 
-  public getCourseListItems(_limit: string, _sort: string ): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_limit, _sort}});
+  // Не понял чем отличаются этот метод и следующий
+  // По условию метод должен принимать номер страницы и количество курсов на странице
+  // чтобы организовать пейджинг.
+  // Что тут обозначает подчеркивание для параметров? Не нужно это делать.
+  public getCourseListItems(
+    _limit: string,
+    _sort: string
+  ): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {
+      params: { _limit, _sort }
+    });
   }
 
-  public getCourseListItemsWithParams(_limit: string, _sort: string): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {_limit, _sort}});
+  public getCourseListItemsWithParams(
+    _limit: string,
+    _sort: string
+  ): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {
+      params: { _limit, _sort }
+    });
   }
 
   public getCourseById(id: string): Observable<CoursesListItem> {
     return this.http.get<CoursesListItem>(`${BASE_URL}/${id}`);
   }
 
+  // q - короткое название для параметра. Надо использовать что-то более читаемое.
   public searchTextWithParams(q: string): Observable<CoursesListItem[]> {
-    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {q}});
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, { params: { q } });
   }
 
+  // Этот метод нигде не используется.
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -48,12 +69,10 @@ export class CoursesListItemService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
     // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
+    return throwError('Something bad happened; please try again later.');
   }
 }
-
