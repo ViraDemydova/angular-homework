@@ -6,6 +6,7 @@
       <app-courses-list [ListItems]="ListItems"
                         (deleteCourse)="onDeleteCourse($event)">
       </app-courses-list>
+      <!-- Это выражение сложно читается. Лучше создать метод в классе, а тут использовать его. -->
       <button *ngIf='ListItems && ListItems.length >0 && ListItems && ListItems.length == 10' class="btn btn-full btn-secondary" (click)="onLoadMore()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE...{{this.nextPage}}</button>
       <button *ngIf='ListItems.length <= 9' class="btn btn-full btn-secondary" (click)="onPrev()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i>  Return to the first page...</button>
   </div>

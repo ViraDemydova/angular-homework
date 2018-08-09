@@ -38,6 +38,8 @@
                 </div>
                 <div class="btn-group">
                   <button class="btn btn-default" (click)="onSave($event)">Save</button>
+                  <!-- Тут используется директива, а ниже используется метод.
+                  Почему так? Так задумывалось? -->
                   <button class="btn btn-secondary" routerLink="/landing-page">Cancel</button>
                 </div>
               </form>

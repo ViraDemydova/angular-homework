@@ -8,12 +8,29 @@ import { CoursesListItem } from '../../models/courses-list-item.model';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  @Input()  public ListItems: CoursesListItem[] = [];
+  // Не нужно свойства называть с большой буквы.
+  // Только классы и функции конструкторы называют с большой буквы.
+
+  @Input() public ListItems: CoursesListItem[] = [];
+  // У этого компонента <app-courses-list [ListItems]="ListItems"
+  // (deleteCourse)="onDeleteCourse($event)">
+  // только один инпут и один аутпут
   @Input() public listItem: CoursesListItem;
-  @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
+
+  // Зачем тут такое количество Output?
+  @Output()
+  deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<
+    CoursesListItem
+  >();
+  @Output()
+  editCourse: EventEmitter<CoursesListItem> = new EventEmitter<
+    CoursesListItem
+  >();
+  @Output()
+  getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() id;
+
+  // Эти поля, по моему, не используются
   input: string;
   title: string;
 
@@ -22,6 +39,6 @@ export class CoursesListComponent implements OnInit {
   ngOnInit() {}
 
   onDelete(id) {
-   this.deleteCourse.emit(id);
+    this.deleteCourse.emit(id);
   }
 }
