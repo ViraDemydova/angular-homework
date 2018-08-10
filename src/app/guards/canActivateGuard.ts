@@ -1,17 +1,21 @@
-﻿import { Injectable } from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+﻿// Этот гард можно перенести в Core/Guards
+// и там же зарегистрировать в CoreModule
+// вместо AppRoutingModule
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/services/auth.service';
 
-
 @Injectable()
 export class CanActivateGuard implements CanActivate {
-  constructor(private serviceAuth: AuthService,
-              private router: Router) {}
+  constructor(private serviceAuth: AuthService, private router: Router) {}
 
   // Этот метод лишний. Сразу в canActivate вызвать метод сервиса
   IsAuth() {
-    console.log('IsAuthenticated from guard:', this.serviceAuth.isAuthenticated());
+    console.log(
+      'IsAuthenticated from guard:',
+      this.serviceAuth.isAuthenticated()
+    );
     return this.serviceAuth.isAuthenticated();
   }
 
@@ -20,6 +24,7 @@ export class CanActivateGuard implements CanActivate {
       return true;
     } else {
       this.router.navigate(['/login']);
+      // Тут надо вернуть false
     }
   }
 }
