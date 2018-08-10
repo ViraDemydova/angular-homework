@@ -9,6 +9,7 @@ export class CanActivateGuard implements CanActivate {
   constructor(private serviceAuth: AuthService,
               private router: Router) {}
 
+  // Этот метод лишний. Сразу в canActivate вызвать метод сервиса
   IsAuth() {
     console.log('IsAuthenticated from guard:', this.serviceAuth.isAuthenticated());
     return this.serviceAuth.isAuthenticated();
