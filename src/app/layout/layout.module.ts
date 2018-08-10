@@ -8,7 +8,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { UserLogOffComponent } from './components/user-log-off/user-log-off.component';
 import { SearchComponent } from './components/search/search.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule} from '../core/core.module';
 
@@ -16,6 +16,7 @@ import { CoreModule} from '../core/core.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     CoreModule
   ],

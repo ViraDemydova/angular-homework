@@ -25,9 +25,9 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
   @Output() id: number;
-   creationDate: string;
-   title: string;
-   state: boolean;
+  creationDate: string;
+  title: string;
+  state: boolean;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: RouterEvent) => {
@@ -45,17 +45,13 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
     console.log('ngOnChange - data is: ', this.listItem.id);
   }
 
-  onDelete(id) {
+  onDelete(id: CoursesListItem) {
     if (confirm('Are you sure to delete this course: ' + this.listItem.title + ' ' + this.listItem.id + '?' )) {
       this.deleteCourse.emit(id);
     }
   }
 
-  onEdit(event) {
-    this.editCourse.emit(this.listItem);
-  }
-
-  public goToEditPage(event) {
+  goToEditPage(event) {
     this.router.navigateByUrl('/edit-page/' + this.listItem.id + '/' + this.state);
   }
 }

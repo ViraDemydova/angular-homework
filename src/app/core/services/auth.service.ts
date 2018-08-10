@@ -1,25 +1,26 @@
 import { Injectable  } from '@angular/core';
 import { CoreModule } from '../core.module';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpXhrBackend} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import 'rxjs/add/operator/map';
-import { delay } from 'rxjs/operators';
-import { map } from 'rxjs/internal/operators';
+import { delay, map } from 'rxjs/operators';
+import { LoaderService } from '../../loader/services/loader.service';
 
+const  BASE_URL = 'http://localhost:3000/user';
 
 @Injectable({
   providedIn: CoreModule
 })
 export class AuthService {
-  public authTokenStale = 'stale_auth_token';
-  public authTokenNew = 'new_auth_token';
-  public currentToken: string;
+  authTokenNew = 'new_auth_token';
+  currentToken: string;
+  isUserAuthenticated: boolean;
 
-  constructor(private http: HttpClient) {
-    this.currentToken = this.authTokenStale;
+  constructor(
+    private http: HttpClient,
+    private loaderService: LoaderService
+  ) {
+    this.currentToken = 'stale_auth_token';
   }
-
-  public IsAuthenticated: boolean;
 
   getAuthToken() {
     return this.currentToken;
@@ -39,14 +40,13 @@ export class AuthService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
-
-        return user && (this.IsAuthenticated = true);
+        // TODO: Такой код плохо читается
+        return user && (this.isUserAuthenticated = true);
       }));
   }
 
   retrieveLocalStorage() {
     const storedToken = localStorage.getItem('currentUser');
-    console.log('Current user is:', storedToken);
     if (!storedToken) {
       throw new Error('no token found');
     }
@@ -55,21 +55,20 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('currentUser');
-    this.IsAuthenticated = false;
+    this.isUserAuthenticated = false;
   }
 
-  getUserInfo() {
-    console.log('user info', this.http.get('http://localhost:3000/user'));
-    const result = this.http.get('http://localhost:3000/user');
+  getUserInfo(login: string) {
+    const result = this.http.get<string>(`${BASE_URL}`, {params: {login}});
     console.log(result);
   }
 
   isAuthenticated(): boolean {
-    if (this.IsAuthenticated) {
-      console.log('user is Authenticated', this.IsAuthenticated);
+    if (this.isUserAuthenticated) {
+      console.log('user is Authenticated', this.isUserAuthenticated);
       return true;
     } else {
-      console.log('user is UNAuthenticated, failed to initialize!!!!', this.IsAuthenticated);
+      console.log('user is UNAuthenticated, failed to initialize!!!!', this.isUserAuthenticated);
       return false;
     }
   }

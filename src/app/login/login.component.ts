@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
+import {LoaderService} from "../loader/services/loader.service";
 
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
               private router: Router,
-              private serviceAuth: AuthService) {
+              private serviceAuth: AuthService,
+              private loaderService: LoaderService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           if (this.login === 'test@gmail.com' && this.password === '1') {
+            this.showLoader();
             this.router.navigate(['landing-page']);
           } else {
             return;
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   public onGetUserInfo(login) {
-    this.serviceAuth.getUserInfo();
+    this.serviceAuth.getUserInfo(login);
   }
 
   public onLogout() {
@@ -51,5 +54,13 @@ export class LoginComponent implements OnInit {
 
   public isAuth() {
     this.serviceAuth.isAuthenticated();
+  }
+
+  private showLoader(): void {
+    this.loaderService.show();
+  }
+
+  private hideLoader(): void {
+    this.loaderService.hide();
   }
 }

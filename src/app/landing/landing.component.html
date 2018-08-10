@@ -1,3 +1,4 @@
+<app-loader></app-loader>
 <!-- starts  markup -->
 <header class="header">
   <app-header></app-header>
@@ -10,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-sm-12 no-gutters">
-          <app-toolbox (search)="onSearch($event)" (addCourse)="onAddCourse()"></app-toolbox>
+          <app-toolbox (searchText)="onSearchTextChanged($event)" (addCourse)="onAddCourse()"></app-toolbox>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -66,7 +66,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['landing-page']);
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     if (this.usersEditSubscription) {
       this.usersEditSubscription.unsubscribe();
     }

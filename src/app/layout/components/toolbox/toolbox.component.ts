@@ -9,16 +9,15 @@ import { CommunicatorService } from '../../../core/services/communicator.service
   styleUrls: ['./toolbox.component.css']
 })
 export class ToolboxComponent implements OnInit {
-  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+  @Output() searchText: EventEmitter<string> = new EventEmitter<string>();
   @Output() addCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
 
   constructor(private comService: CommunicatorService) {}
 
   ngOnInit() {}
 
-  // принимаем текст от search input
-  // и передаем его родительскому компоненту
-  onSearch(searchText: string) {
-    this.search.emit(searchText);
+  public onSearchTextChanged(e: string): void {
+    this.searchText.emit(e);
   }
+
 }

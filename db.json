@@ -228,15 +228,6 @@
       "topRated": true
     },
     {
-      "id": 11,
-      "title": "Video Course XXX Edited",
-      "createDate": "2016-02-01 12:00:00",
-      "duration": 20,
-      "authors": [],
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "topRated": true
-    },
-    {
       "id": 12,
       "title": "Video Course ",
       "createDate": "2018-05-29 12:00:00",
@@ -260,15 +251,6 @@
       "duration": 59,
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-    },
-    {
-      "id": 15,
-      "title": "Audio Course ",
-      "createDate": "2017-12-29 12:00:00",
-      "duration": 360,
-      "authors": [],
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "topRated": true
     },
     {
       "id": 16,
@@ -330,27 +312,11 @@
       "authors": []
     },
     {
-      "id": 25,
-      "title": "XXX5",
-      "createDate": "2018-08-06T12:01:46.755Z",
-      "duration": "333333333333",
-      "description": "XXX5",
-      "authors": []
-    },
-    {
       "id": 26,
       "title": "XXX6",
       "createDate": "2018-08-06T14:12:48.533Z",
       "duration": null,
       "description": "tokenKey",
-      "authors": []
-    },
-    {
-      "id": 27,
-      "title": "XXX20",
-      "createDate": "2018-08-07T08:58:35.933Z",
-      "duration": "333333333333",
-      "description": "xxx20",
       "authors": []
     },
     {
@@ -362,14 +328,6 @@
       "authors": []
     },
     {
-      "id": 30,
-      "title": "XXX9000",
-      "createDate": "2018-08-08T09:01:18.556Z",
-      "duration": "222",
-      "description": "XXX9000",
-      "authors": []
-    },
-    {
       "id": 31,
       "title": "XXX8000",
       "createDate": "2018-08-08T11:27:38.120Z",
@@ -378,27 +336,11 @@
       "authors": []
     },
     {
-      "id": 32,
-      "title": "XXX20 ",
-      "createDate": "2018-08-08T11:28:18.634Z",
-      "duration": "12000000",
-      "description": "XXX20 ",
-      "authors": []
-    },
-    {
-      "id": 33,
+      "id": 35,
       "title": "test new item",
-      "createDate": "2018-08-08T12:45:04.536Z",
+      "createDate": "2018-08-10T08:16:37.728Z",
       "duration": "333333333333",
-      "description": "xxxxx",
-      "authors": []
-    },
-    {
-      "id": 34,
-      "title": "XXX2888",
-      "createDate": "2018-08-08T14:52:49.596Z",
-      "duration": "222",
-      "description": "XXX2999",
+      "description": "test new item",
       "authors": []
     }
   ]

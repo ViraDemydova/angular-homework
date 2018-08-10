@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {AuthService} from '../core/services/auth.service';
 import {CoursesListItemService} from '../courses/services/courses-list-item.service';
 import { AddEditPageComponent } from '../courses/components/add-edit-page/add-edit-page.component';
@@ -8,7 +8,7 @@ import { AddEditPageComponent } from '../courses/components/add-edit-page/add-ed
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnChanges {
   searchText: string;
   newItem: any;
 
@@ -16,12 +16,11 @@ export class LandingComponent implements OnInit {
               private coursesListService: CoursesListItemService) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  // получаем текст поиска
-  onSearch(searchText: string) {
-    this.searchText = searchText;
-    console.log('show search text from app', this.searchText);
+  ngOnChanges() {
+
   }
 
   IsAuth() {
@@ -32,4 +31,9 @@ export class LandingComponent implements OnInit {
   onAddCourse() {
     this.coursesListService.addItem(this.newItem);
   }
+
+  public onSearchTextChanged(e: string): void {
+    this.searchText = e;
+  }
+
 }

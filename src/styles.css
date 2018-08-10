@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 .body {
   background: #f4faff;
   color:#4f646f;
@@ -213,6 +214,33 @@ footer{
 
 .error-actions .btn {
   margin-right:10px;
+}
+
+.loader-hidden {
+  visibility: hidden;
+}
+
+.loader-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.4;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.loader-overlay .mat-progress-spinner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  z-index: 11;
 }
 
 /* Small Devices, Tablets */

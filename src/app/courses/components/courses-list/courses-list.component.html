@@ -1,6 +1,5 @@
-<app-courses-list-item  *ngFor="let item of ListItems"
+<app-courses-list-item  *ngFor="let item of listItems"
                         [listItem]="item"
-                        (deleteCourse)="onDelete(item.id)"
-                        (editCourse)="onEdit($event)">
+                        (deleteCourse)="onDelete(item.id)">
 
 </app-courses-list-item>

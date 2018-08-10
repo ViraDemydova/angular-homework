@@ -8,12 +8,10 @@ import { CoursesListItem } from '../../models/courses-list-item.model';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  @Input()  public ListItems: CoursesListItem[] = [];
+  @Input()  public listItems: CoursesListItem[] = [];
   @Input() public listItem: CoursesListItem;
   @Output() deleteCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  @Output() editCourse: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  @Output() getbyId: EventEmitter<CoursesListItem> = new EventEmitter<CoursesListItem>();
-  @Output() id;
+  id: number;
   input: string;
   title: string;
 

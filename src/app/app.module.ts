@@ -41,7 +41,12 @@ import { JwtInterceptor } from './helpers/auth-interceptor';
     LandingModule,
     AppRoutingModule
   ],
-  exports: [ SharedModule, RouterModule, LandingModule, CoursesModule],
+  exports: [
+    SharedModule,
+    RouterModule,
+    LandingModule,
+    CoursesModule
+  ],
   providers: [
     CoursesListItemService,
     CommunicatorService,
