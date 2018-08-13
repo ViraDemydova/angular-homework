@@ -77,20 +77,11 @@
     },
     {
       "id": 10,
-      "title": "Audio Course edited",
+      "title": "Audio Course",
       "createDate": "2017-12-29 12:00:00",
       "duration": 360,
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "topRated": true
-    },
-    {
-      "id": 12,
-      "title": "Video Course ",
-      "createDate": "2018-05-29 12:00:00",
-      "duration": 120,
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "authors": [],
       "topRated": true
     },
     {
@@ -143,14 +134,6 @@
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "topRated": true
-    },
-    {
-      "id": 23,
-      "title": "XXX3",
-      "createDate": "2018-08-06T10:37:30.468Z",
-      "duration": "222",
-      "description": "XXX3",
-      "authors": []
     },
     {
       "id": 24,

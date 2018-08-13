@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
-import {LoaderService} from "../loader/services/loader.service";
-import {SharedService} from "../core/services/shared.service";
-import {UserEntityItem} from "../users/models/user-entity-item.model";
+import { LoaderService } from '../loader/services/loader.service';
+import { SharedService } from '../core/services/shared.service';
+import { UserEntityItem } from '../users/models/user-entity-item.model';
 
 
 @Component({

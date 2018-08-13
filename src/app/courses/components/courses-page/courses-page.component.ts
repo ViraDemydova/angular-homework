@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoaderService } from '../../../loader/services/loader.service';
 import { stateEnum } from './enum';
-import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'app-courses-page',
@@ -21,13 +20,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
    startPage: stateEnum.DEFAULT_PAGE
   };
 
-  // TODO: У подписки есть метод add. Например, listItemsParamsSubscription.add()
-  // Это позволяет создать одну подписку как свойство, например при инициализации
-  // компонента. Для остальных подписок использовать локалькую константу sub
-  // и добавлять ее методом add() к основной.
-  // метод unsibscribe для основной подписки позволит отписаться и от всех добавленых
-  // подписок методом add()
-  private usersCreateSubscription = new Subscription();
+  private usersCreateSubscription: Subscription;
   private sub: Subscription;
   // это свойство содержит текст поиска курса по названию
   @Input() searchText: any;
@@ -59,6 +52,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
     this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
       this.listItems = res;
     });
+    this.usersCreateSubscription.add(this.sub);
   }
 
   onDeleteCourse(id: string): void {
