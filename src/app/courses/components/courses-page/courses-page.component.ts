@@ -3,15 +3,9 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 import { CoursesListItem } from '../../models/courses-list-item.model';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import {LoaderService} from "../../../loader/services/loader.service";
-
-// TODO: Эти константы лучше вынести в отдельный файл и, возможно,
-// организовать с помощью enum
-const DEFAULT_START_COUNT = '5';
-const DEFAULT_LOAD_COUNT = '10';
-const DEFAULT_LIMIT_COUNT = '1000';
-const DEFAULT_PAGE = '1';
-const NEXT_PAGE = '2';
+import { LoaderService } from '../../../loader/services/loader.service';
+import { stateEnum } from './enum';
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'app-courses-page',
@@ -20,30 +14,28 @@ const NEXT_PAGE = '2';
 })
 export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   public listItems: CoursesListItem[] = [];
-  // TODO: Возможно, лучше эти данные оформить в виде объекта.
-  // Тогда количество параметров в методе получения данных уменьшиться
-  // Не нужно будет помнить в каком порядке их задавать, с объектом проще работать.
-  public countToStart: string = DEFAULT_START_COUNT;
-  public countToLoad: string = DEFAULT_LOAD_COUNT;
-  public nextPage: any = NEXT_PAGE;
-  public startPage: string = DEFAULT_PAGE;
+  pageData = {
+   countToStart: stateEnum.DEFAULT_START_COUNT,
+   countToLoad: stateEnum.DEFAULT_LOAD_COUNT,
+   nextPage: stateEnum.NEXT_PAGE,
+   startPage: stateEnum.DEFAULT_PAGE
+  };
+
   // TODO: У подписки есть метод add. Например, listItemsParamsSubscription.add()
   // Это позволяет создать одну подписку как свойство, например при инициализации
   // компонента. Для остальных подписок использовать локалькую константу sub
   // и добавлять ее методом add() к основной.
   // метод unsibscribe для основной подписки позволит отписаться и от всех добавленых
   // подписок методом add()
-  private listItemsParamsSubscription: Subscription;
-  private usersDeleteSubscription: Subscription;
-  private usersCreateSubscription: Subscription;
-  private usersWithParamsSubscription: Subscription;
-  @Input() public listItem: CoursesListItem;
+  private usersCreateSubscription = new Subscription();
+  private sub: Subscription;
   // это свойство содержит текст поиска курса по названию
   @Input() searchText: any;
   @Input () isSearchAvailable: boolean;
   input: string;
   item: string;
   createDate = 'createDate';
+  text: string;
 
   constructor(
     private coursesListService: CoursesListItemService,
@@ -52,6 +44,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnInit(): void {
     this.init();
+    this.text = 'LOAD MORE...';
   }
 
   ngOnChanges(e) {
@@ -59,23 +52,23 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
       return;
     }
 
-    this.onSearch(e.searchText.currentValue, this.startPage, this.countToStart, this.countToLoad, this.createDate);
+    this.onSearch(e.searchText.currentValue);
   }
 
   init(): void {
-    this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.startPage, this.countToStart, this.countToLoad, this.createDate).subscribe((res: CoursesListItem[]) => {
+    this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
       this.listItems = res;
     });
   }
 
   onDeleteCourse(id: string): void {
-    this.usersDeleteSubscription = this.coursesListService.deleteItem(id).subscribe(() => {
+    this.sub = this.coursesListService.deleteItem(id).subscribe(() => {
       this.init();
     });
   }
 
-  public onSearch(queryString: string, start: string, end: string, count: string, date: string): void {
-    this.usersWithParamsSubscription = this.coursesListService.searchTextWithParams(queryString, this.startPage, this.countToStart, this.countToLoad, this.createDate).subscribe((res: CoursesListItem[]) => {
+  public onSearch(queryString: string): void {
+    this.sub = this.coursesListService.searchTextWithParams(queryString, this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
         this.listItems = res;
       },
       (error: HttpErrorResponse) => console.log(error)
@@ -83,20 +76,23 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   onLoadMore(): void {
-  this.listItemsParamsSubscription = this.coursesListService.getCourseListItems(this.nextPage, this.countToStart, this.countToLoad, this.createDate).subscribe((res: CoursesListItem[]) => {
-      String(this.nextPage++);
-      this.listItems = res;
-    },
-    (error: HttpErrorResponse) => console.log(error));
+    if (this.listItems.length > 0 && this.listItems.length <= 10) {
+      this.sub = this.coursesListService.getCourseListItems(this.pageData.nextPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
+          this.text = 'LOAD MORE...';
+          this.pageData.nextPage++;
+          this.listItems = res;
+        },
+        (error: HttpErrorResponse) => console.log(error));
+    }
+    if (this.listItems.length <= 9) {
+      this.sub =  this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
+          this.listItems = res;
+          this.text = 'We\'re backed to the first page...';
+          this.pageData.nextPage = stateEnum.NEXT_PAGE;
+        },
+        (error: HttpErrorResponse) => console.log(error));
+    }
 }
-
-  onPrev(): void {
-    this.listItemsParamsSubscription =  this.coursesListService.getCourseListItems(this.startPage, this.countToStart, this.countToLoad, this.createDate).subscribe((res: CoursesListItem[]) => {
-      this.listItems = res;
-      this.nextPage = NEXT_PAGE;
-      },
-      (error: HttpErrorResponse) => console.log(error));
-  }
 
   private showLoader(): void {
     this.loaderService.show();
@@ -107,17 +103,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this.listItemsParamsSubscription) {
-      this.listItemsParamsSubscription.unsubscribe();
-    }
-    if (this.usersDeleteSubscription) {
-      this.usersDeleteSubscription.unsubscribe();
-    }
     if (this.usersCreateSubscription) {
       this.usersCreateSubscription.unsubscribe();
-    }
-    if (this.usersWithParamsSubscription) {
-      this.usersWithParamsSubscription.unsubscribe();
     }
   }
 }

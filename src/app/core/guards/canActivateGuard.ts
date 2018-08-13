@@ -1,12 +1,15 @@
 ﻿import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { SharedService } from '../services/shared.service';
 import { Observable } from 'rxjs';
 import {  map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-import { SharedService } from '../services/shared.service';
-import { AuthService } from '../services/auth.service';
+import { CoreModule } from '../core.module';
 
-@Injectable()
+@Injectable({
+  providedIn: CoreModule
+})
 export class CanActivateGuard implements CanActivate {
   constructor(private serviceAuth: AuthService,
               private router: Router,
@@ -34,7 +37,6 @@ export class CanActivateGuard implements CanActivate {
           }
         }),
          catchError(() => {
-          this.router.navigate(['/login']);
           return Observable.of(false);
         }));
     }

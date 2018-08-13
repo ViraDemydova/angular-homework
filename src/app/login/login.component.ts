@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 import {LoaderService} from "../loader/services/loader.service";
+import {SharedService} from "../core/services/shared.service";
+import {UserEntityItem} from "../users/models/user-entity-item.model";
 
 
 @Component({
@@ -10,16 +12,16 @@ import {LoaderService} from "../loader/services/loader.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  currentUser: any;
+  currentUser: UserEntityItem;
   login: string;
   password: string;
+  user: any;
 
   constructor(
               private router: Router,
               private serviceAuth: AuthService,
-              private loaderService: LoaderService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  }
+              private sharedService: SharedService,
+              private loaderService: LoaderService) {}
 
   ngOnInit() {}
 
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
         data => {
           if (this.login === 'test@gmail.com' && this.password === '1') {
             this.showLoader();
+            this.sharedService.publishData(this.login);
             this.router.navigate(['landing-page']);
           } else {
             return;
@@ -44,8 +47,8 @@ export class LoginComponent implements OnInit {
     this.serviceAuth.retrieveLocalStorage();
   }
 
-  public onGetUserInfo(login) {
-    this.serviceAuth.getUserInfo(login);
+  public onGetUserInfo(id) {
+    this.serviceAuth.getUserInfo(id);
   }
 
   public onLogout() {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/courses-list-item.model';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {LoaderService} from "../../loader/services/loader.service";
+import { LoaderService } from '../../loader/services/loader.service';
 
 const BASE_URL = 'http://localhost:3000/courses';
 

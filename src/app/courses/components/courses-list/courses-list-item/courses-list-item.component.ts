@@ -8,10 +8,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { CoursesListItem } from '../../../models/courses-list-item.model';
-import {
-  ActivatedRoute,
-  Router,
-  RouterEvent } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -30,9 +27,9 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   state: boolean;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event: RouterEvent) => {
-      console.log(event);
-    });
+    //this.router.events.subscribe((event: RouterEvent) => {
+     // console.log(event);
+    //});
   }
 
   ngOnInit() {

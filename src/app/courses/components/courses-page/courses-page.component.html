@@ -7,8 +7,7 @@
                         (deleteCourse)="onDeleteCourse($event)">
       </app-courses-list>
       <!-- TODO: создать метод в классе, а тут использовать его. -->
-      <button *ngIf='listItems && listItems.length >0 && listItems && listItems.length == 10' class="btn btn-full btn-secondary" (click)="onLoadMore()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i>  LOAD MORE...{{this.nextPage}}</button>
-      <button *ngIf='listItems.length <= 9' class="btn btn-full btn-secondary" (click)="onPrev()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i>  Return to the first page...</button>
+      <button class="btn btn-full btn-secondary" (click)="onLoadMore()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i> {{text}}{{pageData.nextPage}}</button>
   </div>
   <!-- ends course-list -->
 </div>

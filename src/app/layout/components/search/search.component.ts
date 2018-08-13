@@ -1,7 +1,7 @@
 import {Component, OnInit,  Output, EventEmitter } from '@angular/core';
 // import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/internal/operators';
-import {Observable, Subject} from "rxjs/Rx";
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { Subject } from 'rxjs/Rx';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,7 +9,7 @@ import {Observable, Subject} from "rxjs/Rx";
 })
 export class SearchComponent implements OnInit {
   //public searchControl: FormControl;
-  private debounce = 500;
+  private debounce = 200;
   public search: any;
   @Output() searchText: EventEmitter<string> = new EventEmitter<string>();
   public searchInput = new Subject <string> ();
@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
     // this.searchControl = new FormControl('');
     // this.searchControl.valueChanges
     this.searchInput
-     .pipe(debounceTime(this.debounce), distinctUntilChanged())
+     .pipe(debounceTime(this.debounce), distinctUntilChanged(), filter((query: string) => query.length === 0 || query.length > 2 ))
      .subscribe(e => {
       this.searchText.emit(e);
      });

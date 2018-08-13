@@ -1,35 +1,31 @@
 import { Injectable } from '@angular/core';
 import { UserEntityItem } from '../models/user-entity-item.model';
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators';
+
+const BASE_URL = 'http://localhost:3000/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserEntityItemService {
-  private fakeUsers: UserEntityItem[] = [];
+  constructor( private http: HttpClient) {}
 
-  constructor() {
-    this.fakeUsers = [
-      {
-        id: 1,
-        firstName: 'Vera',
-        lastName: 'Demidova',
-        email: 'vera.demidova@gmail.com'
-      },
-      {
-        id: 2,
-        firstName: 'Maria',
-        lastName: 'Morozova',
-        email: 'maria.morozova@gmail.com'
-      }
-    ];
+  getUsers( ): Observable<UserEntityItem[]> {
+    return this.http.get<UserEntityItem[]>(`${BASE_URL}`);
   }
 
-  //public getUserEntityItems(): UserEntityItem[] {
-    //return Observable.of(this.fakeUsers).delay(5000);
-  //}
+  getUserById(id: number): Observable<UserEntityItem> {
+    return this.http.get<UserEntityItem>(`${BASE_URL}/${id}`);
+  }
 
-  public  getUserEntityItems(): UserEntityItem[] {
-    return this.fakeUsers;
-    //return Observable.of(this.fakeUsers).delay(5000);
+  checkCurrentUser(): Observable<any> {
+    const id = 1;
+    const url = `${BASE_URL}` + '/' + id;
+    return this.http.get(url)
+      .pipe(map((res: any) => {
+        return res;
+      }));
   }
 }

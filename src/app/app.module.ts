@@ -16,8 +16,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
 import { CoreModule } from './core/core.module';
 import { CoursesListItemService } from './courses/services/courses-list-item.service';
-import { CommunicatorService } from './core/services/communicator.service';
 import { JwtInterceptor } from './helpers/auth-interceptor';
+import { CommunicatorService } from './core/services/communicator.service';
+import { AuthService } from './core/services/auth.service';
+import { CanActivateGuard } from './core/guards/canActivateGuard';
+import { SharedService } from './core/services/shared.service';
 
 
 
@@ -42,6 +45,7 @@ import { JwtInterceptor } from './helpers/auth-interceptor';
     AppRoutingModule
   ],
   exports: [
+    CoreModule,
     SharedModule,
     RouterModule,
     LandingModule,
@@ -50,6 +54,9 @@ import { JwtInterceptor } from './helpers/auth-interceptor';
   providers: [
     CoursesListItemService,
     CommunicatorService,
+    AuthService,
+    CanActivateGuard,
+    SharedService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

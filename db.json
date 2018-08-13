@@ -1,153 +1,19 @@
 {
-  "user": [
+  "users": [
     {
-      "id": "1",
+      "id": 1,
+      "firstName": "admin",
+      "lastName": "admin",
       "login": "test@gmail.com",
       "password": "1",
       "tokenKey": "app_token"
     },
     {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "Jgv~93d"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "xj~7IDM"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "xaLnmh6"
-    },
-    {
-      "login": "vera.demidova@gmail.com",
-      "password": "dddd",
-      "id": "cghf6MA"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "app_token",
-      "id": "uRUbh4u"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "app_token",
-      "id": "BUhMC0G"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "q0LR8ow"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "egUupmn"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "M85jrvv"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "5zktpMM"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "NG8TCb6"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "H8LdtPu"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "vMFMqSi"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "hlrp3rp"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "gmBd6a9"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "Zrs3qOt"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "iFVpxcA"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "217J9qe"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "N0VZuso"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "3mFAC0r"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "NoDCpEO"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "id": "9P~UYhB"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "CExWXdZ"
-    },
-    {
-      "login": "vera.demidova@gmail.com",
-      "password": "2",
-      "tokenKey": "stale_auth_token",
-      "id": "926QYIN"
-    },
-    {
-      "login": "test@gmail.com",
-      "password": "1",
-      "tokenKey": "stale_auth_token",
-      "id": "H_IYVRQ"
+      "id": 2,
+      "firstName": "user",
+      "lastName": "auser",
+      "login": "user@gmail.com",
+      "password": "2"
     }
   ],
   "courses": [
@@ -175,15 +41,6 @@
       "duration": 59,
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-    },
-    {
-      "id": 4,
-      "title": "Audio Course  ed",
-      "createDate": "2017-12-29 12:00:00",
-      "duration": 360,
-      "authors": [],
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "topRated": true
     },
     {
       "id": 6,
@@ -220,7 +77,7 @@
     },
     {
       "id": 10,
-      "title": "Audio Course ",
+      "title": "Audio Course edited",
       "createDate": "2017-12-29 12:00:00",
       "duration": 360,
       "authors": [],
@@ -235,14 +92,6 @@
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "authors": [],
       "topRated": true
-    },
-    {
-      "id": 13,
-      "title": "Audio Course ",
-      "createDate": "2018-05-05 12:00:00",
-      "duration": 70,
-      "authors": [],
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },
     {
       "id": 14,
@@ -336,11 +185,11 @@
       "authors": []
     },
     {
-      "id": 35,
-      "title": "test new item",
-      "createDate": "2018-08-10T08:16:37.728Z",
-      "duration": "333333333333",
-      "description": "test new item",
+      "id": 37,
+      "title": "XXX2",
+      "createDate": "2018-08-13T14:13:32.664Z",
+      "duration": "222",
+      "description": "xxx",
       "authors": []
     }
   ]

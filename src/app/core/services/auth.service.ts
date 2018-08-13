@@ -1,42 +1,29 @@
 import { Injectable  } from '@angular/core';
 import { CoreModule } from '../core.module';
-import {HttpClient, HttpXhrBackend} from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
-import { LoaderService } from '../../loader/services/loader.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+import { UserEntityItem } from '../../users/models/user-entity-item.model';
 
-const  BASE_URL = 'http://localhost:3000/user';
+const BASE_URL = 'http://localhost:3000/users';
 
 @Injectable({
   providedIn: CoreModule
 })
 export class AuthService {
-  authTokenNew = 'new_auth_token';
-  currentToken: string;
   isUserAuthenticated: boolean;
+  existingLockedUser = '';
+  user: UserEntityItem;
 
   constructor(
-    private http: HttpClient,
-    private loaderService: LoaderService
-  ) {
-    this.currentToken = 'stale_auth_token';
-  }
-
-  getAuthToken() {
-    return this.currentToken;
-  }
-
-  refreshToken(): Observable<string> {
-    this.currentToken = this.authTokenNew;
-    return of(this.authTokenNew).pipe(delay(200));
-  }
-
+    private http: HttpClient
+  ) {}
 
   login(login: string, password: string) {
-    return this.http.get<any>('http://localhost:3000/user')
+    return this.http.get<any>('http://localhost:3000/users')
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
-        if (user && user.tokenKey) {
+        if (user && this.getAuthToken()) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
         }
@@ -44,6 +31,26 @@ export class AuthService {
         return user && (this.isUserAuthenticated = true);
       }));
   }
+
+  getAuthToken(): Observable<boolean> {
+    const token = 'app_token';
+    // http://localhost:3000/users?tokenKey=app_token
+    const url = `${BASE_URL}` + '?tokenKey=' + token;
+    return this.http.get(url)
+      .pipe(map((res: boolean) => {
+        return res;
+      }));
+  }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.isUserAuthenticated = false;
+  }
+
+  getUserInfo(id: string)  {
+    return this.http.get<string>(`${BASE_URL}/${id}`);
+  }
+
 
   retrieveLocalStorage() {
     const storedToken = localStorage.getItem('currentUser');
@@ -53,15 +60,6 @@ export class AuthService {
     return storedToken;
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.isUserAuthenticated = false;
-  }
-
-  getUserInfo(login: string) {
-    const result = this.http.get<string>(`${BASE_URL}`, {params: {login}});
-    console.log(result);
-  }
 
   isAuthenticated(): boolean {
     if (this.isUserAuthenticated) {
@@ -71,5 +69,29 @@ export class AuthService {
       console.log('user is UNAuthenticated, failed to initialize!!!!', this.isUserAuthenticated);
       return false;
     }
+  }
+
+  public isLocked() {
+    const user = this.getCurrentUser();
+    this.checkCurrentUser().subscribe(item => {
+      // not getting value here: Observable not working here.
+      this.existingLockedUser = item.currentUser;
+
+      return user.login === this.existingLockedUser ? true : false;
+    });
+  }
+
+  checkCurrentUser(): Observable<any> {
+    const id = 1;
+    const url = `${BASE_URL}` + '/' + id;
+    return this.http.get(url)
+      .pipe(map((res: any) => {
+        return res;
+      }));
+  }
+
+  public getCurrentUser() {
+   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser;
   }
 }
