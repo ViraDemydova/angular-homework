@@ -1,34 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { UserEntityItem } from '../models/user-entity-item.model';
 import { UserEntityItemService } from '../services/user-entity-item.service';
 import { Subscription } from 'rxjs/Rx';
-import { AuthService } from '../../core/services/auth.service';
+import {SharedService} from '../../core/services/shared.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   public userItems: UserEntityItem[] = [];
+  public user: UserEntityItem;
   private usersCreateSubscription: Subscription;
 
   constructor(private userEntityService: UserEntityItemService,
-              private serviceAuth: AuthService) { }
+              private sharedService: SharedService) { }
 
   ngOnInit() {
     this.init();
   }
 
   init(): void {
-    this.usersCreateSubscription = this.userEntityService.getUsers().subscribe((res: UserEntityItem[]) => {
-      this.userItems = res;
+    this.usersCreateSubscription = this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
+      this.user = res;
+      this.sharedService.publishData(this.user.login);
     });
   }
 
-  onCheckCurrentUser() {
-    this.serviceAuth.getAuthToken().subscribe((res: boolean) => {
-      return res;
-    });
+ ngOnDestroy(): void {
+    if (this.usersCreateSubscription) {
+      this.usersCreateSubscription.unsubscribe();
+    }
   }
 }

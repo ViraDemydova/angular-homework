@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LoaderService } from '../loader/services/loader.service';
 import { SharedService } from '../core/services/shared.service';
 import { UserEntityItem } from '../users/models/user-entity-item.model';
+import { Subscription } from 'rxjs/Rx';
+import { UserEntityItemService } from '../users/services/user-entity-item.service';
 
 
 @Component({
@@ -12,26 +14,32 @@ import { UserEntityItem } from '../users/models/user-entity-item.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  currentUser: UserEntityItem;
+  user: UserEntityItem;
   login: string;
   password: string;
-  user: any;
 
   constructor(
               private router: Router,
               private serviceAuth: AuthService,
-              private sharedService: SharedService,
-              private loaderService: LoaderService) {}
+              private loaderService: LoaderService,
+              private userEntityService: UserEntityItemService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.init();
+  }
+
+  init(): void {
+    this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
+      this.user = res;
+    });
+  }
 
   onLogin() {
     this.serviceAuth.login(this.login, this.password)
       .subscribe(
         data => {
-          if (this.login === 'test@gmail.com' && this.password === '1') {
+          if (this.login === this.user.login && this.password === this.user.password) {
             this.showLoader();
-            this.sharedService.publishData(this.login);
             this.router.navigate(['landing-page']);
           } else {
             return;

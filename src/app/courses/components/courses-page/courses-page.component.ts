@@ -96,7 +96,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
     this.loaderService.hide();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     if (this.usersCreateSubscription) {
       this.usersCreateSubscription.unsubscribe();
     }

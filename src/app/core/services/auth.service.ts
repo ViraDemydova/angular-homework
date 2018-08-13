@@ -71,16 +71,6 @@ export class AuthService {
     }
   }
 
-  public isLocked() {
-    const user = this.getCurrentUser();
-    this.checkCurrentUser().subscribe(item => {
-      // not getting value here: Observable not working here.
-      this.existingLockedUser = item.currentUser;
-
-      return user.login === this.existingLockedUser ? true : false;
-    });
-  }
-
   checkCurrentUser(): Observable<any> {
     const id = 1;
     const url = `${BASE_URL}` + '/' + id;
