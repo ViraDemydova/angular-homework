@@ -80,8 +80,13 @@ export class AuthService {
       }));
   }
 
-  public getCurrentUser() {
+  getCurrentUser() {
    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     return currentUser;
   }
+
+  getToken(): string {
+    return localStorage.getItem('tokenKey');
+  }
+
 }
