@@ -94,7 +94,7 @@
     },
     {
       "id": 16,
-      "title": "Video Course ",
+      "title": "Video Course",
       "createDate": "2016-02-01 12:00:00",
       "duration": 20,
       "authors": [],
@@ -136,22 +136,6 @@
       "topRated": true
     },
     {
-      "id": 24,
-      "title": "XXX4",
-      "createDate": "2018-08-06T10:42:26.253Z",
-      "duration": "333333333333",
-      "description": "XXX4",
-      "authors": []
-    },
-    {
-      "id": 26,
-      "title": "XXX6",
-      "createDate": "2018-08-06T14:12:48.533Z",
-      "duration": null,
-      "description": "tokenKey",
-      "authors": []
-    },
-    {
       "id": 29,
       "title": "XXX7800 ",
       "createDate": "2018-08-08T08:53:36.055Z",
@@ -173,6 +157,22 @@
       "createDate": "2018-08-13T14:13:32.664Z",
       "duration": "222",
       "description": "xxx",
+      "authors": []
+    },
+    {
+      "id": 38,
+      "title": "XXX2",
+      "createDate": "2018-08-14T08:24:49.618Z",
+      "duration": "333333333333",
+      "description": "xxxx",
+      "authors": []
+    },
+    {
+      "id": 39,
+      "title": "vera",
+      "createDate": "2018-08-14T08:41:13.623Z",
+      "duration": "333333333333",
+      "description": "ffffffffffffffffffff",
       "authors": []
     }
   ]

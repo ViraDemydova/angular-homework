@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../loader/services/loader.service';
-import { SharedService } from '../core/services/shared.service';
 import { UserEntityItem } from '../users/models/user-entity-item.model';
 import { Subscription } from 'rxjs/Rx';
 import { UserEntityItemService } from '../users/services/user-entity-item.service';
@@ -13,10 +12,11 @@ import { UserEntityItemService } from '../users/services/user-entity-item.servic
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   user: UserEntityItem;
   login: string;
   password: string;
+  private usersCreateSubscription: Subscription;
 
   constructor(
               private router: Router,
@@ -29,17 +29,23 @@ export class LoginComponent implements OnInit {
   }
 
   init(): void {
-    this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
+    this.usersCreateSubscription = this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
       this.user = res;
     });
+    if (this.user.tokenKey.length !== 0 ) {
+      this.router.navigate(['landing-page']);
+    } else {
+      return;
+    }
   }
 
   onLogin() {
+    this.showLoader();
     this.serviceAuth.login(this.login, this.password)
       .subscribe(
         data => {
           if (this.login === this.user.login && this.password === this.user.password) {
-            this.showLoader();
+            this.hideLoader();
             this.router.navigate(['landing-page']);
           } else {
             return;
@@ -73,5 +79,11 @@ export class LoginComponent implements OnInit {
 
   private hideLoader(): void {
     this.loaderService.hide();
+  }
+
+  ngOnDestroy(): void {
+    if (this.usersCreateSubscription) {
+      this.usersCreateSubscription.unsubscribe();
+    }
   }
 }

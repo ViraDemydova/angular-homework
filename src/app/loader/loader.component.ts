@@ -9,7 +9,6 @@ import { LoaderState } from './models/loader.model';
   styleUrls: ['loader.component.css']
 })
 export class LoaderComponent implements OnInit, OnDestroy {
-
   show = false;
   private subscription: Subscription;
 

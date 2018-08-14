@@ -1,14 +1,13 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../core/services/auth.service';
 import {CoursesListItemService} from '../courses/services/courses-list-item.service';
-import { AddEditPageComponent } from '../courses/components/add-edit-page/add-edit-page.component';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit, OnChanges {
+export class LandingComponent implements OnInit {
   searchText: string;
   newItem: any;
 
@@ -16,12 +15,7 @@ export class LandingComponent implements OnInit, OnChanges {
               private coursesListService: CoursesListItemService) {
   }
 
-  ngOnInit() {
-  }
-
-  ngOnChanges() {
-
-  }
+  ngOnInit() {}
 
   IsAuth() {
     console.log('IsAuthenticated from landing page:', this.serviceAuth.isAuthenticated());

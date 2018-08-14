@@ -26,7 +26,8 @@ export class CoursesListItemComponent implements OnInit, OnChanges {
   title: string;
   state: boolean;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router) {
     //this.router.events.subscribe((event: RouterEvent) => {
      // console.log(event);
     //});

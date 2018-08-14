@@ -49,32 +49,40 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   init(): void {
+    this.showLoader();
     this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
       this.listItems = res;
+      this.hideLoader();
     });
     this.usersCreateSubscription.add(this.sub);
   }
 
   onDeleteCourse(id: string): void {
+    this.showLoader();
     this.sub = this.coursesListService.deleteItem(id).subscribe(() => {
       this.init();
+      this.hideLoader();
     });
   }
 
   public onSearch(queryString: string): void {
+    this.showLoader();
     this.sub = this.coursesListService.searchTextWithParams(queryString, this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
         this.listItems = res;
+        this.hideLoader();
       },
       (error: HttpErrorResponse) => console.log(error)
     );
   }
 
   onLoadMore(): void {
+    this.showLoader();
     if (this.listItems.length > 0 && this.listItems.length <= 10) {
       this.sub = this.coursesListService.getCourseListItems(this.pageData.nextPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
           this.text = 'LOAD MORE...';
           this.pageData.nextPage++;
           this.listItems = res;
+          this.hideLoader();
         },
         (error: HttpErrorResponse) => console.log(error));
     }
@@ -83,6 +91,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
           this.listItems = res;
           this.text = 'We\'re backed to the first page...';
           this.pageData.nextPage = stateEnum.NEXT_PAGE;
+          this.hideLoader();
         },
         (error: HttpErrorResponse) => console.log(error));
     }
