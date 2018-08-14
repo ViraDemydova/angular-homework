@@ -31,12 +31,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   init(): void {
     this.usersCreateSubscription = this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
       this.user = res;
+      //TODO: add check if user exists
+      //if (this.user.tokenKey.length !== 0 ) {
+        //this.router.navigate(['landing-page']);
+      //} else {
+        //return;
+     // }
     });
-    if (this.user.tokenKey.length !== 0 ) {
-      this.router.navigate(['landing-page']);
-    } else {
-      return;
-    }
   }
 
   onLogin() {
