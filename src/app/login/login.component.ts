@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../loader/services/loader.service';
-import { UserEntityItem } from '../users/models/user-entity-item.model';
+import {UserEntityItem, UserModel} from '../users/models/user-entity-item.model';
 import { Subscription } from 'rxjs/Rx';
 import { UserEntityItemService } from '../users/services/user-entity-item.service';
 
@@ -14,6 +14,7 @@ import { UserEntityItemService } from '../users/services/user-entity-item.servic
 })
 export class LoginComponent implements OnInit, OnDestroy {
   user: UserEntityItem;
+  newUser: UserEntityItem = new UserModel();
   login: string;
   password: string;
   private usersCreateSubscription: Subscription;
@@ -32,11 +33,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.usersCreateSubscription = this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
       this.user = res;
       //TODO: add check if user exists
-      //if (this.user.tokenKey.length !== 0 ) {
-        //this.router.navigate(['landing-page']);
-      //} else {
-        //return;
-     // }
+      if (this.serviceAuth.getToken() === 'app_token') {
+        this.router.navigate(['landing-page']);
+      } else {
+        return;
+      }
     });
   }
 
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           console.log('error');
           this.serviceAuth.logout();
         });
+    console.log(this.newUser);
   }
 
   public onRetrieve() {
