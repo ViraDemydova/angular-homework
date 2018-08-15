@@ -21,6 +21,7 @@ import { CommunicatorService } from './core/services/communicator.service';
 import { AuthService } from './core/services/auth.service';
 import { CanActivateGuard } from './core/guards/canActivateGuard';
 import { SharedService } from './core/services/shared.service';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
@@ -28,7 +29,8 @@ import { SharedService } from './core/services/shared.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,17 @@
                     <a [routerLink]="" (click)="isAuth()">Is auth</a><br>
                     <a [routerLink]="" (click)="onGetUserInfo()">User info</a>
                   </div>
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Current State</h5>
+                      <ul>
+                        <li><strong>isAuthenticated</strong> - {{isAuthenticated}}</li>
+                        <li><strong>user.email</strong> - {{ user?.email || 'null'}}</li>
+                        <li><strong>user.token</strong> - {{ user?.token || 'null'}}</li>
+                        <li><strong>errorMessage</strong> - {{ errorMessage || 'null'}}</li>
+                      </ul>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
