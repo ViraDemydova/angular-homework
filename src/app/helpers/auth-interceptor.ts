@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {AuthService} from "../core/services/auth.service";
+import { AuthService } from '../core/services/auth.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -9,10 +9,10 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private injector: Injector) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
-    const tokenKey: string = this.authService.getToken();
+    const token: string = this.authService.getToken();
     request = request.clone({
       setHeaders: {
-        'Authorization': `Bearer ${tokenKey}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     });

@@ -23,7 +23,7 @@ export function reducer(state = initialState, action: All): State {
         ...state,
         isAuthenticated: true,
         user: {
-          tokenKey: action.payload.tokenKey,
+          token: action.payload.token,
           login: action.payload.login
         },
         errorMessage: null
@@ -42,7 +42,7 @@ export function reducer(state = initialState, action: All): State {
         ...state,
         isAuthenticated: true,
         user: {
-          tokenKey: action.payload.tokenKey,
+          token: action.payload.token,
           login: action.payload.login
         },
         errorMessage: null

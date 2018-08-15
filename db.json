@@ -4,26 +4,35 @@
       "id": 1,
       "login": "test@gmail.com",
       "password": "1",
-      "tokenKey": "app_token"
+      "token": "app_token"
     },
     {
-      "id": 2,
-      "login": "user@gmail.com",
-      "password": "2"
+      "login": "test@gmail.com",
+      "password": "1",
+      "id": 2
     },
     {
+      "login": "test@gmail.com",
+      "password": "1",
       "id": 3
     },
     {
+      "login": "test@gmail.com",
+      "password": "1",
       "id": 4
     },
     {
+      "password": "test@gmail.com1",
       "id": 5
     },
     {
+      "login": "test@gmail.com",
+      "password": "1",
       "id": 6
     },
     {
+      "login": "test@gmail.com",
+      "password": "1",
       "id": 7
     },
     {

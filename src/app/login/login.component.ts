@@ -19,8 +19,6 @@ import { AppState, selectAuthState } from '../store/states';
 export class LoginComponent implements OnInit {
   //user: UserEntityItem;
   user: UserEntityItem = new UserModel();
-  login: string;
-  password: string;
   getState: Observable<any>;
   errorMessage: string | null;
   private usersCreateSubscription: Subscription;
@@ -29,8 +27,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private serviceAuth: AuthService,
               private loaderService: LoaderService,
-              private userEntityService: UserEntityItemService,
-              private store: Store<State>) {
+              //private userEntityService: UserEntityItemService,
+              private store: Store<AppState>) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -76,12 +74,13 @@ export class LoginComponent implements OnInit {
        // this.store.dispatch(new Login(payload));
   //}
 
-  onLogin() {
+  onLogin(): void {
     //this.showLoader();
     const payload = {
       login: this.user.login,
-      password: this.user.password
+      password: this.user.password,
     };
+    console.log('useeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer', payload.login, payload.password);
     this.store.dispatch(new Login(payload));
   }
 

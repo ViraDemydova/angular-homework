@@ -20,8 +20,14 @@ export class AuthService {
 
 
   getToken(): string {
-    return localStorage.getItem('tokenKey');
+    return localStorage.getItem('token');
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.isUserAuthenticated = false;
+  }
+
 
   //login(login: string, password: string) {
     //return this.http.get<any>('http://localhost:3000/users')
@@ -38,7 +44,8 @@ export class AuthService {
 
   login(login: string, password: string): Observable<any> {
     const url = `${BASE_URL}/users`;
-    return this.http.post<UserEntityItem>(url, {login, password});
+    const token: 'app_token';
+    return this.http.post<UserEntityItem>(url, { login, password, token });
   }
 
   signIn(login: string, password: string): Observable<UserEntityItem> {
@@ -56,18 +63,13 @@ export class AuthService {
     //  }));
  // }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.isUserAuthenticated = false;
-  }
-
   getUserInfo(id: string)  {
     return this.http.get<string>(`${BASE_URL}/${id}`);
   }
 
 
   retrieveLocalStorage() {
-    const storedToken = localStorage.getItem('currentUser');
+    const storedToken = localStorage.getItem('token');
     if (!storedToken) {
       throw new Error('no token found');
     }
@@ -95,7 +97,7 @@ export class AuthService {
   }
 
   getCurrentUser() {
-   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+   const currentUser = JSON.parse(localStorage.getItem('token'));
     return currentUser;
   }
 

@@ -6,8 +6,12 @@ import { Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import {
   AuthActionTypes,
-  Login, LoginSuccess, LoginFailure,
-  SignUp, SignUpSuccess, SignUpFailure,
+  Login,
+  LoginSuccess,
+  LoginFailure,
+  SignUp,
+  SignUpSuccess,
+  SignUpFailure,
   LogOut
 } from '../actions/auth.actions';
 import {catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -33,7 +37,7 @@ export class AuthEffects {
         return this.authService.login(payload.login, payload.password)
           .pipe (
             map((user) => {
-              return new LoginSuccess({tokenKey: user.tokenKey, login: payload.login});
+              return new LoginSuccess({token: user.token, login: payload.login});
             }),
             catchError((error) => {
               return Observable.of(new LoginFailure({ error: error }));
@@ -46,7 +50,7 @@ export class AuthEffects {
   LoginSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      localStorage.setItem('token', user.payload.tokenKey);
+      localStorage.setItem('token', user.payload.token);
       this.router.navigate(['landing-page']);
     })
   );
@@ -65,7 +69,7 @@ export class AuthEffects {
         return this.authService.login(payload.login, payload.password)
           .pipe (
             map((user) => {
-              return new LoginSuccess({tokenKey: user.tokenKey, login: payload.login});
+              return new LoginSuccess({token: user.token, login: payload.login});
             }),
             catchError((error) => {
               return Observable.of(new LoginFailure({ error: error }));
@@ -78,7 +82,7 @@ export class AuthEffects {
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
-      localStorage.setItem('tokenKey', user.payload.tokenKey);
+      localStorage.setItem('token', user.payload.token);
       this.router.navigateByUrl('/');
     })
   );
@@ -92,7 +96,7 @@ export class AuthEffects {
   public LogOut: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGOUT),
     tap((user) => {
-      localStorage.removeItem('tokenKey');
+      localStorage.removeItem('token');
     })
   );
 
