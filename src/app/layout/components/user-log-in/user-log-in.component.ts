@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
+
+import { AuthService } from '../../../core/services/auth.service';
 import { SharedService } from '../../../core/services/shared.service';
-import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-user-log-in',
@@ -10,16 +12,16 @@ import {Subscription} from "rxjs/Rx";
   styleUrls: ['./user-log-in.component.css']
 })
 export class UserLogInComponent implements OnInit {
-  login: string;
-  private usersCreateSubscription: Subscription;
+  login: Observable<string>;
 
   constructor(
     private serviceAuth: AuthService,
     private sharedService: SharedService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.sharedService.user$.subscribe(user => this.login = user);
+    this.login = this.sharedService.user$;
   }
 
   public onLogin() {
