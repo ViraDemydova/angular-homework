@@ -1,1 +1,4 @@
-<button class="btn btn-secondary" (click)="onLogout()" ><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout</button>
+<span>Please, login <em>{{login}}!</em></span>&nbsp;&nbsp;
+<a [routerLink]="['/login']" class="link">Log in</a>&nbsp;&nbsp;
+<a [routerLink]="['/sign-up']" class="link">Sign up</a>
+

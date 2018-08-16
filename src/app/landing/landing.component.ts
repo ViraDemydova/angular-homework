@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../core/services/auth.service';
 import {CoursesListItemService} from '../courses/services/courses-list-item.service';
-import {Store} from "@ngrx/store";
-import {AppState, selectAuthState} from "../store/states";
-import {Observable} from "rxjs/Rx";
+import { Store } from '@ngrx/store';
+import { AppState, selectAuthState } from '../store/states';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-landing',
@@ -27,14 +27,10 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
+      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.isAuthenticated);
       this.user = state.user;
       this.errorMessage = state.errorMessage;
     });
-  }
-
-  IsAuth() {
-    console.log('IsAuthenticated from landing page:', this.serviceAuth.isAuthenticated());
-    return this.serviceAuth.isAuthenticated();
   }
 
   onAddCourse() {

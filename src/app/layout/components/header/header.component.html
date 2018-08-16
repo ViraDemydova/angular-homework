@@ -4,8 +4,13 @@
       <app-logo></app-logo>
       <div class="col-sm-9">
       <div class="float-right">
-        <app-user-log-in></app-user-log-in>
-        <app-user-log-off></app-user-log-off>
+        <div *ngIf="isAuthenticated; then showLogIn; else showLogOut;"></div>
+        <ng-template #showLogIn>
+          <app-user-log-in></app-user-log-in>
+        </ng-template>
+        <ng-template #showLogOut>
+          <app-user-log-off></app-user-log-off>
+        </ng-template>
       </div>
     </div>
     </div>

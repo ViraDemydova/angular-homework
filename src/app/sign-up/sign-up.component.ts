@@ -6,11 +6,11 @@ import { SignUp } from '../store/actions/auth.actions';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   user: UserEntityItem = new UserModel();
   getState: Observable<any>;
   errorMessage: string | null;

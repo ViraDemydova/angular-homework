@@ -243,6 +243,15 @@ footer{
   z-index: 11;
 }
 
+.link {
+  color: white;
+  text-decoration: underline;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
   .float-right {

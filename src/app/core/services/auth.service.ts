@@ -23,10 +23,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.isUserAuthenticated = false;
-  }
+  //logout() {
+    //localStorage.removeItem('token');
+   // this.isUserAuthenticated = false;
+  //}
 
 
   //login(login: string, password: string) {
@@ -44,13 +44,14 @@ export class AuthService {
 
   login(login: string, password: string): Observable<any> {
     const url = `${BASE_URL}/users`;
-    const token: 'app_token';
-    return this.http.post<UserEntityItem>(url, { login, password, token });
+    const token = 'app_token';
+    return this.http.post<UserEntityItem>(url, { login, password, token});
   }
 
-  signIn(login: string, password: string): Observable<UserEntityItem> {
+  signUp(login: string, password: string): Observable<UserEntityItem> {
     const url = `${BASE_URL}/register`;
-    return this.http.post<UserEntityItem>(url, {login, password});
+    const token = 'app_token';
+    return this.http.post<UserEntityItem>(url, {login, password, token});
   }
 
   //getAuthToken(): Observable<boolean> {
@@ -77,15 +78,15 @@ export class AuthService {
   }
 
 
-  isAuthenticated(): boolean {
-    if (this.isUserAuthenticated) {
-      console.log('user is Authenticated', this.isUserAuthenticated);
-      return true;
-    } else {
-      console.log('user is UNAuthenticated, failed to initialize!!!!', this.isUserAuthenticated);
-      return false;
-    }
-  }
+ // isAuthenticated(): boolean {
+   // if (this.isUserAuthenticated) {
+    //  console.log('user is Authenticated', this.isUserAuthenticated);
+    //  return true;
+    //} else {
+    //  console.log('user is UNAuthenticated, failed to initialize!!!!', this.isUserAuthenticated);
+   //   return false;
+   // }
+ // }
 
   checkCurrentUser(): Observable<any> {
     const id = 1;

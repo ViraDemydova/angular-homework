@@ -80,7 +80,6 @@ export class LoginComponent implements OnInit {
       login: this.user.login,
       password: this.user.password,
     };
-    console.log('useeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer', payload.login, payload.password);
     this.store.dispatch(new Login(payload));
   }
 
@@ -90,14 +89,6 @@ export class LoginComponent implements OnInit {
 
   public onGetUserInfo(id) {
     this.serviceAuth.getUserInfo(id);
-  }
-
-  public onLogout() {
-    this.serviceAuth.logout();
-  }
-
-  public isAuth() {
-    this.serviceAuth.isAuthenticated();
   }
 
   private showLoader(): void {

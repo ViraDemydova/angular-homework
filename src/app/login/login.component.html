@@ -1,3 +1,4 @@
+<script src="../sign-up/sign-up.component.ts"></script>
 <app-loader></app-loader>
 <div class="outer">
   <div class="outer-inner">
@@ -21,24 +22,27 @@
                     <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password">
                   </div>
                   <button class="btn btn-default" (click)="onLogin()">Login</button>
-                  <div class="form-group">
-                    <a [routerLink]="" (click)="onRetrieve()">Retrive</a><br>
-                    <a [routerLink]="" (click)="onLogout()">Wipes fake user info and token from local storage</a><br>
-                    <a [routerLink]="" (click)="isAuth()">Is auth</a><br>
-                    <a [routerLink]="" (click)="onGetUserInfo()">User info</a>
-                  </div>
-                  <div class="card" style="width: 18rem;">
+                  <p>
+                    <span>Don't have an account?&nbsp;</span>
+                    <a [routerLink]="['/sign-up']">Sign up!</a>
+                  </p>
+                  <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Current State</h5>
                       <ul>
                         <li><strong>isAuthenticated</strong> - {{isAuthenticated}}</li>
-                        <li><strong>user.email</strong> - {{ user?.email || 'null'}}</li>
+                        <li><strong>user.login</strong> - {{ user?.login || 'null'}}</li>
                         <li><strong>user.token</strong> - {{ user?.token || 'null'}}</li>
                         <li><strong>errorMessage</strong> - {{ errorMessage || 'null'}}</li>
                       </ul>
                     </div>
                   </div>
                 </form>
+                <div *ngIf="errorMessage">
+                  <div class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AddEditPageComponent } from './courses/components/add-edit-page/add-edit-page.component';
 import { CoreModule } from './core/core.module';
 import { CanActivateGuard } from './core/guards/canActivateGuard';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthEffects } from './store/effects/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'landing-page', component: LandingComponent, canActivate: [CanActivateGuard] },
   //{ path: 'add-page', component: AddPageComponent, canActivate: [CanActivateGuard] },
   //{ path: 'edit-page/:id/:IsEditPageEnabled', component: EditPageComponent, data: { 'security_key': 'key_here' }, canActivate: [CanActivateGuard] },
-  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'add-page', component: AddEditPageComponent, canActivate: [CanActivateGuard] },
   { path: 'edit-page/:id/:state', component: AddEditPageComponent,  canActivate: [CanActivateGuard] },

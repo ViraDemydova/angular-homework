@@ -26,6 +26,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/store": "^5.2.0",
+    "@ngrx/store-devtools": "^3.2.4",
     "@types/uuid": "^3.4.3",
     "angular-font-awesome": "^3.1.2",
     "angular-lint": "0.0.2",

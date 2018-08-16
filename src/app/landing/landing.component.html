@@ -7,7 +7,7 @@
   <main>
     <div class="container">
       <div class="row">
-        <app-breadcrumbs *ngIf="IsAuth()"></app-breadcrumbs>
+        <app-breadcrumbs *ngIf="isAuthenticated"></app-breadcrumbs>
       </div>
       <div class="row">
         <div class="col-sm-12 no-gutters">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <app-courses-page [searchText]="searchText" [isSearchAvailable]="searchText?.length > 0"></app-courses-page>
-    <app-user></app-user>
+    <app-user *ngIf="isAuthenticated"></app-user>
   </main>
 </div>
 <footer class="footer">

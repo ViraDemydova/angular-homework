@@ -66,13 +66,13 @@ export class AuthEffects {
       ofType(AuthActionTypes.SIGNUP),
       map((action: SignUp) => action.payload),
       switchMap(payload => {
-        return this.authService.login(payload.login, payload.password)
+        return this.authService.signUp(payload.login, payload.password)
           .pipe (
             map((user) => {
-              return new LoginSuccess({token: user.token, login: payload.login});
+              return new SignUpSuccess({token: user.token, login: payload.login});
             }),
             catchError((error) => {
-              return Observable.of(new LoginFailure({ error: error }));
+              return Observable.of(new SignUpFailure({ error: error }));
             })
           );
       })
@@ -83,7 +83,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
       localStorage.setItem('token', user.payload.token);
-      this.router.navigateByUrl('/');
+      this.router.navigate(['landing-page']);
     })
   );
 
@@ -97,6 +97,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGOUT),
     tap((user) => {
       localStorage.removeItem('token');
+      this.router.navigate(['/login']);
     })
   );
 
