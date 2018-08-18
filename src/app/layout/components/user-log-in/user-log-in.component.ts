@@ -3,9 +3,9 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/services/shared.service';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/states';
-import { LogOut } from '../../../store/actions/auth.actions';
 import { Observable } from 'rxjs';
+import { AppState } from '../../../core/store/states';
+import { LogOut } from '../../../core/store/actions/auth.actions';
 
 @Component({
   selector: 'app-user-log-in',

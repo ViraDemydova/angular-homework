@@ -1,5 +1,5 @@
-import { UserEntityItem } from '../../users/models/user-entity-item.model';
 import { All, AuthActionTypes } from '../actions/auth.actions';
+import { UserEntityItem } from '../../../users/models/user-entity-item.model';
 
 export interface State {
   // is a user authenticated?

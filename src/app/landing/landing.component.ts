@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../core/services/auth.service';
-import {CoursesListItemService} from '../courses/services/courses-list-item.service';
+import { Component, OnInit } from '@angular/core';
+import { CoursesListItemService } from '../courses/services/courses-list-item.service';
 import { Store } from '@ngrx/store';
-import { AppState, selectAuthState } from '../store/states';
 import { Observable } from 'rxjs';
+import { AppState, selectAuthState } from '../core/store/states';
+import { CoursesState } from '../courses/store/states';
+import { stateEnum } from '../courses/components/courses-page/enum';
+import { LoadSuccess } from '../courses/store/actions/course.actions';
+import { CoursesListItem } from '../courses/models/courses-list-item.model';
 
 @Component({
   selector: 'app-landing',
@@ -18,13 +21,21 @@ export class LandingComponent implements OnInit {
   user = null;
   errorMessage = null;
 
-  constructor(private serviceAuth: AuthService,
+  constructor(
               private coursesListService: CoursesListItemService,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private storeCourse: Store<CoursesState>) {
     this.getState = this.store.select(selectAuthState);
   }
 
   ngOnInit() {
+    this.coursesListService.getCourseListItems(stateEnum.DEFAULT_PAGE.toString(), stateEnum.DEFAULT_START_COUNT.toString(), stateEnum.DEFAULT_LOAD_COUNT.toString(), 'createDate').subscribe((res: CoursesListItem[]) => {
+      //this.listItems = res;
+      // this.hideLoader();
+      //this.store.dispatch();
+      console.log('res', res);
+      this.storeCourse.dispatch(new LoadSuccess(res));
+    });
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.isAuthenticated);
@@ -32,6 +43,14 @@ export class LandingComponent implements OnInit {
       this.errorMessage = state.errorMessage;
     });
   }
+//init(): void {
+  // this.showLoader();
+  //this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
+  //  this.listItems = res;
+  //  this.hideLoader();
+  // });
+  // this.usersCreateSubscription.add(this.sub);
+  //}
 
   onAddCourse() {
     this.coursesListService.addItem(this.newItem);

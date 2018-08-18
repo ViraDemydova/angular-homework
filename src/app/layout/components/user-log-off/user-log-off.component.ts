@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../../store/states';
+import { AppState } from '../../../core/store/states';
 
 @Component({
   selector: 'app-user-log-off',

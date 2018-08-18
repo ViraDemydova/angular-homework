@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import {AppState, selectAuthState} from "../../../store/states";
-import {LogOut} from "../../../store/actions/auth.actions";
+import { AppState, selectAuthState } from '../../../core/store/states';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getState.subscribe((state) => {
+   this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxheader', state.isAuthenticated);
       this.user = state.user;

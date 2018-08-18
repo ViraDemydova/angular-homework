@@ -10,6 +10,8 @@ import { CanActivateGuard } from './guards/canActivateGuard';
 import { SharedService } from './services/shared.service';
 import { CommunicatorService } from './services/communicator.service';
 import { AuthService } from './services/auth.service';
+import {StoreModule} from "@ngrx/store";
+import {reducersLoad} from "../courses/store/states";
 
 // В этом модуле регистрируем сервисы
 @NgModule({
@@ -17,7 +19,8 @@ import { AuthService } from './services/auth.service';
     CommonModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    RouterModule
+    RouterModule,
+    StoreModule.forFeature('course', reducersLoad)
   ],
   declarations: [
     BreadcrumbsComponent,

@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
-import { Action } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType} from '@ngrx/effects';
 import { Observable } from 'rxjs';
@@ -15,6 +13,7 @@ import {
   LogOut
 } from '../actions/auth.actions';
 import {catchError, map, switchMap, tap } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
 
 
 @Injectable({

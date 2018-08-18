@@ -4,11 +4,9 @@ import { Router } from '@angular/router';
 import { LoaderService } from '../loader/services/loader.service';
 import {UserEntityItem, UserModel} from '../users/models/user-entity-item.model';
 import {Observable, Subscription} from 'rxjs';
-import { UserEntityItemService } from '../users/services/user-entity-item.service';
 import { Store } from '@ngrx/store';
-import { State } from '../store/reducers/auth.reducers';
-import { Login } from '../store/actions/auth.actions';
-import { AppState, selectAuthState } from '../store/states';
+import { AppState, selectAuthState } from '../core/store/states';
+import { Login } from '../core/store/actions/auth.actions';
 
 
 @Component({

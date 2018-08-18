@@ -6,7 +6,6 @@
       <app-courses-list [listItems]="listItems"
                         (deleteCourse)="onDeleteCourse($event)">
       </app-courses-list>
-      <!-- TODO: создать метод в классе, а тут использовать его. -->
       <button class="btn btn-full btn-secondary" (click)="onLoadMore()" [disabled]="isSearchAvailable"><i class="fa fa-download" aria-hidden="true"></i> {{text}}{{pageData.nextPage}}</button>
   </div>
   <!-- ends course-list -->

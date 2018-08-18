@@ -5,6 +5,9 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoaderService } from '../../../loader/services/loader.service';
 import { stateEnum } from './enum';
+import { Store } from '@ngrx/store';
+import { coursesSelector, CoursesState } from '../../store/states';
+
 
 @Component({
   selector: 'app-courses-page',
@@ -20,7 +23,6 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
    startPage: stateEnum.DEFAULT_PAGE
   };
 
-  private usersCreateSubscription: Subscription;
   private sub: Subscription;
   // это свойство содержит текст поиска курса по названию
   @Input() searchText: any;
@@ -32,7 +34,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private coursesListService: CoursesListItemService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private storeCourse: Store<CoursesState>
   ) {}
 
   public ngOnInit(): void {
@@ -50,11 +53,11 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
   init(): void {
     this.showLoader();
-    this.usersCreateSubscription = this.coursesListService.getCourseListItems(this.pageData.startPage.toString(), this.pageData.countToStart.toString(), this.pageData.countToLoad.toString(), this.createDate).subscribe((res: CoursesListItem[]) => {
+    this.storeCourse.select(coursesSelector).subscribe((res: any) => {
+      console.log('xxxxxxxxxxxxxxx', this.listItems);
       this.listItems = res;
-      this.hideLoader();
+      console.log('xxxxxxxxxxxxxxx', this.listItems);
     });
-    this.usersCreateSubscription.add(this.sub);
   }
 
   onDeleteCourse(id: string): void {
@@ -106,8 +109,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.usersCreateSubscription) {
-      this.usersCreateSubscription.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
     }
   }
 }
