@@ -3,10 +3,13 @@ import { CoursesListItem } from '../../models/courses-list-item.model';
 
 export interface State {
   courses: CoursesListItem[];
+  // error message
+  errorMessage: string | null;
 }
 
 export const initialState: State = {
   courses: [],
+  errorMessage: null
 };
 
 export function reducerLoad(state = initialState, action: All): State {
@@ -16,7 +19,13 @@ export function reducerLoad(state = initialState, action: All): State {
         courses:  action.courses
       };
 
-      return Object.assign({}, state, stateChange);
+      return stateChange;
+    }
+    case CoursesActionTypes.LOAD_FAILURE: {
+      return {
+        ...state,
+        errorMessage: 'Error occurs while course loading'
+      };
     }
     default: {
       return state;

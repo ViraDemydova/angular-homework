@@ -16,6 +16,8 @@
     <div class="alert col-sm-12">NO DATA. FEEL FREE TO ADD A NEW COURSE</div>
   </div>
 </div>
-
-
-
+<div *ngIf="errorMessage">
+  <div class="alert alert-danger" role="alert">
+    {{errorMessage}}
+  </div>
+</div>

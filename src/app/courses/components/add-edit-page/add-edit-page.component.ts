@@ -5,6 +5,9 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import {Store} from "@ngrx/store";
+import {AddCourseState, courseAddSelector} from "./store/states";
+import {AddCourseSuccess} from "./store/actions/course.actions";
 
 @Component({
   selector: 'app-add-edit-page',
@@ -27,7 +30,8 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private courseService: CoursesListItemService) {}
+    private courseService: CoursesListItemService,
+    private storeCourse: Store<AddCourseState>) {}
 
   ngOnInit() {
     // Add Course
@@ -55,10 +59,18 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     } else {
       // донастраиваем то, что пользователь не вводит из формы
       this.newItem.createDate = new Date();
-      this.courseService.addItem(this.newItem).subscribe(() => {
-        // вернулись к списку курсов
-        this.router.navigate(['landing-page']);
+      this.courseService.addItem(this.newItem).subscribe((res: CoursesListItem) => {
+        console.log('res', res);
+        this.storeCourse.dispatch(new AddCourseSuccess(res));
       });
+      this.storeCourse.select(courseAddSelector).subscribe(res => {
+        this.router.navigate(['landing-page']);
+        console.log('add new courseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', res);
+      });
+      //this.courseService.addItem(this.newItem).subscribe(() => {
+        // вернулись к списку курсов
+        //this.router.navigate(['landing-page']);
+      //});
     }
   }
 

@@ -29,13 +29,6 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.coursesListService.getCourseListItems(stateEnum.DEFAULT_PAGE.toString(), stateEnum.DEFAULT_START_COUNT.toString(), stateEnum.DEFAULT_LOAD_COUNT.toString(), 'createDate').subscribe((res: CoursesListItem[]) => {
-      //this.listItems = res;
-      // this.hideLoader();
-      //this.store.dispatch();
-      console.log('res', res);
-      this.storeCourse.dispatch(new LoadSuccess(res));
-    });
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.isAuthenticated);

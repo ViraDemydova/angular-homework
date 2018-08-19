@@ -451,6 +451,30 @@
       "password": "1",
       "token": "app_token",
       "id": 76
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 77
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 78
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 79
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 80
     }
   ],
   "register": [
@@ -597,6 +621,18 @@
       "password": "1",
       "token": "app_token",
       "id": 24
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 25
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 26
     }
   ],
   "courses": [
@@ -756,6 +792,86 @@
       "createDate": "2018-08-14T08:41:13.623Z",
       "duration": "333333333333",
       "description": "ffffffffffffffffffff",
+      "authors": []
+    },
+    {
+      "id": 40,
+      "title": "New XXXXXX",
+      "createDate": "2018-08-19T10:27:46.296Z",
+      "duration": "333333333333",
+      "description": "New XXXXXX",
+      "authors": []
+    },
+    {
+      "id": 41,
+      "title": "xxxx",
+      "createDate": "2018-08-19T10:29:38.631Z",
+      "duration": "333333333333",
+      "description": "xxxx",
+      "authors": []
+    },
+    {
+      "id": 42,
+      "title": "XXX600",
+      "createDate": "2018-08-19T10:31:40.855Z",
+      "duration": "333333333333",
+      "description": "XXX600",
+      "authors": []
+    },
+    {
+      "id": 43,
+      "title": "new course 20000",
+      "createDate": "2018-08-19T10:41:08.255Z",
+      "duration": "333333333333",
+      "description": "new course 20000",
+      "authors": []
+    },
+    {
+      "id": 44,
+      "title": "XXX2",
+      "createDate": "2018-08-19T10:46:14.239Z",
+      "duration": "333333333333",
+      "description": "XXX2",
+      "authors": []
+    },
+    {
+      "id": 45,
+      "title": "XXX2",
+      "createDate": "2018-08-19T10:46:19.909Z",
+      "duration": "333333333333",
+      "description": "XXX2",
+      "authors": []
+    },
+    {
+      "id": 46,
+      "title": "test new item",
+      "createDate": "2018-08-19T10:46:47.271Z",
+      "duration": "333333333333",
+      "description": "Description:\n",
+      "authors": []
+    },
+    {
+      "id": 47,
+      "title": "test new item",
+      "createDate": "2018-08-19T10:47:49.820Z",
+      "duration": "333333333333",
+      "description": "test new item",
+      "authors": []
+    },
+    {
+      "id": 48,
+      "title": "test new item",
+      "createDate": "2018-08-19T10:52:25.644Z",
+      "duration": "333333333333",
+      "description": "test new item",
+      "authors": []
+    },
+    {
+      "id": 49,
+      "title": "XXX2",
+      "createDate": "2018-08-19T11:17:16.871Z",
+      "duration": "333333333333",
+      "description": "XXX2",
       "authors": []
     }
   ]

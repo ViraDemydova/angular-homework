@@ -7,6 +7,7 @@ import { LoaderService } from '../../../loader/services/loader.service';
 import { stateEnum } from './enum';
 import { Store } from '@ngrx/store';
 import { coursesSelector, CoursesState } from '../../store/states';
+import {LoadSuccess} from "../../store/actions/course.actions";
 
 
 @Component({
@@ -39,6 +40,13 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
+    this.coursesListService.getCourseListItems(stateEnum.DEFAULT_PAGE.toString(), stateEnum.DEFAULT_START_COUNT.toString(), stateEnum.DEFAULT_LOAD_COUNT.toString(), 'createDate').subscribe((res: CoursesListItem[]) => {
+      //this.listItems = res;
+      // this.hideLoader();
+      //this.store.dispatch();
+      console.log('res', res);
+      this.storeCourse.dispatch(new LoadSuccess(res));
+    });
     this.init();
     this.text = 'LOAD MORE...';
   }
@@ -53,9 +61,9 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
   init(): void {
     this.showLoader();
-    this.storeCourse.select(coursesSelector).subscribe((res: any) => {
-      console.log('xxxxxxxxxxxxxxx', this.listItems);
-      this.listItems = res;
+    this.storeCourse.select(coursesSelector).subscribe(res => {
+      this.listItems = res.course.courses;  console.log('xxxxxxxxxxxxxxx', this.listItems);
+      this.listItems = res.course.courses;
       console.log('xxxxxxxxxxxxxxx', this.listItems);
     });
   }
