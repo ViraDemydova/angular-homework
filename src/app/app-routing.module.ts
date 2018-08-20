@@ -8,12 +8,6 @@ import { AddEditPageComponent } from './courses/components/add-edit-page/add-edi
 import { CoreModule } from './core/core.module';
 import { CanActivateGuard } from './core/guards/canActivateGuard';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './core/store/states';
-import { AuthEffects } from './core/store/effects/auth.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {reducersLoad} from "./courses/store/states";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -39,12 +33,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CoreModule,
-    StoreModule.forRoot(reducers, {}),
-    //StoreModule.forRoot(reducersLoad, {}),
-    EffectsModule.forRoot([AuthEffects]),
     RouterModule.forRoot(routes, { useHash: true }),
-    StoreDevtoolsModule.instrument(),
   ],
   providers: [
     APP_PROVIDERS

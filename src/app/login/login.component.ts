@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from '../loader/services/loader.service';
 import {UserEntityItem, UserModel} from '../users/models/user-entity-item.model';
 import {Observable, Subscription} from 'rxjs';
-import { Store } from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import { AppState, selectAuthState } from '../core/store/states';
 import { Login } from '../core/store/actions/auth.actions';
 
@@ -25,52 +25,16 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private serviceAuth: AuthService,
               private loaderService: LoaderService,
-              //private userEntityService: UserEntityItemService,
               private store: Store<AppState>) {
-    this.getState = this.store.select(selectAuthState);
+    this.getState = this.store.pipe(select(selectAuthState));
   }
 
   ngOnInit() {
     //this.init();
-    this.getState.subscribe((state) => {
+    this.getState.subscribe(state => {
       this.errorMessage = state.errorMessage;
     });
   }
-
-  init(): void {
-    //this.usersCreateSubscription = this.userEntityService.checkCurrentUser().subscribe((res: UserEntityItem) => {
-     // this.user = res;
-      //TODO: add check if user exists
-     // if (this.serviceAuth.getToken() === 'app_token') {
-     //   this.router.navigate(['landing-page']);
-    //  } else {
-     //   return;
-    //  }
-   // });
-  }
-
-  //onLogin() {
-  //  this.showLoader();
-   // const payload = {
-   //   login: this.user.login,
-  //    password: this.user.password
-   // };
-    //this.serviceAuth.login(this.login, this.password)
-   //   .subscribe(
-      //  data => {
-       //   if (this.login === payload.login && this.password === payload.password) {
-       //     this.hideLoader();
-        //    this.router.navigate(['landing-page']);
-         // } else {
-         //   return;
-          //}
-       // },
-       // error => {
-       //   console.log('error');
-       //   this.serviceAuth.logout();
-       // });
-       // this.store.dispatch(new Login(payload));
-  //}
 
   onLogin(): void {
     //this.showLoader();

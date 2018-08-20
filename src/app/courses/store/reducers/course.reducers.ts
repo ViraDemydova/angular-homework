@@ -30,7 +30,7 @@ export function reducerLoad(state = initialState, action: All): State {
       };
     }
     case CoursesActionTypes.DELETE_SUCCESS: {
-      const updatedCourses = state.courses.filter((course) => course.id !== action.id);
+      const updatedCourses = state.courses.filter((course) => course !== action.course);
 
       const stateChange: any = {
         courses:  updatedCourses

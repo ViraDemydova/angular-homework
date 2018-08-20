@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, Effect, ofType} from '@ngrx/effects';
-import { Observable } from 'rxjs';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Observable, of } from 'rxjs';
 import {
   AuthActionTypes,
   Login,
@@ -12,8 +12,9 @@ import {
   SignUpFailure,
   LogOut
 } from '../actions/auth.actions';
-import {catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
+import {UserEntityItem} from "../../../users/models/user-entity-item.model";
 
 
 @Injectable({
@@ -24,11 +25,11 @@ export class AuthEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {}
 
   @Effect()
-  Login: Observable<any> = this.actions
+  Login: Observable<UserEntityItem> = this.actions
     .pipe (
       ofType(AuthActionTypes.LOGIN),
       map((action: Login) => action.payload),
@@ -46,21 +47,21 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  LoginSuccess: Observable<any> = this.actions.pipe(
+  LoginSuccess: Observable<UserEntityItem> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
-    tap((user) => {
+    tap(user => {
       localStorage.setItem('token', user.payload.token);
       this.router.navigate(['landing-page']);
     })
   );
-
+  // TODO: remove. useless effect
   @Effect({ dispatch: false })
   LoginFailure: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_FAILURE)
   );
 
   @Effect()
-  SignUp: Observable<any> = this.actions
+  SignUp: Observable<UserEntityItem> = this.actions
     .pipe (
       ofType(AuthActionTypes.SIGNUP),
       map((action: SignUp) => action.payload),
@@ -78,14 +79,15 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  SignUpSuccess: Observable<any> = this.actions.pipe(
+  SignUpSuccess: Observable<UserEntityItem> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
-    tap((user) => {
+    tap(user => {
       localStorage.setItem('token', user.payload.token);
       this.router.navigate(['landing-page']);
     })
   );
 
+  // TODO: remove. useless effect
   @Effect({ dispatch: false })
   SignUpFailure: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_FAILURE)
@@ -94,7 +96,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   public LogOut: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGOUT),
-    tap((user) => {
+    tap(user => {
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
     })

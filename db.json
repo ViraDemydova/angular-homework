@@ -487,6 +487,12 @@
       "password": "1",
       "token": "app_token",
       "id": 82
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 83
     }
   ],
   "register": [

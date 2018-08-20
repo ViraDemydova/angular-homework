@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserEntityItem, UserModel } from '../users/models/user-entity-item.model';
-import { Store } from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState, selectAuthState } from '../core/store/states';
 import { SignUp } from '../core/store/actions/auth.actions';
@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
   errorMessage: string | null;
 
   constructor(private store: Store<AppState>) {
-    this.getState = this.store.select(selectAuthState);
+    this.getState = this.store.pipe(select(selectAuthState));
   }
 
   ngOnInit() {

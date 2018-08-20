@@ -5,7 +5,7 @@ import { CoursesListItemService } from '../../services/courses-list-item.service
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Store } from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import { AddCourseState, courseAddSelector } from './store/add-course/states';
 import { AddCourseSuccess } from './store/add-course/actions/course.actions';
 import { EditCourseSuccess } from './store/edit-course/actions/course.actions';
@@ -56,7 +56,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
           // вернулись к списку курсов
           this.router.navigate(['landing-page']);
         });
-      this.storeCourse.select(courseEditSelector).subscribe(res => {
+      this.storeCourse.pipe(select(courseEditSelector)).subscribe(res => {
         this.router.navigate(['landing-page']);
       });
     } else {
@@ -65,7 +65,8 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       this.courseService.addItem(this.newItem).subscribe((res: CoursesListItem) => {
         this.storeCourse.dispatch(new AddCourseSuccess(res));
       });
-      this.storeCourse.select(courseAddSelector).subscribe(res => {
+      // TODO: this.storeCourse.dispatch(new AddCourseSuccess());
+      this.storeCourse.pipe(select(courseAddSelector)).subscribe(res => {
         this.router.navigate(['landing-page']);
       });
     }

@@ -24,7 +24,7 @@ export class LoadFailure implements Action {
 export class DeleteSuccess implements Action {
   readonly type = CoursesActionTypes.DELETE_SUCCESS;
 
-  constructor(public id: number) {
+  constructor(public course: CoursesListItem) {
   }
 }
 

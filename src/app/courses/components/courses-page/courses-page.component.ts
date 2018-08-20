@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoaderService } from '../../../loader/services/loader.service';
 import { stateEnum } from './enum';
-import { Store } from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import { coursesSelector, CoursesState } from '../../store/states';
 import { DeleteSuccess, LoadSuccess } from '../../store/actions/course.actions';
 
@@ -57,14 +57,14 @@ export class CoursesPageComponent implements OnInit, OnChanges, OnDestroy {
 
   init(): void {
     this.showLoader();
-    this.storeCourse.select(coursesSelector).subscribe(res => {
+    this.storeCourse.pipe(select(coursesSelector)).subscribe(res => {
       this.listItems = res.course.courses;
     });
     this.hideLoader();
   }
 
   onDeleteCourse(id: string): void {
-   this.coursesListService.deleteItem(id).subscribe((res: number) =>  {
+   this.coursesListService.deleteItem(id).subscribe((res: CoursesListItem) =>  {
       this.storeCourse.dispatch(new DeleteSuccess(res));
     });
   }

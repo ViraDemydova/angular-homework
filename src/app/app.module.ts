@@ -22,6 +22,11 @@ import { AuthService } from './core/services/auth.service';
 import { CanActivateGuard } from './core/guards/canActivateGuard';
 import { SharedService } from './core/services/shared.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './core/store/states';
+import { AuthEffects } from './core/store/effects/auth.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -33,6 +38,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     SignUpComponent
   ],
   imports: [
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument(),
+
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -46,13 +55,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     LandingModule,
     AppRoutingModule
   ],
-  exports: [
-    CoreModule,
-    SharedModule,
-    RouterModule,
-    LandingModule,
-    CoursesModule
-  ],
+  exports: [],
   providers: [
     CoursesListItemService,
     CommunicatorService,
