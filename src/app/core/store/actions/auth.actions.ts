@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 
-
 export enum AuthActionTypes {
   LOGIN = '[Auth] Login',
   LOGIN_SUCCESS = '[Auth] Login Success',
@@ -8,11 +7,13 @@ export enum AuthActionTypes {
   SIGNUP = '[Auth] Signup',
   SIGNUP_SUCCESS = '[Auth] Signup Success',
   SIGNUP_FAILURE = '[Auth] Signup Failure',
-  LOGOUT = '[Auth] Logout',
+  LOGOUT = '[Auth] Logout'
 }
 
 export class Login implements Action {
   readonly type = AuthActionTypes.LOGIN;
+  // Почему тут везде any? Ты же знаешь какими данными ты будешь пользоваться.
+  // Надо хотя бы интерфесы позаводить. Any дает очень широкие права. Ничего не проверяет.
   constructor(public payload: any) {}
 }
 
@@ -45,7 +46,6 @@ export class LogOut implements Action {
   readonly type = AuthActionTypes.LOGOUT;
 }
 
-
 export type All =
   | Login
   | LoginSuccess
@@ -54,5 +54,3 @@ export type All =
   | SignUpSuccess
   | SignUpFailure
   | LogOut;
-
-
