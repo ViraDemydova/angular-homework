@@ -46,13 +46,14 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     LandingModule,
     AppRoutingModule
   ],
-  exports: [
-    CoreModule,
-    SharedModule,
-    RouterModule,
-    LandingModule,
-    CoursesModule
-  ],
+  // Зачем тут экспорты? Это же рутовый модуль. Кроме него, больше никто не использует эти модули
+  // exports: [
+  //   CoreModule,
+  //   SharedModule,
+  //   RouterModule,
+  //   LandingModule,
+  //   CoursesModule
+  // ],
   providers: [
     CoursesListItemService,
     CommunicatorService,

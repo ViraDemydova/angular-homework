@@ -50,6 +50,20 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   }
 
   onSave() {
+    // У компонента не должно быть взаимодействия с courseServices.
+    // Он должен взаимодействовать только со стором: либо читать с него данные
+    // с помощью селектора, либо диспатчить событие.
+    // В идеале код ниже должен выглядеть так
+    // if (this.usersIdSubscription) {
+    //   this.storeCourse.dispatch(new AddCourse(this.listItem));
+    // }
+    // else {
+    //   this.storeCourse.dispatch(new EditCourse(this.listItem));
+    // }
+    // и все.
+    // Обращение к сервису должно происходить в эффектах.
+    // Но по требованию к домашке не сказано использовать эффекты.
+
     if (this.usersIdSubscription) {
       this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
           this.storeCourse.dispatch(new EditCourseSuccess(res));
