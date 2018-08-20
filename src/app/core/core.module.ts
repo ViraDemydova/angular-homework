@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { reducersLoad } from '../courses/store/states';
-import { reducersAdd } from '../courses/components/add-edit-page/store/states';
+import { reducersAdd } from '../courses/components/add-edit-page/store/add-course/states';
 
 // В этом модуле регистрируем сервисы
 @NgModule({

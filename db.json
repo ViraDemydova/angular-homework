@@ -475,6 +475,18 @@
       "password": "1",
       "token": "app_token",
       "id": 80
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 81
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 82
     }
   ],
   "register": [
@@ -633,6 +645,18 @@
       "password": "1",
       "token": "app_token",
       "id": 26
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 27
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 28
     }
   ],
   "courses": [
@@ -713,20 +737,11 @@
     },
     {
       "id": 16,
-      "title": "Video Course dddddddddddd",
+      "title": "Video Course",
       "createDate": "2016-02-01 12:00:00",
       "duration": 20,
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "topRated": true
-    },
-    {
-      "id": 17,
-      "title": "Video Course ",
-      "createDate": "2018-05-29 12:00:00",
-      "duration": 120,
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "authors": [],
       "topRated": true
     },
     {
@@ -753,86 +768,6 @@
       "authors": [],
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "topRated": true
-    },
-    {
-      "id": 29,
-      "title": "XXX7800 ",
-      "createDate": "2018-08-08T08:53:36.055Z",
-      "duration": "222",
-      "description": "XXX500",
-      "authors": []
-    },
-    {
-      "id": 31,
-      "title": "XXX8000",
-      "createDate": "2018-08-08T11:27:38.120Z",
-      "duration": "333333333333",
-      "description": "XXX8000",
-      "authors": []
-    },
-    {
-      "id": 37,
-      "title": "XXX2",
-      "createDate": "2018-08-13T14:13:32.664Z",
-      "duration": "222",
-      "description": "xxx",
-      "authors": []
-    },
-    {
-      "id": 38,
-      "title": "XXX2",
-      "createDate": "2018-08-14T08:24:49.618Z",
-      "duration": "333333333333",
-      "description": "xxxx",
-      "authors": []
-    },
-    {
-      "id": 39,
-      "title": "vera",
-      "createDate": "2018-08-14T08:41:13.623Z",
-      "duration": "333333333333",
-      "description": "ffffffffffffffffffff",
-      "authors": []
-    },
-    {
-      "id": 40,
-      "title": "New XXXXXX",
-      "createDate": "2018-08-19T10:27:46.296Z",
-      "duration": "333333333333",
-      "description": "New XXXXXX",
-      "authors": []
-    },
-    {
-      "id": 41,
-      "title": "xxxx",
-      "createDate": "2018-08-19T10:29:38.631Z",
-      "duration": "333333333333",
-      "description": "xxxx",
-      "authors": []
-    },
-    {
-      "id": 42,
-      "title": "XXX600",
-      "createDate": "2018-08-19T10:31:40.855Z",
-      "duration": "333333333333",
-      "description": "XXX600",
-      "authors": []
-    },
-    {
-      "id": 43,
-      "title": "new course 20000",
-      "createDate": "2018-08-19T10:41:08.255Z",
-      "duration": "333333333333",
-      "description": "new course 20000",
-      "authors": []
-    },
-    {
-      "id": 44,
-      "title": "XXX2",
-      "createDate": "2018-08-19T10:46:14.239Z",
-      "duration": "333333333333",
-      "description": "XXX2",
-      "authors": []
     },
     {
       "id": 45,
@@ -872,6 +807,22 @@
       "createDate": "2018-08-19T11:17:16.871Z",
       "duration": "333333333333",
       "description": "XXX2",
+      "authors": []
+    },
+    {
+      "id": 50,
+      "title": "XXX888",
+      "createDate": "2018-08-20T09:04:41.873Z",
+      "duration": "333333333333",
+      "description": "XXX888",
+      "authors": []
+    },
+    {
+      "id": 51,
+      "title": "XXX999",
+      "createDate": "2018-08-20T09:30:03.892Z",
+      "duration": "44444",
+      "description": "XXX999",
       "authors": []
     }
   ]

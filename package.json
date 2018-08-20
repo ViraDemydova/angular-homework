@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently --kill-others \"ng serve -o\" \"json-server --watch db.json\"",
     "build": "ng build",
     "test": "ng test",
     "test:coverage": "ng test --watch=false --code-coverage",
@@ -52,6 +52,7 @@
     "@types/node": "~8.9.4",
     "bootstrap": "^4.1.1",
     "codelyzer": "~4.2.1",
+    "concurrently": "^3.6.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",

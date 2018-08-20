@@ -20,7 +20,7 @@ export class CoursesListItemService {
     return this.http.post<CoursesListItem>(`${BASE_URL}`, {...item});
   }
 
-  deleteItem(id: string): Observable<CoursesListItem> {
+  deleteItem(id: string): Observable<number> {
     return this.http.delete<CoursesListItem>(`${BASE_URL}/${id}`);
   }
 

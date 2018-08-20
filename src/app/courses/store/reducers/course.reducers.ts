@@ -1,15 +1,17 @@
-import {All, CoursesActionTypes} from '../actions/course.actions';
+import { All, CoursesActionTypes } from '../actions/course.actions';
 import { CoursesListItem } from '../../models/courses-list-item.model';
 
 export interface State {
   courses: CoursesListItem[];
   // error message
   errorMessage: string | null;
+  id: number;
 }
 
 export const initialState: State = {
   courses: [],
-  errorMessage: null
+  errorMessage: null,
+  id: 0
 };
 
 export function reducerLoad(state = initialState, action: All): State {
@@ -27,11 +29,18 @@ export function reducerLoad(state = initialState, action: All): State {
         errorMessage: 'Error occurs while course loading'
       };
     }
+    case CoursesActionTypes.DELETE_SUCCESS: {
+      const updatedCourses = state.courses.filter((course) => course.id !== action.id);
+
+      const stateChange: any = {
+        courses:  updatedCourses
+      };
+
+      return stateChange;
+    }
     default: {
       return state;
     }
   }
 }
-
-//export const coursesSelector = (state: State) => state.courses;
 

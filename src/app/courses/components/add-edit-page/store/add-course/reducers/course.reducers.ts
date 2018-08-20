@@ -1,5 +1,5 @@
-import {All, CourseActionTypes} from '../actions/course.actions';
-import {CourseModel, CoursesListItem} from '../../../../models/courses-list-item.model';
+import { CoursesListItem } from '../../../../../models/courses-list-item.model';
+import { All, CourseActionTypes } from '../actions/course.actions';
 
 export interface State {
   newCourse: CoursesListItem;
@@ -8,7 +8,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  newCourse: {id: 777, createDate: {}, authors: [], description: '', title: '', duration: 60},
+  newCourse: null,
   errorMessage: null
 };
 
@@ -32,7 +32,4 @@ export function reducerAdd(state = initialState, action: All): State {
     }
   }
 }
-
-
-//export const coursesSelector = (state: State) => state.courses;
 

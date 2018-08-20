@@ -1,9 +1,10 @@
 import { Action } from '@ngrx/store';
-import {CoursesListItem} from "../../models/courses-list-item.model";
+import { CoursesListItem } from '../../models/courses-list-item.model';
 
 export enum CoursesActionTypes {
   LOAD_SUCCESS = '[Course] Load Success',
-  LOAD_FAILURE = '[Course] Load Failure'
+  LOAD_FAILURE = '[Course] Load Failure',
+  DELETE_SUCCESS = '[Course] Delete Success'
 }
 
 export class LoadSuccess implements Action {
@@ -20,9 +21,16 @@ export class LoadFailure implements Action {
   }
 }
 
+export class DeleteSuccess implements Action {
+  readonly type = CoursesActionTypes.DELETE_SUCCESS;
+
+  constructor(public id: number) {
+  }
+}
+
 export type All =
    LoadSuccess
-   | LoadFailure;
-  //| LoginFailure;
+   | LoadFailure
+   | DeleteSuccess;
 
 
