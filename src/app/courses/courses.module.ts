@@ -10,7 +10,7 @@ import { TimeControlComponent } from './components/time-control/time-control.com
 import { DateControlComponent } from './components/date-control/date-control.component';
 import { RoleControlComponent } from './components/role-control/role-control.component';
 import { AddEditPageComponent } from './components/add-edit-page/add-edit-page.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     RouterModule,
     SharedModule,
+    ReactiveFormsModule,
     CoreModule
   ],
   declarations: [

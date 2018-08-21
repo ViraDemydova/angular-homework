@@ -10,6 +10,7 @@ import { AddCourseState, courseAddSelector } from './store/add-course/states';
 import { AddCourseSuccess } from './store/add-course/actions/course.actions';
 import { EditCourseSuccess } from './store/edit-course/actions/course.actions';
 import { courseEditSelector } from './store/edit-course/states';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-page',
@@ -27,15 +28,32 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   state: string;
   newItem: CourseModel;
   pageCurrent = 'New Page';
+  addCourseForm: FormGroup;
+  submitted = false;
+
+  //addCourseForm = new FormGroup ({
+   // title: new FormControl(),
+   // description: new FormControl(),
+   // createDate: new FormControl(),
+  //  duration: new FormControl(),
+  //  author: new FormControl(),
+ // });
 
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private courseService: CoursesListItemService,
-    private storeCourse: Store<AddCourseState>) {}
+    private storeCourse: Store<AddCourseState>,
+    private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.addCourseForm = this.formBuilder.group({
+      title: [null, Validators.required],
+      description: [null, Validators.required],
+      createDate: [null, [Validators.required]],
+      duration: [null, [Validators.required]]
+    });
     // Add Course
     this.newItem = new CourseModel(null, null, null, null, '');
     this.indificator = this.route.snapshot.paramMap.get('id');
@@ -49,7 +67,17 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.addCourseForm.controls; }
+
   onSave() {
+    this.submitted = true;
+      // stop here if form is invalid
+    if (this.addCourseForm.invalid) {
+      return;
+    }
+    alert('SUCCESS!! :-)');
+
     if (this.usersIdSubscription) {
       this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
           this.storeCourse.dispatch(new EditCourseSuccess(res));

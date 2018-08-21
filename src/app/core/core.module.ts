@@ -9,6 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { reducersLoad } from '../courses/store/states';
 import { reducersAdd } from '../courses/components/add-edit-page/store/add-course/states';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // В этом модуле регистрируем сервисы
 @NgModule({
@@ -16,6 +17,7 @@ import { reducersAdd } from '../courses/components/add-edit-page/store/add-cours
     CommonModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
     RouterModule,
     StoreModule.forFeature('course', reducersLoad),
     StoreModule.forFeature('addCourse', reducersAdd),

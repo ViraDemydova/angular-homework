@@ -57,23 +57,35 @@
           <div class="panel panel-default">
             <div class="panel-heading">Add new course:</div>
             <div class="panel-body">
-              <form class="add-course-form">
+              <form class="add-course-form" [formGroup]="addCourseForm" (ngSubmit)="onSave()">
                 <div class="form-group">
                   <label for="title1">Title:</label>
-                  <input type="text" class="form-control" id="title1" name="title1" [(ngModel)]="newItem.title">
+                  <input type="text" class="form-control" id="title1" name="title1"  formControlName="title"  [ngClass]="{ 'is-invalid': submitted && f.title.errors }" >
+                  <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                    <div *ngIf="f.title.errors.required">Name of course is required</div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="description1">Description:</label>
-                  <textarea class="form-control" id="description1" name="description1" rows="4" cols="50" [(ngModel)]="newItem.description"></textarea>
+                  <label for="description">Description:</label>
+                  <textarea class="form-control" id="description" name="description" rows="4" cols="50"  formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">Description is required</div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="date1">Date:</label>
-                  <input type="text" class="form-control date" id="date1" name="date1" [(ngModel)]="newItem.createDate">
+                  <input type="text" class="form-control date" id="date1" name="date1"  formControlName="createDate">
+                  <div *ngIf="submitted && f.createDate.errors" class="invalid-feedback">
+                    <div *ngIf="f.createDate.errors.required">Date is required</div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="duration1">Duration:</label>
-                  <input type="text" class="form-control duration" id="duration1" name="duration1" [(ngModel)]="newItem.duration">
+                  <input type="text" class="form-control duration" id="duration1" name="duration1" formControlName="duration">
                   <span class="time">{{newItem.duration  | myTime}}</span>
+                  <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                    <div *ngIf="f.duration.errors.required">Duration is required</div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="author1">Authors:</label>
@@ -82,7 +94,8 @@
                   </select>
                 </div>
                 <div class="btn-group">
-                  <button class="btn btn-default" (click)="onSave()">Create</button>
+                  <button class="btn btn-default" type="submit">Create</button>
+                 <!-- <button [disabled]="!addCourseForm.valid" class="btn btn-default" type="submit">Create</button>-->
                   <button class="btn btn-secondary"(click)="onCancel()">Cancel</button>
                 </div>
               </form>
