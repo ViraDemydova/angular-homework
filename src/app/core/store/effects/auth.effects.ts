@@ -29,7 +29,7 @@ export class AuthEffects {
   ) {}
 
   @Effect()
-  Login: Observable<UserEntityItem> = this.actions
+  Login: Observable<any> = this.actions
     .pipe (
       ofType(AuthActionTypes.LOGIN),
       map((action: Login) => action.payload),
@@ -47,7 +47,7 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  LoginSuccess: Observable<UserEntityItem> = this.actions.pipe(
+  LoginSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap(user => {
       localStorage.setItem('token', user.payload.token);
@@ -61,7 +61,7 @@ export class AuthEffects {
   );
 
   @Effect()
-  SignUp: Observable<UserEntityItem> = this.actions
+  SignUp: Observable<any> = this.actions
     .pipe (
       ofType(AuthActionTypes.SIGNUP),
       map((action: SignUp) => action.payload),
@@ -79,7 +79,7 @@ export class AuthEffects {
     );
 
   @Effect({ dispatch: false })
-  SignUpSuccess: Observable<UserEntityItem> = this.actions.pipe(
+  SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap(user => {
       localStorage.setItem('token', user.payload.token);
