@@ -14,7 +14,7 @@ import {
 } from '../actions/auth.actions';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth.service';
-import {UserEntityItem} from "../../../users/models/user-entity-item.model";
+import { UserEntityItem } from '../../../users/models/user-entity-item.model';
 
 
 @Injectable({

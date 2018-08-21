@@ -493,6 +493,12 @@
       "password": "1",
       "token": "app_token",
       "id": 83
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 84
     }
   ],
   "register": [
@@ -663,6 +669,12 @@
       "password": "1",
       "token": "app_token",
       "id": 28
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 29
     }
   ],
   "courses": [
@@ -829,6 +841,14 @@
       "createDate": "2018-08-20T09:30:03.892Z",
       "duration": "44444",
       "description": "XXX999",
+      "authors": []
+    },
+    {
+      "id": 52,
+      "title": "test new item xxx",
+      "createDate": "2018-08-21T08:59:36.487Z",
+      "duration": "333333333333",
+      "description": "test new item xxx",
       "authors": []
     }
   ]

@@ -62,6 +62,11 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     } else {
       // донастраиваем то, что пользователь не вводит из формы
       this.newItem.createDate = new Date();
+      //TODO: move to effect
+     // this.newItem.id = 777;
+      //this.newItem.createDate = new Date();
+      //this.storeCourse.dispatch(new AddCourse(this.newItem));
+      //this.storeCourse.pipe(select(courseAddSelector));
       this.courseService.addItem(this.newItem).subscribe((res: CoursesListItem) => {
         this.storeCourse.dispatch(new AddCourseSuccess(res));
       });

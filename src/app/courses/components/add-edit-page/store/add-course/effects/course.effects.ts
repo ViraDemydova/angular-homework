@@ -1,18 +1,22 @@
 // TODO: need to complete
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {Actions, Effect, ofType} from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { CoursesListItemService } from '../../../../../services/courses-list-item.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AddCourseFailure, CourseActionTypes } from '../actions/course.actions';
-import { CourseModel, CoursesListItem } from '../../../../../models/courses-list-item.model';
+import {
+  CourseActionTypes,
+  AddCourse,
+  AddCourseSuccess,
+  AddCourseFailure
+} from '../actions/course.actions';
+import { CoursesListItem } from '../../../../../models/courses-list-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddCourseEffects {
-  newItem: CourseModel;
 
   constructor(
     private actions: Actions,
@@ -21,14 +25,15 @@ export class AddCourseEffects {
   ) {}
 
     @Effect()
-    AddCourseSuccess: Observable<CoursesListItem> = this.actions
+    AddCourse: Observable<CoursesListItem> = this.actions
     .pipe(
       ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
-      switchMap(res => {
-        return this.courseService.addItem(this.newItem)
+      map((action: AddCourse) => action.course),
+      switchMap(course => {
+        return this.courseService.addItem(course)
           .pipe(
-            map(item => {
-              return new AddCourseSuccess();
+            map(() => {
+              return new AddCourseSuccess(course);
             }),
             catchError((error) => {
               return Observable.of(new AddCourseFailure({error: error}));
@@ -36,4 +41,18 @@ export class AddCourseEffects {
           );
       })
     );
+
+  @Effect({ dispatch: false })
+  AddCourseSuccess: Observable<CoursesListItem> = this.actions.pipe(
+    ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
+    tap(() => {
+      this.router.navigate(['landing-page']);
+    })
+  );
+
+  // TODO: remove. useless effect
+  @Effect({ dispatch: false })
+  AddCourseFailure: Observable<any> = this.actions.pipe(
+    ofType(CoursesListItem.ADD_COURSE_FAILURE)
+  );
 }
