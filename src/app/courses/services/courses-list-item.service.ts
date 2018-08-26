@@ -39,5 +39,10 @@ export class CoursesListItemService {
   searchTextWithParams(q: string, _page: string, _start: string, _end: string, _sort: string): Observable<CoursesListItem[]> {
     return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {q, _page, _start, _end, _sort}});
   }
+
+  getAuthors( ): Observable<string[]> {
+    const CORE_URL = 'http://localhost:3000/authors';
+    return this.http.get<string[]>(`${CORE_URL }`);
+  }
 }
 

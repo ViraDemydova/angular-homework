@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {forwardRef, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import {RouterModule } from '@angular/router';
@@ -7,10 +7,10 @@ import { CoursesListComponent } from './components/courses-list/courses-list.com
 import { CoursesListItemComponent } from './components/courses-list/courses-list-item/courses-list-item.component';
 import { CoursesPageComponent } from './components/courses-page/courses-page.component';
 import { TimeControlComponent } from './components/time-control/time-control.component';
-import { DateControlComponent } from './components/date-control/date-control.component';
 import { RoleControlComponent } from './components/role-control/role-control.component';
 import { AddEditPageComponent } from './components/add-edit-page/add-edit-page.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, NG_ASYNC_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { DateControlComponent } from './components/date-control/date-control.component';
 
 @NgModule({
   imports: [

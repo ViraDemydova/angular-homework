@@ -25,7 +25,7 @@ export class AddCourseEffects {
   ) {}
 
     @Effect()
-    AddCourse: Observable<CoursesListItem> = this.actions
+    AddCourse: Observable<any> = this.actions
     .pipe(
       ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
       map((action: AddCourse) => action.course),
@@ -43,7 +43,7 @@ export class AddCourseEffects {
     );
 
   @Effect({ dispatch: false })
-  AddCourseSuccess: Observable<CoursesListItem> = this.actions.pipe(
+  AddCourseSuccess: Observable<any> = this.actions.pipe(
     ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
     tap(() => {
       this.router.navigate(['landing-page']);

@@ -1,5 +1,5 @@
 // TODO: will replace edit-page and add-page
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
@@ -10,13 +10,37 @@ import { AddCourseState, courseAddSelector } from './store/add-course/states';
 import { AddCourseSuccess } from './store/add-course/actions/course.actions';
 import { EditCourseSuccess } from './store/edit-course/actions/course.actions';
 import { courseEditSelector } from './store/edit-course/states';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, NG_ASYNC_VALIDATORS, ValidatorFn, Validators} from '@angular/forms';
+import { DateValidator } from '../../../shared/directives/validator';
 
 @Component({
   selector: 'app-add-edit-page',
   templateUrl: './add-edit-page.component.html',
-  styleUrls: ['./add-edit-page.component.css']
+  styleUrls: ['./add-edit-page.component.css'],
+ // providers: [
+   // {
+     // provide: NG_ASYNC_VALIDATORS,
+     // useValue: DateValidator,
+     // multi: true
+    //}
+  //]
 })
+
+//export function  validateDate(): ValidatorFn {
+  //return (c: FormControl) => {
+   // const EMAIL_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+   // if (EMAIL_REGEXP) {
+     // return null;
+    //} else {
+     // return {
+      //  datevalidator: {
+        //  valid: false
+       // }
+      //};
+    //}
+ // };
+//}
+
 export class AddEditPageComponent implements OnInit, OnDestroy {
   private usersEditSubscription: Subscription;
   private usersIdSubscription: Subscription;
@@ -24,12 +48,20 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   public listItem: CoursesListItem;
   public id: number;
   public indificator: string;
-  public createDate: any;
   state: string;
   newItem: CourseModel;
   pageCurrent = 'New Page';
   addCourseForm: FormGroup;
   submitted = false;
+  @Input() formControl: FormControl;
+  //selectedAuthor = this.authors[1];
+  public authors: string[] = [];
+  public user: string;
+  private authorCreateSubscription: Subscription;
+
+  onChange(city) {
+    alert(city.name);
+  }
 
   //addCourseForm = new FormGroup ({
    // title: new FormControl(),
@@ -48,12 +80,16 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.addCourseForm = this.formBuilder.group({
-      title: [null, Validators.required],
-      description: [null, Validators.required],
-      createDate: [null, [Validators.required]],
-      duration: [null, [Validators.required]]
+    this.authorCreateSubscription = this.courseService.getAuthors().subscribe((res: string[]) => {
+      this.authors = res;
     });
+    this.addCourseForm = this.formBuilder.group({
+      title: [null, [Validators.required,  Validators.maxLength(10)]],
+      description: [null, [Validators.required, Validators.maxLength(500)]],
+      duration: [null, [Validators.required]],
+      createDate: [ null, [Validators.required, DateValidator]]
+    });
+
     // Add Course
     this.newItem = new CourseModel(null, null, null, null, '');
     this.indificator = this.route.snapshot.paramMap.get('id');
@@ -104,6 +140,11 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  onChange(author) {
+    alert(author.name);
+  }
+
 
   onCancel() {
     this.router.navigate(['landing-page']);

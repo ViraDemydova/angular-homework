@@ -499,6 +499,30 @@
       "password": "1",
       "token": "app_token",
       "id": 84
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 85
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 86
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 87
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 88
     }
   ],
   "register": [
@@ -850,6 +874,172 @@
       "duration": "333333333333",
       "description": "test new item xxx",
       "authors": []
+    },
+    {
+      "id": 53,
+      "title": null,
+      "createDate": "2018-08-24T14:17:00.458Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 54,
+      "title": null,
+      "createDate": "2018-08-25T10:22:30.253Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 55,
+      "title": null,
+      "createDate": "2018-08-25T11:10:29.669Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 56,
+      "title": null,
+      "createDate": "2018-08-25T11:18:57.807Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 57,
+      "title": null,
+      "createDate": "2018-08-25T11:20:57.980Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 58,
+      "title": null,
+      "createDate": "2018-08-25T17:09:25.630Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 59,
+      "title": null,
+      "createDate": "2018-08-25T17:09:52.102Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 60,
+      "title": null,
+      "createDate": "2018-08-25T17:12:51.142Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 61,
+      "title": null,
+      "createDate": "2018-08-25T17:13:12.581Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 62,
+      "title": null,
+      "createDate": "2018-08-25T17:16:22.781Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 63,
+      "title": null,
+      "createDate": "2018-08-25T17:21:40.587Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 64,
+      "title": null,
+      "createDate": "2018-08-25T19:35:37.023Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    },
+    {
+      "id": 65,
+      "title": null,
+      "createDate": "2018-08-25T19:44:06.015Z",
+      "duration": null,
+      "description": "",
+      "authors": []
+    }
+  ],
+  "authors": [
+    {
+      "id": "5b7a846290d6ff6894377fb5",
+      "name": "Decker Albert"
+    },
+    {
+      "id": "5b7a84624010db4d640e0099",
+      "name": "Vincent Doyle"
+    },
+    {
+      "id": "5b7a8462e720a86db64774e7",
+      "name": "Padilla Berger"
+    },
+    {
+      "id": "5b7a84628298a95c17462193",
+      "name": "Carey Jarvis"
+    },
+    {
+      "id": "5b7a846284414c93c2a94eb8",
+      "name": "Aida Copeland"
+    },
+    {
+      "id": "5b7a846205bf3180ca002c82",
+      "name": "Wall Sandoval"
+    },
+    {
+      "id": "5b7a8462cf7298e6d925d18c",
+      "name": "Shelby Hanson"
+    },
+    {
+      "id": "5b7a8462c5e867ec6a1a9b00",
+      "name": "Jodi Barrett"
+    },
+    {
+      "id": "5b7a8462db677f5f1fedd275",
+      "name": "Baird Bright"
+    },
+    {
+      "id": "5b7a84628f39d42b3d56174f",
+      "name": "Deleon Gill"
+    },
+    {
+      "id": "5b7a8462435c9561be3d94b1",
+      "name": "Gallagher Hobbs"
+    },
+    {
+      "id": "5b7a8462863c25502ed32168",
+      "name": "Janna Kelly"
+    },
+    {
+      "id": "5b7a846270affc8f0438eddf",
+      "name": "Solomon Dotson"
+    },
+    {
+      "id": "5b7a846297d0714fe5e92db8",
+      "name": "Patrick Macdonald"
+    },
+    {
+      "id": "5b7a8462f3034f386fae2be4",
+      "name": "Atkins Newman"
     }
   ]
 }
