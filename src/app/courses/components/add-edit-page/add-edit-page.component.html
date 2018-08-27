@@ -99,6 +99,10 @@
                   <select class="form-control" [(ngModel)]="selectedAuthor" (ngModelChange)="onChange($event)" >
                     <option *ngFor="let author of authors" [ngValue]="author"> {{author.name}} </option>
                   </select>
+                 <!-- <tags-input class="form-control input-lg" (onTagsChanged)="onTagsChanged($event)" [removeLastOnBackspace]="removeLastOnBackspace" [(ngModel)]="tags" name="tags"></tags-input>-->
+                  <!-- <tag-input [ngModel]="items"
+                             [theme]="'foundation-theme'">
+                  </tag-input>-->
                 </div>
                 <div class="btn-group">
                   <button class="btn btn-default" type="submit">Create</button>

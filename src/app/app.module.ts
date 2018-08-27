@@ -10,7 +10,6 @@ import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { LandingModule } from './landing/landing.module';
@@ -27,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './core/store/states';
 import { AuthEffects } from './core/store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+//import { TagInputModule } from 'ng4-tag-input/dist/modules/ng4-tag-input.module';
 
 
 
@@ -45,6 +45,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    //TagInputModule,
 
     CoreModule,
     SharedModule,

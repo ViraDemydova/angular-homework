@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule,
     StoreModule.forFeature('course', reducersLoad),
-    StoreModule.forFeature('addCourse', reducersAdd),
+    StoreModule.forFeature('addCourse', reducersAdd)
     //StoreModule.forFeature('editCourse', reducersEdit)
   ],
   declarations: [

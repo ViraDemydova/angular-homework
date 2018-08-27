@@ -59,10 +59,6 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   public user: string;
   private authorCreateSubscription: Subscription;
 
-  onChange(city) {
-    alert(city.name);
-  }
-
   //addCourseForm = new FormGroup ({
    // title: new FormControl(),
    // description: new FormControl(),
@@ -91,7 +87,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     });
 
     // Add Course
-    this.newItem = new CourseModel(null, null, null, null, '');
+    this.newItem = new CourseModel(null, null, null, null, null, null);
     this.indificator = this.route.snapshot.paramMap.get('id');
     this.state = this.route.snapshot.paramMap.get('state');
     if (this.indificator) {

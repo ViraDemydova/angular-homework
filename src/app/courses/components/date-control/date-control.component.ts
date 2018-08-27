@@ -12,7 +12,7 @@ import { FormsModule, NG_ASYNC_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModul
 })
 
 export class DateControlComponent implements ControlValueAccessor, OnInit {
-  createDate: FormControl;
+  createDate: any;
   propagateChange = (_: any) => {};
   onChange = (_: any) => { };
 

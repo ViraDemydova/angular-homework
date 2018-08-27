@@ -20,7 +20,7 @@ import { DateControlComponent } from './components/date-control/date-control.com
     RouterModule,
     SharedModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
   ],
   declarations: [
     CoursesListComponent,

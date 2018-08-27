@@ -24,35 +24,35 @@ export class AddCourseEffects {
     private router: Router
   ) {}
 
-    @Effect()
-    AddCourse: Observable<any> = this.actions
-    .pipe(
-      ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
-      map((action: AddCourse) => action.course),
-      switchMap(course => {
-        return this.courseService.addItem(course)
-          .pipe(
-            map(() => {
-              return new AddCourseSuccess(course);
-            }),
-            catchError((error) => {
-              return Observable.of(new AddCourseFailure({error: error}));
-            })
-          );
-      })
-    );
+   // @Effect()
+    //AddCourse: Observable<any> = this.actions
+   // .pipe(
+    //  ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
+     // map((action: AddCourse) => action.course),
+     // switchMap(course => {
+    //    return this.courseService.addItem(course)
+        //  .pipe(
+       //     map(() => {
+         //     return new AddCourseSuccess(course);
+        //    }),
+         //   catchError((error) => {
+          //    return Observable.of(new AddCourseFailure({error: error}));
+          //  })
+         // );
+      //})
+   // );
 
-  @Effect({ dispatch: false })
-  AddCourseSuccess: Observable<any> = this.actions.pipe(
-    ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
-    tap(() => {
-      this.router.navigate(['landing-page']);
-    })
-  );
+ // @Effect({ dispatch: false })
+ // AddCourseSuccess: Observable<any> = this.actions.pipe(
+   // ofType(CourseActionTypes.ADD_COURSE_SUCCESS),
+   // tap(() => {
+    //  this.router.navigate(['landing-page']);
+   // })
+ // );
 
   // TODO: remove. useless effect
-  @Effect({ dispatch: false })
-  AddCourseFailure: Observable<any> = this.actions.pipe(
-    ofType(CoursesListItem.ADD_COURSE_FAILURE)
-  );
+  //@Effect({ dispatch: false })
+ // AddCourseFailure: Observable<any> = this.actions.pipe(
+   // ofType(CoursesListItem.ADD_COURSE_FAILURE)
+ // );
 }
