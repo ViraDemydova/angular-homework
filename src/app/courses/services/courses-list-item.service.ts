@@ -44,5 +44,6 @@ export class CoursesListItemService {
     const CORE_URL = 'http://localhost:3000/authors';
     return this.http.get<string[]>(`${CORE_URL }`);
   }
+
 }
 

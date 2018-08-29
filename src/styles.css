@@ -262,6 +262,26 @@ footer{
   height: 100%;
 }
 
+.mat-chip {
+  font-size: 11px;
+  line-height: 12px;
+}
+
+.mat-chip-list-wrapper .mat-standard-chip {
+  margin: 2px;
+  padding: 2px 6px;
+}
+
+.mat-chip-list-wrapper .material-icons {
+  font-size: 14px;
+}
+
+.mat-chip-list-wrapper .mat-icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
   .float-right {

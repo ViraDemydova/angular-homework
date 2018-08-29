@@ -26,7 +26,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './core/store/states';
 import { AuthEffects } from './core/store/effects/auth.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-//import { TagInputModule } from 'ng4-tag-input/dist/modules/ng4-tag-input.module';
 
 
 
@@ -45,7 +44,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    //TagInputModule,
 
     CoreModule,
     SharedModule,

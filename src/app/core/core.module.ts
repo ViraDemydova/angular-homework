@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from '../layout/components/breadcrumbs/breadcrumbs.component';
 import { LoaderService } from '../loader/services/loader.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressSpinnerModule } from '@angular/material';
+import {
+  MatAutocompleteModule, MatFormFieldModule, MatIconModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+import { MatChipsModule } from '@angular/material/chips';
 import { StoreModule } from '@ngrx/store';
 import { reducersLoad } from '../courses/store/states';
 import { reducersAdd } from '../courses/components/add-edit-page/store/add-course/states';
-import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 // В этом модуле регистрируем сервисы
 @NgModule({
@@ -20,7 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     RouterModule,
     StoreModule.forFeature('course', reducersLoad),
-    StoreModule.forFeature('addCourse', reducersAdd)
+    StoreModule.forFeature('addCourse', reducersAdd),
+    MatChipsModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
     //StoreModule.forFeature('editCourse', reducersEdit)
   ],
   declarations: [
@@ -30,7 +39,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     BreadcrumbsComponent,
-    LoaderComponent
+    LoaderComponent,
+    MatChipsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
   ],
   providers: [
     LoaderService

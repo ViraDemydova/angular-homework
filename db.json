@@ -523,6 +523,30 @@
       "password": "1",
       "token": "app_token",
       "id": 88
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 89
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 90
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 91
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 92
     }
   ],
   "register": [
@@ -812,172 +836,33 @@
       "topRated": true
     },
     {
-      "id": 45,
-      "title": "XXX2",
-      "createDate": "2018-08-19T10:46:19.909Z",
-      "duration": "333333333333",
-      "description": "XXX2",
-      "authors": []
+      "id": 777,
+      "title": "qqq",
+      "createDate": "2018-08-29T16:59:34.704Z",
+      "duration": "20",
+      "description": "qqq",
+      "authors": null
     },
     {
-      "id": 46,
-      "title": "test new item",
-      "createDate": "2018-08-19T10:46:47.271Z",
-      "duration": "333333333333",
-      "description": "Description:\n",
-      "authors": []
+      "id": 778,
+      "title": "ccc",
+      "createDate": "2018-08-29T17:00:22.221Z",
+      "duration": "20",
+      "description": "ccc",
+      "authors": null
     },
     {
-      "id": 47,
-      "title": "test new item",
-      "createDate": "2018-08-19T10:47:49.820Z",
-      "duration": "333333333333",
-      "description": "test new item",
-      "authors": []
-    },
-    {
-      "id": 48,
-      "title": "test new item",
-      "createDate": "2018-08-19T10:52:25.644Z",
-      "duration": "333333333333",
-      "description": "test new item",
-      "authors": []
-    },
-    {
-      "id": 49,
-      "title": "XXX2",
-      "createDate": "2018-08-19T11:17:16.871Z",
-      "duration": "333333333333",
-      "description": "XXX2",
-      "authors": []
-    },
-    {
-      "id": 50,
-      "title": "XXX888",
-      "createDate": "2018-08-20T09:04:41.873Z",
-      "duration": "333333333333",
-      "description": "XXX888",
-      "authors": []
-    },
-    {
-      "id": 51,
-      "title": "XXX999",
-      "createDate": "2018-08-20T09:30:03.892Z",
-      "duration": "44444",
-      "description": "XXX999",
-      "authors": []
-    },
-    {
-      "id": 52,
-      "title": "test new item xxx",
-      "createDate": "2018-08-21T08:59:36.487Z",
-      "duration": "333333333333",
-      "description": "test new item xxx",
-      "authors": []
-    },
-    {
-      "id": 53,
-      "title": null,
-      "createDate": "2018-08-24T14:17:00.458Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 54,
-      "title": null,
-      "createDate": "2018-08-25T10:22:30.253Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 55,
-      "title": null,
-      "createDate": "2018-08-25T11:10:29.669Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 56,
-      "title": null,
-      "createDate": "2018-08-25T11:18:57.807Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 57,
-      "title": null,
-      "createDate": "2018-08-25T11:20:57.980Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 58,
-      "title": null,
-      "createDate": "2018-08-25T17:09:25.630Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 59,
-      "title": null,
-      "createDate": "2018-08-25T17:09:52.102Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 60,
-      "title": null,
-      "createDate": "2018-08-25T17:12:51.142Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 61,
-      "title": null,
-      "createDate": "2018-08-25T17:13:12.581Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 62,
-      "title": null,
-      "createDate": "2018-08-25T17:16:22.781Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 63,
-      "title": null,
-      "createDate": "2018-08-25T17:21:40.587Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 64,
-      "title": null,
-      "createDate": "2018-08-25T19:35:37.023Z",
-      "duration": null,
-      "description": "",
-      "authors": []
-    },
-    {
-      "id": 65,
-      "title": null,
-      "createDate": "2018-08-25T19:44:06.015Z",
-      "duration": null,
-      "description": "",
-      "authors": []
+      "id": 779,
+      "title": "qqq",
+      "createDate": "2018-08-29T17:01:04.638Z",
+      "duration": "200000000",
+      "description": "qqq",
+      "authors": [
+        {
+          "id": "5b7a846284414c93c2a94eb8",
+          "name": "Aida Copeland"
+        }
+      ]
     }
   ],
   "authors": [

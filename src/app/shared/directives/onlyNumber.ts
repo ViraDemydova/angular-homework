@@ -7,28 +7,28 @@ import {
   ValidatorFn,
   Validator
 } from '@angular/forms';
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[datevalidator][formControlName]',
+  selector: '[numbersonly][formControlName]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: DateValidator,
+      useExisting: NumbersOnly,
       multi: true
     }
   ]
 })
-export class DateValidator implements Validator {
+export class NumbersOnly implements Validator {
   validate(c: FormControl) {
     console.log('VALIDATOR', c);
 
-    const isValid = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(c.value);
+    const isValid = /^-?(0|[1-9]\d*)?$/.test(c.value);
     if (isValid) {
       return null;
     } else {
       return {
-        datevalidator: {
+        numbersonly: {
           valid: false
         }
       };
