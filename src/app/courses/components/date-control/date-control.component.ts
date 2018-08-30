@@ -1,6 +1,6 @@
-import {Component, forwardRef, Input, OnChanges, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, FormGroup, ValidatorFn} from '@angular/forms';
-import { FormsModule, NG_ASYNC_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-date-control',
@@ -11,16 +11,19 @@ import { FormsModule, NG_ASYNC_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModul
   ]
 })
 
-export class DateControlComponent implements ControlValueAccessor, OnInit {
+export class DateControlComponent implements ControlValueAccessor{
   createDate: any;
   propagateChange = (_: any) => {};
   onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
-  constructor() {
-    //this.validator = this.dateValidator();
-  }
+  get value(): any { return this.createDate; }
 
-  ngOnInit() {
+  set value(newValue: any) {
+    if (newValue !== this.createDate) {
+      this.createDate = newValue;
+      this.onChange(newValue);
+    }
   }
 
   writeValue(value: any): void {
@@ -29,11 +32,9 @@ export class DateControlComponent implements ControlValueAccessor, OnInit {
 
   pushChanges(newValue: string) {
     this.createDate = this.onChange(newValue);
-   // this.validator = dateValidator(this.createDate);
   }
 
-  registerOnTouched() {}
+  registerOnTouched(fn: (_: any) => {}): void {this.onTouched = fn; }
 
   registerOnChange(fn: (_: any) => {}): void { this.onChange = fn; }
-
 }

@@ -20,29 +20,7 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
   selector: 'app-add-edit-page',
   templateUrl: './add-edit-page.component.html',
   styleUrls: ['./add-edit-page.component.css'],
- // providers: [
-   // {
-     // provide: NG_ASYNC_VALIDATORS,
-     // useValue: DateValidator,
-     // multi: true
-    //}
-  //]
 })
-
-//export function  validateDate(): ValidatorFn {
-  //return (c: FormControl) => {
-   // const EMAIL_REGEXP = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
-   // if (EMAIL_REGEXP) {
-     // return null;
-    //} else {
-     // return {
-      //  datevalidator: {
-        //  valid: false
-       // }
-      //};
-    //}
- // };
-//}
 
 export class AddEditPageComponent implements OnInit, OnDestroy {
   private usersEditSubscription: Subscription;
@@ -50,32 +28,23 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   // Edit Course
   public listItem: CoursesListItem;
   public id: number;
+  public authors: string[] = [];
+  public selectedAuthors: string[] = [];
   public indificator: string;
   state: string;
   newItem: CourseModel;
   pageCurrent = 'New Page';
   addCourseForm: FormGroup;
+  editCourseForm: FormGroup;
   submitted = false;
-  @Input() formControl: FormControl;
+  // input tags
   selectable = true;
   removable = true;
   addOnBlur = true;
-  public authors: string[] = [];
-  author: string;
-  public selectedAuthors: string[] = [];
   public user: string;
   private authorCreateSubscription: Subscription;
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
-
-  //addCourseForm = new FormGroup ({
-   // title: new FormControl(),
-   // description: new FormControl(),
-   // createDate: new FormControl(),
-  //  duration: new FormControl(),
-  //  author: new FormControl(),
- // });
-
 
   constructor(
     private router: Router,
@@ -87,9 +56,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.authorCreateSubscription = this.courseService.getAuthors().subscribe((res: string[]) => {
       this.authors = res;
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',  this.authors);
     });
-
 
     // Add Course
     this.newItem = new CourseModel(null, '', null, null, null, null);
@@ -101,12 +68,20 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       authors: [this.newItem.authors, [Validators.required]]
     });
 
-
     this.indificator = this.route.snapshot.paramMap.get('id');
     this.state = this.route.snapshot.paramMap.get('state');
     if (this.indificator) {
       this.usersIdSubscription = this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
           this.listItem = res;
+          // Edit Course
+          this.editCourseForm = this.formBuilder.group({
+            title: [this.listItem.title, [Validators.required,  Validators.maxLength(30)]],
+            description: [this.listItem.description, [Validators.required, Validators.maxLength(500)]],
+            duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
+            createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
+            authors: [this.listItem.authors, [Validators.required]]
+          });
+          this.selectedAuthors = this.listItem.authors;
         },
         (error: HttpErrorResponse) => console.log(error)
       );
@@ -115,7 +90,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
 
   // convenience getter for easy access to form fields
   get f() { return this.addCourseForm.controls; }
-  get title() { return this.addCourseForm.get('title').value; }
+  get g() { return this.editCourseForm.controls; }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -126,19 +101,10 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       this.selectedAuthors.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
   }
-
-  //remove(option: any): void {
-    //const index = this.selectedAuthors.indexOf(option);
-
-   // if (index >= 0) {
-     // this.selectedAuthors.splice(index, 1);
-   // }
-  //}
 
   remove(data: any): void {
     if (this.selectedAuthors.indexOf(data) >= 0) {
@@ -155,19 +121,16 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     }
   }
 
-
   onSave() {
     this.submitted = true;
       // stop here if form is invalid
     if (this.addCourseForm.invalid) {
       return;
     }
-    alert('SUCCESS!! :-)');
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.addCourseForm.get('title').value);
 
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', this.newItem );
-
+    // Edit Course
     if (this.usersIdSubscription) {
+      //TODO: move to effect
       this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
           this.storeCourse.dispatch(new EditCourseSuccess(res));
           // вернулись к списку курсов
@@ -177,16 +140,13 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
         this.router.navigate(['landing-page']);
       });
     } else {
-      // донастраиваем то, что пользователь не вводит из формы
-      //TODO: move to effect
+      //  Add Course
       this.newItem.createDate = new Date();
       this.newItem.title = this.addCourseForm.get('title').value;
       this.newItem.description = this.addCourseForm.get('description').value;
       this.newItem.duration = this.addCourseForm.get('duration').value;
       this.newItem.authors = this.selectedAuthors;
-      console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', this.newItem.authors, this.addCourseForm.get('authors').value);
-      //TODO: this.newItem = { ...this.addCourseForm.value };
-      //this.newItem = {...this.addCourseForm.controls};
+      //TODO: move to effect
       this.storeCourse.dispatch(new AddCourse(this.newItem));
       this.storeCourse.pipe(select(courseAddSelector));
       this.courseService.addItem(this.newItem).subscribe((res: CoursesListItem) => {
@@ -198,11 +158,6 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       });
     }
   }
-
-  onChange(author) {
-    alert(author.name);
-  }
-
 
   onCancel() {
     this.router.navigate(['landing-page']);

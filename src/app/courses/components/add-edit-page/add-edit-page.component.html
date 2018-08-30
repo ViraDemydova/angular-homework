@@ -12,33 +12,74 @@
           <div class="panel panel-default">
             <div class="panel-heading">Edit course:</div>
             <div class="panel-body">
-              <form class="add-course-form">
+              <form class="add-course-form" [formGroup]="editCourseForm" (ngSubmit)="onSave()">
                 <div class="form-group">
                   <label for="title">Title:</label>
-                  <input type="text" class="form-control" id="title" name="title" [(ngModel)]="listItem.title">
+                  <input type="text" class="form-control" id="title" name="title" formControlName="title"  [ngClass]="{ 'is-invalid': g.title.touched && g.title.errors}" >
+                  <div *ngIf="g.title.touched  && g.title.errors" class="invalid-feedback">
+                    <div *ngIf="g.title.errors.required">Name of course is required</div>
+                    <div *ngIf="g.title.errors.maxlength">Name of course must be no more than 10 characters</div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="description">Description:</label>
-                  <textarea class="form-control" id="description" name="description" rows="4" cols="50" [(ngModel)]="listItem.description"></textarea>
+                  <textarea class="form-control" id="description" name="description" rows="4" cols="50"  formControlName="description" [ngClass]="{ 'is-invalid': g.description.touched && g.description.errors }" ></textarea>
+                  <div *ngIf="g.description.touched && g.description.errors" class="invalid-feedback">
+                    <div *ngIf="g.description.errors.required">Description is required</div>
+                    <div *ngIf="g.description.errors.maxlength">Descriptione must be no more than 10 characters</div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="date">Date:</label>
-                  <input type="text" class="form-control date" id="date" name="date" [(ngModel)]="listItem.createDate">
+                  <label for="description">Date:</label>
+                  <app-date-control  class="form-control date" formControlName="createDate" [ngClass]="{ 'is-invalid': g.createDate.touched && g.createDate.errors }" datevalidator></app-date-control>
+                  <div *ngIf="g.createDate.touched && g.createDate.errors" class="invalid-feedback">
+                    <div *ngIf="g.createDate.errors.required">Date is required</div>
+                    <div *ngIf="g.createDate.errors.datevalidator">Please provide a valid date format</div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="duration">Duration:</label>
-                  <input type="text" class="form-control duration" id="duration" name="duration" [(ngModel)]="listItem.duration">
-                  <span class="time">{{listItem.duration  | myTime}}</span>
+                  <label>Duration:</label>
+                  <app-time-control class="form-control duration" formControlName="duration" [ngClass]="{ 'is-invalid': g.duration.touched && g.duration.errors }" numbersonly></app-time-control>
+                  <span class="time">{{listItem.duration | myTime}}</span>
+                  <div *ngIf="g.duration.touched && g.duration.errors" class="invalid-feedback">
+                    <div *ngIf="g.duration.errors.required">Duration is required</div>
+                    <div *ngIf="g.duration.errors.numbersonly">Only number format is allowed</div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label for="author">Authors:</label>
-                  <select class="form-control" id="author" name="author">
-                    <option>{{listItem.authors[0]}}</option>
-                  </select>
+                  <label>Authors:</label>
+                  <mat-form-field class="form-control"  aria-orientation="horizontal" [ngClass]="{ 'is-invalid': g.authors.touched && g.authors.errors }" >
+                    <mat-chip-list #list>
+                      <mat-chip *ngFor="let option of selectedAuthors"
+                                [selectable]="selectable"
+                                [removable]="removable"
+                                (removed)="remove(option)">
+                        {{option.name}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input  formControlName="authors"
+                              placeholder="please chose an athour..."
+                              [matChipInputFor]="list"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)"
+                              [matAutocomplete]="auto"
+                              matInput>
+                      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addSelect($event)">
+                        <mat-option *ngFor="let author of authors" [value]="author">
+                          {{ author.name }}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-chip-list>
+                    <mat-hint align="end">Press comma or enter after each selection</mat-hint>
+                  </mat-form-field>
+                  <div *ngIf="touched && g.authors.errors" class="invalid-feedback">
+                    <div *ngIf="g.authors.errors.required">At least one author is required</div>
+                  </div>
                 </div>
                 <div class="btn-group">
-                  <button class="btn btn-default" (click)="onSave($event)">Save</button>
-                  <button class="btn btn-secondary" (click)="onCancel($event)">Cancel</button>
+                  <button [disabled]="!editCourseForm.valid" class="btn btn-default" type="submit">Create</button>
+                  <button class="btn btn-secondary"(click)="onCancel()">Cancel</button>
                 </div>
               </form>
             </div>
@@ -60,24 +101,24 @@
               <form class="add-course-form" [formGroup]="addCourseForm" (ngSubmit)="onSave()">
                 <div class="form-group">
                   <label for="title">Title:</label>
-                  <input type="text" class="form-control" id="title" name="title" formControlName="title"  [ngClass]="{ 'is-invalid': submitted && f.title.errors }" >
-                  <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                  <input type="text" class="form-control" id="title" name="title" formControlName="title"  [ngClass]="{ 'is-invalid': f.title.touched  && f.title.errors }" >
+                  <div *ngIf="f.title.touched && f.title.errors" class="invalid-feedback">
                     <div *ngIf="f.title.errors.required">Name of course is required</div>
                     <div *ngIf="f.title.errors.maxlength">Name of course must be no more than 10 characters</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="description">Description:</label>
-                  <textarea class="form-control" id="description" name="description" rows="4" cols="50"  formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
-                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                  <textarea class="form-control" id="description" name="description" rows="4" cols="50"  formControlName="description" [ngClass]="{ 'is-invalid': f.description.touched  && f.description.errors }" ></textarea>
+                  <div *ngIf="f.description.touched  && f.description.errors" class="invalid-feedback">
                     <div *ngIf="f.description.errors.required">Description is required</div>
                     <div *ngIf="f.description.errors.maxlength">Descriptione must be no more than 10 characters</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="description">Date:</label>
-                  <app-date-control  class="form-control date" formControlName="createDate" [ngClass]="{ 'is-invalid': submitted && f.createDate.errors }" datevalidator></app-date-control>
-                  <div *ngIf="submitted && f.createDate.errors" class="invalid-feedback">
+                  <app-date-control  class="form-control date" formControlName="createDate" [ngClass]="{ 'is-invalid': f.createDate.touched && f.createDate.errors }" datevalidator></app-date-control>
+                  <div *ngIf="f.createDate.touched  && f.createDate.errors" class="invalid-feedback">
                     <div *ngIf="f.createDate.errors.required">Date is required</div>
                     <div *ngIf="f.createDate.errors.datevalidator">Please provide a valid date format</div>
                   </div>
@@ -86,25 +127,16 @@
                   <label for="duration">Duration:</label>
                   <!--<input type="text" class="form-control duration" id="duration1" name="duration1" formControlName="duration" [ngClass]="{ 'is-invalid': submitted && f.duration.errors }">
                   <span class="time">{{newItem.duration  | myTime}}</span>-->
-                  <app-time-control class="form-control duration" formControlName="duration" [ngClass]="{ 'is-invalid': submitted && f.duration.errors }" numbersonly></app-time-control>
+                  <app-time-control class="form-control duration" formControlName="duration" [duration]="newItem.duration" [ngClass]="{ 'is-invalid': f.duration.touched && f.duration.errors }" numbersonly></app-time-control>
                   <span class="time">{{addCourseForm.get("duration").value | myTime}}</span>
-                  <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                  <div *ngIf="f.duration.touched && f.duration.errors" class="invalid-feedback">
                     <div *ngIf="f.duration.errors.required">Duration is required</div>
                     <div *ngIf="f.duration.errors.numbersonly">Only number formatt is allowed</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="author">Authors:</label>
-                  <!--<select class="form-control" id="author1" name="author1">
-                    <option>{{newItem.authors[0]}}</option>
-                  </select>-->
-                 <!-- <select class="form-control" formControlName="authors" (ngModelChange)="onChange($event)"  [ngClass]="{ 'is-invalid': submitted && f.authors.errors }" >
-                    <option *ngFor="let author of authors" [ngValue]="author.id"> {{author.name}} </option>
-                  </select>
-                  <div *ngIf="submitted && f.createDate.errors" class="invalid-feedback">
-                    <div *ngIf="f.authors.errors.required">At least one author is required</div>
-                  </div>-->
-                  <mat-form-field class="form-control"  aria-orientation="horizontal" [ngClass]="{ 'is-invalid': submitted && f.authors.errors }" >
+                  <mat-form-field class="form-control"  aria-orientation="horizontal" [ngClass]="{ 'is-invalid': f.authors.touched && f.authors.errors }" >
                     <mat-chip-list #list>
                       <mat-chip *ngFor="let option of selectedAuthors"
                                 [selectable]="selectable"
@@ -129,13 +161,12 @@
                     </mat-chip-list>
                     <mat-hint align="end">Press comma or enter after each selection</mat-hint>
                   </mat-form-field>
-                  <div *ngIf="submitted && f.authors.errors" class="invalid-feedback">
+                  <div *ngIf="f.authors.touched && f.authors.errors" class="invalid-feedback">
                     <div *ngIf="f.authors.errors.required">At least one author is required</div>
                   </div>
                 </div>
                 <div class="btn-group">
-                  <button class="btn btn-default" type="submit">Create</button>
-                 <!-- <button [disabled]="!addCourseForm.valid" class="btn btn-default" type="submit">Create</button>-->
+                  <button [disabled]="!addCourseForm.valid" class="btn btn-default" type="submit">Create</button>
                   <button class="btn btn-secondary"(click)="onCancel()">Cancel</button>
                 </div>
               </form>

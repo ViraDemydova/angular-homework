@@ -547,6 +547,24 @@
       "password": "1",
       "token": "app_token",
       "id": 92
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "2518Miracle",
+      "token": "app_token",
+      "id": 93
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 94
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 95
     }
   ],
   "register": [
@@ -836,27 +854,37 @@
       "topRated": true
     },
     {
-      "id": 777,
+      "id": 21,
       "title": "qqq",
-      "createDate": "2018-08-29T16:59:34.704Z",
-      "duration": "20",
-      "description": "qqq",
-      "authors": null
-    },
-    {
-      "id": 778,
-      "title": "ccc",
-      "createDate": "2018-08-29T17:00:22.221Z",
-      "duration": "20",
-      "description": "ccc",
-      "authors": null
-    },
-    {
-      "id": 779,
-      "title": "qqq",
-      "createDate": "2018-08-29T17:01:04.638Z",
+      "createDate": "2018-08-30T14:39:35.194Z",
       "duration": "200000000",
       "description": "qqq",
+      "authors": [
+        {
+          "id": "5b7a846284414c93c2a94eb8",
+          "name": "Aida Copeland"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "test",
+      "createDate": "2018-08-30T14:58:55.182Z",
+      "duration": "20",
+      "description": "test",
+      "authors": [
+        {
+          "id": "5b7a846284414c93c2a94eb8",
+          "name": "Aida Copeland"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "aaa",
+      "createDate": "2018-08-30T15:08:52.900Z",
+      "duration": "20",
+      "description": "aaa",
       "authors": [
         {
           "id": "5b7a846284414c93c2a94eb8",

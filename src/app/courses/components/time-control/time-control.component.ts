@@ -1,5 +1,5 @@
-import {Component, forwardRef, OnInit} from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import {Component, forwardRef, Input} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-time-control',
@@ -9,26 +9,26 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => TimeControlComponent), multi: true }
   ]
 })
-export class TimeControlComponent implements OnInit {
-  duration: any;
+export class TimeControlComponent implements ControlValueAccessor {
+  @Input() duration: number;
   propagateChange = (_: any) => {};
   onChange = (_: any) => { };
+  onTouched = (_: any) => { };
 
-  constructor() {}
+  get value(): any { return this.duration; }
 
-  ngOnInit() {
+  set value(newValue: any) {
+    if (newValue !== this.duration) {
+      this.duration = newValue;
+      this.onChange(newValue);
+    }
   }
 
   writeValue(value: any) {
     this.duration = value || null;
   }
 
-  pushChanges(newValue: any) {
-    this.duration = this.onChange(newValue);
-  }
+  registerOnTouched(fn: (_: any) => {}): void {this.onTouched = fn; }
 
-  registerOnTouched() {}
-
-  registerOnChange(fn: (_: any) => {}) { this.onChange = fn; }
-
+  registerOnChange(fn: (_: any) => {}): void { this.onChange = fn; }
 }
