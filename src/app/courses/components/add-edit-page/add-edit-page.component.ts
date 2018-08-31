@@ -23,6 +23,7 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 })
 
 export class AddEditPageComponent implements OnInit, OnDestroy {
+  @Input() newValue;
   private usersEditSubscription: Subscription;
   private usersIdSubscription: Subscription;
   // Edit Course

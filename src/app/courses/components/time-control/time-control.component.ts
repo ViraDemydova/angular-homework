@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class TimeControlComponent implements ControlValueAccessor {
   @Input() duration: number;
+  @Output() newValue: EventEmitter<any>;
   propagateChange = (_: any) => {};
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
@@ -19,8 +20,8 @@ export class TimeControlComponent implements ControlValueAccessor {
 
   set value(newValue: any) {
     if (newValue !== this.duration) {
-      this.duration = newValue;
-      this.onChange(newValue);
+      this.duration = newValue.emit(newValue);
+      this.onTouched(newValue.emit(newValue));
     }
   }
 
