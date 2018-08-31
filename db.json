@@ -571,6 +571,14 @@
       "password": "1",
       "token": "app_token",
       "id": 96
+    },
+    {
+      "token": "app_token",
+      "id": 97
+    },
+    {
+      "token": "app_token",
+      "id": 98
     }
   ],
   "register": [
@@ -939,6 +947,19 @@
         {
           "id": "5b7a84628298a95c17462193",
           "name": "Carey Jarvis"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "test",
+      "createDate": "2018-08-31T11:48:51.344Z",
+      "duration": "20000",
+      "description": "test",
+      "authors": [
+        {
+          "id": "5b7a846284414c93c2a94eb8",
+          "name": "Aida Copeland"
         }
       ]
     }

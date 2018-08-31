@@ -1,5 +1,5 @@
 // TODO: will replace edit-page and add-page
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {Component,  OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItemService } from '../../services/courses-list-item.service';
 import { CourseModel, CoursesListItem } from '../../models/courses-list-item.model';
@@ -10,11 +10,11 @@ import { AddCourseState, courseAddSelector } from './store/add-course/states';
 import {AddCourse, AddCourseSuccess} from './store/add-course/actions/course.actions';
 import { EditCourseSuccess } from './store/edit-course/actions/course.actions';
 import { courseEditSelector } from './store/edit-course/states';
-import {FormBuilder, FormControl, FormGroup, NG_ASYNC_VALIDATORS, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder,  FormGroup, Validators} from '@angular/forms';
 import { DateValidator } from '../../../shared/directives/validator';
 import { NumbersOnly } from '../../../shared/directives/onlyNumber';
-import {MatChipInputEvent} from "@angular/material";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import { MatChipInputEvent } from '@angular/material';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-add-edit-page',

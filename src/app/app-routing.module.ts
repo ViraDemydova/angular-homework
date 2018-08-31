@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AddEditPageComponent } from './courses/components/add-edit-page/add-edit-page.component';
-import { CoreModule } from './core/core.module';
 import { CanActivateGuard } from './core/guards/canActivateGuard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 

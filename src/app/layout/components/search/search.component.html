@@ -1,6 +1,6 @@
 <!-- starts search-->
 <form action="" class="form-search">
-  <input type="text" name="textInput" class="form-search__input"  (change)="onChange($event.target.value)" placeholder="Name, etc" >
+  <input type="text" name="textInput" class="form-search__input" [formControl]="searchControl" (change)="onChange($event.target.value)" placeholder="Name, etc" >
   <!--<button class="btn btn-secondary" (click)="onSubmit(searchText.value)">
     <i class="fa fa-search" aria-hidden="true"></i>
     Search</button>-->
