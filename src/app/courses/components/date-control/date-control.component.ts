@@ -11,27 +11,24 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 
-export class DateControlComponent implements ControlValueAccessor{
+export class DateControlComponent implements ControlValueAccessor {
   createDate: any;
   propagateChange = (_: any) => {};
   onChange = (_: any) => { };
   onTouched = (_: any) => { };
 
-  get value(): any { return this.createDate; }
+  onChangeInput(e) {
+    const value = e.currentTarget.value;
 
-  set value(newValue: any) {
-    if (newValue !== this.createDate) {
-      this.createDate = newValue;
-      this.onChange(newValue);
+    if (value !== this.createDate) {
+      this.createDate = value;
+      this.onTouched (value);
+      this.onChange (value);
     }
   }
 
-  writeValue(value: any): void {
+  writeValue(value: any) {
     this.createDate = value || null;
-  }
-
-  pushChanges(newValue: string) {
-    this.createDate = this.onChange(newValue);
   }
 
   registerOnTouched(fn: (_: any) => {}): void {this.onTouched = fn; }

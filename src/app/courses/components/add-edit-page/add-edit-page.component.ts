@@ -23,7 +23,6 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 })
 
 export class AddEditPageComponent implements OnInit, OnDestroy {
-  @Input() newValue;
   private usersEditSubscription: Subscription;
   private usersIdSubscription: Subscription;
   // Edit Course
@@ -125,8 +124,16 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   onSave() {
     this.submitted = true;
       // stop here if form is invalid
-    if (this.addCourseForm.invalid) {
-      return;
+    if (this.addCourseForm) {
+      if (this.addCourseForm.invalid) {
+        return;
+      }
+    }
+
+    if (this.editCourseForm) {
+      if (this.editCourseForm.invalid) {
+        return;
+      }
     }
 
     // Edit Course

@@ -4,7 +4,7 @@
     <div class="container" *ngIf="state">
       <div class="row">
         <div class="col-md-10 offset-1">
-          <app-breadcrumbs [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>
+          <!--<app-breadcrumbs [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>-->
         </div>
       </div>
       <div class="row">
@@ -127,7 +127,7 @@
                   <label for="duration">Duration:</label>
                   <!--<input type="text" class="form-control duration" id="duration1" name="duration1" formControlName="duration" [ngClass]="{ 'is-invalid': submitted && f.duration.errors }">
                   <span class="time">{{newItem.duration  | myTime}}</span>-->
-                  <app-time-control class="form-control duration" formControlName="duration" [duration]="newItem.duration" [ngClass]="{ 'is-invalid': f.duration.touched && f.duration.errors }" numbersonly></app-time-control>
+                  <app-time-control class="form-control duration" formControlName="duration" [ngClass]="{ 'is-invalid': f.duration.touched && f.duration.errors }" numbersonly></app-time-control>
                   <span class="time">{{addCourseForm.get("duration").value | myTime}}</span>
                   <div *ngIf="f.duration.touched && f.duration.errors" class="invalid-feedback">
                     <div *ngIf="f.duration.errors.required">Duration is required</div>

@@ -565,6 +565,12 @@
       "password": "1",
       "token": "app_token",
       "id": 95
+    },
+    {
+      "login": "test@gmail.com",
+      "password": "1",
+      "token": "app_token",
+      "id": 96
     }
   ],
   "register": [
@@ -889,6 +895,50 @@
         {
           "id": "5b7a846284414c93c2a94eb8",
           "name": "Aida Copeland"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "title": "testXXX",
+      "createDate": "2018-08-31T10:17:24.677Z",
+      "duration": "44444",
+      "description": "testXXX",
+      "authors": [
+        {
+          "id": "5b7a84628298a95c17462193",
+          "name": "Carey Jarvis"
+        },
+        "j",
+        {
+          "id": "5b7a84624010db4d640e0099",
+          "name": "Vincent Doyle"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "qqq",
+      "createDate": "2018-08-31T10:19:52.236Z",
+      "duration": "20000",
+      "description": "qqq",
+      "authors": [
+        {
+          "id": "5b7a84628298a95c17462193",
+          "name": "Carey Jarvis"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "yyy",
+      "createDate": "2018-08-31T10:20:32.245Z",
+      "duration": "20000",
+      "description": "yyy",
+      "authors": [
+        {
+          "id": "5b7a84628298a95c17462193",
+          "name": "Carey Jarvis"
         }
       ]
     }

@@ -1,1 +1,1 @@
-<input type="text" class="input-hidden" id="duration" name="duration" [value]="duration" (blur)="onTouched($event)">
+<input type="text" class="input-hidden" id="duration" name="duration" [value]="duration" (change)="onChangeInput($event)" (blur)="onChangeInput($event)">
