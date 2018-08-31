@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit{
   public searchControl: FormControl;
   private debounce = 200;
   public search: any;
