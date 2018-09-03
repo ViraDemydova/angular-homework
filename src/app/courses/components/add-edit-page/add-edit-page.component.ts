@@ -154,8 +154,6 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       //TODO: move to effect
       this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
           this.storeCourse.dispatch(new EditCourseSuccess(res));
-          // вернулись к списку курсов
-          this.router.navigate(['landing-page']);
         });
       this.storeCourse.pipe(select(courseEditSelector)).subscribe(res => {
         this.router.navigate(['landing-page']);
