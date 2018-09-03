@@ -81,7 +81,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   initEditForm() {
     // Edit Course form
     this.editCourseForm = this.formBuilder.group({
-      title: [this.listItem.title, [Validators.required,  Validators.maxLength(30)]],
+      title: [this.listItem.title, [Validators.required,  Validators.maxLength(50)]],
       description: [this.listItem.description, [Validators.required, Validators.maxLength(500)]],
       duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
       createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
@@ -92,7 +92,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   initAddForm() {
     // Edit Course form
     this.addCourseForm = this.formBuilder.group({
-      title: [this.newItem.title, [Validators.required,  Validators.maxLength(10)]],
+      title: [this.newItem.title, [Validators.required,  Validators.maxLength(50)]],
       description: [this.newItem.description, [Validators.required, Validators.maxLength(500)]],
       duration: [this.newItem.duration, [Validators.required, NumbersOnly]],
       createDate: [this.newItem.createDate, [Validators.required, DateValidator]],
