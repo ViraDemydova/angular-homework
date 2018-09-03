@@ -152,6 +152,12 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     // Edit Course
     if (this.usersIdSubscription) {
       //TODO: move to effect
+      //  Edit Course
+      this.listItem.createDate = this.editCourseForm.get('createDate').value;
+      this.listItem.title = this.editCourseForm.get('title').value;
+      this.listItem.description = this.editCourseForm.get('description').value;
+      this.listItem.duration = this.editCourseForm.get('duration').value;
+      this.listItem.authors = this.selectedAuthors;
       this.courseService.editItem(this.listItem).subscribe((res: CoursesListItem) => {
           this.storeCourse.dispatch(new EditCourseSuccess(res));
         });

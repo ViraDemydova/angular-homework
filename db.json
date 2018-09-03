@@ -599,6 +599,10 @@
     {
       "token": "app_token",
       "id": 103
+    },
+    {
+      "token": "app_token",
+      "id": 104
     }
   ],
   "register": [
@@ -889,14 +893,18 @@
     },
     {
       "id": 22,
-      "title": "test",
-      "createDate": "2018-08-30T14:58:55.182Z",
+      "title": "Edited",
+      "createDate": "03/09/2018",
       "duration": "20",
       "description": "test",
       "authors": [
         {
           "id": "5b7a846284414c93c2a94eb8",
           "name": "Aida Copeland"
+        },
+        {
+          "id": "5b7a8462e720a86db64774e7",
+          "name": "Padilla Berger"
         }
       ]
     },
