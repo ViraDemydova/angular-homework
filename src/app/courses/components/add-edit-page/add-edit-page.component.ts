@@ -45,7 +45,6 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   private authorCreateSubscription: Subscription;
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
-  //cachedItem:  CoursesListItem;
 
   constructor(
     private router: Router,
@@ -61,22 +60,17 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
 
     // Add Course
     this.newItem = new CourseModel(null, '', null, null, null, null);
-    this.addCourseForm = this.formBuilder.group({
-      title: [this.newItem.title, [Validators.required,  Validators.maxLength(10)]],
-      description: [this.newItem.description, [Validators.required, Validators.maxLength(500)]],
-      duration: [this.newItem.duration, [Validators.required, NumbersOnly]],
-      createDate: [this.newItem.createDate, [Validators.required, DateValidator]],
-      authors: [this.newItem.authors, [Validators.required]]
-    });
+    if (!this.indificator) {
+      this.initAddForm();
+    }
 
     this.indificator = this.route.snapshot.paramMap.get('id');
     this.state = this.route.snapshot.paramMap.get('state');
     if (this.indificator) {
       this.usersIdSubscription = this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
           this.listItem = res;
-         // this.cachedListItem(res);
           // Edit Course
-          this.initForm();
+          this.initEditForm();
           this.selectedAuthors = this.listItem.authors;
         },
         (error: HttpErrorResponse) => console.log(error)
@@ -84,11 +78,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  //cachedListItem(res) {
-    //this.listItem = res;
-  //}
-
-  initForm() {
+  initEditForm() {
     // Edit Course form
     this.editCourseForm = this.formBuilder.group({
       title: [this.listItem.title, [Validators.required,  Validators.maxLength(30)]],
@@ -96,6 +86,17 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
       duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
       createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
       authors: [this.listItem.authors, [Validators.required]]
+    });
+  }
+
+  initAddForm() {
+    // Edit Course form
+    this.addCourseForm = this.formBuilder.group({
+      title: [this.newItem.title, [Validators.required,  Validators.maxLength(10)]],
+      description: [this.newItem.description, [Validators.required, Validators.maxLength(500)]],
+      duration: [this.newItem.duration, [Validators.required, NumbersOnly]],
+      createDate: [this.newItem.createDate, [Validators.required, DateValidator]],
+      authors: [this.newItem.authors, [Validators.required]]
     });
   }
 
@@ -136,14 +137,14 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     this.submitted = true;
 
       // stop here if form is invalid
-    if (this.addCourseForm) {
-      if (this.addCourseForm.invalid) {
+    if (this.state) {
+      if (this.editCourseForm.invalid) {
         return;
       }
     }
 
-    if (this.editCourseForm) {
-      if (this.editCourseForm.invalid) {
+    if (!this.state) {
+      if (this.addCourseForm.invalid) {
         return;
       }
     }
