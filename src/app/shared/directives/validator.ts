@@ -21,17 +21,23 @@ import { Directive } from '@angular/core';
 })
 export class DateValidator implements Validator {
   validate(c: FormControl) {
-    console.log('VALIDATOR', c);
+    return dateValidator(c);
+  }
+}
 
-    const isValid = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(c.value);
-    if (isValid) {
-      return null;
-    } else {
-      return {
-        datevalidator: {
-          valid: false
-        }
-      };
-    }
+export function dateValidator(c: FormControl) {
+  console.log('VALIDATOR', c);
+
+  const isValid = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(
+    c.value
+  );
+  if (isValid) {
+    return null;
+  } else {
+    return {
+      datevalidator: {
+        valid: false
+      }
+    };
   }
 }

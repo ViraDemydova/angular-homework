@@ -38,15 +38,24 @@
                   </div>
                 </div>
                 <div class="form-group">
+
                   <label>Duration:</label>
-                  <app-time-control class="form-control duration" formControlName="duration" [ngClass]="{ 'is-invalid': g.duration.touched && g.duration.errors }" numbersonly></app-time-control>
+                  <app-time-control
+                    class="form-control duration"
+                    formControlName="duration"
+                    [ngClass]="{ 'is-invalid': g.duration.touched && g.duration.errors }"
+                    >
+                  </app-time-control>
+
                   <span class="time">{{listItem.duration | myTime}}</span>
+                  <!-- Ошибки должны отображаться над инпутами -->
                   <div *ngIf="g.duration.touched && g.duration.errors" class="invalid-feedback">
                     <div *ngIf="g.duration.errors.required">Duration is required</div>
                     <div *ngIf="g.duration.errors.numbersonly">Only number format is allowed</div>
                   </div>
                 </div>
                 <div class="form-group">
+
                   <label>Authors:</label>
                   <mat-form-field class="form-control"  aria-orientation="horizontal" [ngClass]="{ 'is-invalid': g.authors.touched && g.authors.errors }" >
                     <mat-chip-list #list>
@@ -73,6 +82,7 @@
                     </mat-chip-list>
                     <mat-hint align="end">Press comma or enter after each selection</mat-hint>
                   </mat-form-field>
+
                   <div *ngIf="touched && g.authors.errors" class="invalid-feedback">
                     <div *ngIf="g.authors.errors.required">At least one author is required</div>
                   </div>
@@ -98,6 +108,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Add new course:</div>
             <div class="panel-body">
+              <!-- ADD -->
               <form class="add-course-form" [formGroup]="addCourseForm" (ngSubmit)="onSave()">
                 <div class="form-group">
                   <label for="title">Title:</label>
@@ -116,24 +127,39 @@
                   </div>
                 </div>
                 <div class="form-group">
+
                   <label for="description">Date:</label>
-                  <app-date-control  class="form-control date" formControlName="createDate" [ngClass]="{ 'is-invalid': f.createDate.touched && f.createDate.errors }" datevalidator></app-date-control>
+                  <app-date-control
+                    class="form-control date"
+                    [ngClass]="{ 'is-invalid': f.createDate.touched && f.createDate.errors }"
+                    formControlName="createDate"
+                    datevalidator>
+                  </app-date-control>
+
                   <div *ngIf="f.createDate.touched  && f.createDate.errors" class="invalid-feedback">
                     <div *ngIf="f.createDate.errors.required">Date is required</div>
                     <div *ngIf="f.createDate.errors.datevalidator">Please provide a valid date format</div>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="duration">Duration:</label>
                   <!--<input type="text" class="form-control duration" id="duration1" name="duration1" formControlName="duration" [ngClass]="{ 'is-invalid': submitted && f.duration.errors }">
                   <span class="time">{{newItem.duration  | myTime}}</span>-->
-                  <app-time-control class="form-control duration" formControlName="duration" [ngClass]="{ 'is-invalid': f.duration.touched && f.duration.errors }" numbersonly></app-time-control>
+                  <app-time-control
+                    class="form-control duration"
+                    [ngClass]="{ 'is-invalid': f.duration.touched && f.duration.errors }"
+                    formControlName="duration"
+                    numbersonly
+                    >
+                  </app-time-control>
                   <span class="time">{{addCourseForm.get("duration").value | myTime}}</span>
                   <div *ngIf="f.duration.touched && f.duration.errors" class="invalid-feedback">
                     <div *ngIf="f.duration.errors.required">Duration is required</div>
                     <div *ngIf="f.duration.errors.numbersonly">Only number formatt is allowed</div>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="author">Authors:</label>
                   <mat-form-field class="form-control"  aria-orientation="horizontal" [ngClass]="{ 'is-invalid': f.authors.touched && f.authors.errors }" >

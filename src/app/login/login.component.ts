@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
               private loaderService: LoaderService,
               private store: Store<AppState>,
               private formBuilder: FormBuilder) {
-    this.getState = this.store.pipe(select(selectAuthState));
+    // В конструкторе не должно быть такого
+    // this.getState = this.store.pipe(select(selectAuthState));
   }
 
   ngOnInit() {
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
       password: ['',  [Validators.required, Validators.maxLength(10)]]
     });
 
-    //this.init();
+    this.getState = this.store.pipe(select(selectAuthState));
+    // А где отписка?
     this.getState.subscribe(state => {
       this.errorMessage = state.errorMessage;
     });
