@@ -45,6 +45,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
   private authorCreateSubscription: Subscription;
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
+  //cachedItem:  CoursesListItem;
 
   constructor(
     private router: Router,
@@ -73,19 +74,29 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     if (this.indificator) {
       this.usersIdSubscription = this.courseService.getCourseById(this.indificator).subscribe((res: CoursesListItem) => {
           this.listItem = res;
+         // this.cachedListItem(res);
           // Edit Course
-          this.editCourseForm = this.formBuilder.group({
-            title: [this.listItem.title, [Validators.required,  Validators.maxLength(30)]],
-            description: [this.listItem.description, [Validators.required, Validators.maxLength(500)]],
-            duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
-            createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
-            authors: [this.listItem.authors, [Validators.required]]
-          });
+          this.initForm();
           this.selectedAuthors = this.listItem.authors;
         },
         (error: HttpErrorResponse) => console.log(error)
       );
     }
+  }
+
+  //cachedListItem(res) {
+    //this.listItem = res;
+  //}
+
+  initForm() {
+    // Edit Course form
+    this.editCourseForm = this.formBuilder.group({
+      title: [this.listItem.title, [Validators.required,  Validators.maxLength(30)]],
+      description: [this.listItem.description, [Validators.required, Validators.maxLength(500)]],
+      duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
+      createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
+      authors: [this.listItem.authors, [Validators.required]]
+    });
   }
 
   // convenience getter for easy access to form fields
@@ -123,6 +134,7 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
 
   onSave() {
     this.submitted = true;
+
       // stop here if form is invalid
     if (this.addCourseForm) {
       if (this.addCourseForm.invalid) {

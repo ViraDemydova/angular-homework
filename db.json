@@ -587,6 +587,18 @@
     {
       "token": "app_token",
       "id": 100
+    },
+    {
+      "token": "app_token",
+      "id": 101
+    },
+    {
+      "token": "app_token",
+      "id": 102
+    },
+    {
+      "token": "app_token",
+      "id": 103
     }
   ],
   "register": [
@@ -964,6 +976,19 @@
       "createDate": "2018-08-31T11:48:51.344Z",
       "duration": "20000",
       "description": "test",
+      "authors": [
+        {
+          "id": "5b7a846284414c93c2a94eb8",
+          "name": "Aida Copeland"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "New course",
+      "createDate": "2018-09-03T11:34:49.728Z",
+      "duration": "20000",
+      "description": "New course",
       "authors": [
         {
           "id": "5b7a846284414c93c2a94eb8",

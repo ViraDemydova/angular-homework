@@ -4,7 +4,7 @@
     <div class="container" *ngIf="state">
       <div class="row">
         <div class="col-md-10 offset-1">
-          <!--<app-breadcrumbs [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>-->
+          <app-breadcrumbs *ngIf="listItem" [pageCurrent]="listItem.title + listItem.id"></app-breadcrumbs>
         </div>
       </div>
       <div class="row">
@@ -12,7 +12,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">Edit course:</div>
             <div class="panel-body">
-              <form class="add-course-form" [formGroup]="editCourseForm" (ngSubmit)="onSave()">
+              <form class="add-course-form" *ngIf="listItem" [formGroup]="editCourseForm" (ngSubmit)="onSave()">
                 <div class="form-group">
                   <label for="title">Title:</label>
                   <input type="text" class="form-control" id="title" name="title" formControlName="title"  [ngClass]="{ 'is-invalid': g.title.touched && g.title.errors}" >
