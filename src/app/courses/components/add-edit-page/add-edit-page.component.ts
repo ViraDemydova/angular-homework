@@ -11,8 +11,8 @@ import {AddCourse, AddCourseSuccess} from './store/add-course/actions/course.act
 import { EditCourseSuccess } from './store/edit-course/actions/course.actions';
 import { courseEditSelector } from './store/edit-course/states';
 import {FormBuilder,  FormGroup, Validators} from '@angular/forms';
-import { DateValidator } from '../../../shared/directives/validator';
-import { NumbersOnly } from '../../../shared/directives/onlyNumber';
+import { dateValidator } from '../../../shared/directives/validator';
+import { numbersonly } from '../../../shared/directives/numbers-only.directive';
 import { MatChipInputEvent } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
@@ -83,8 +83,8 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     this.editCourseForm = this.formBuilder.group({
       title: [this.listItem.title, [Validators.required,  Validators.maxLength(50)]],
       description: [this.listItem.description, [Validators.required, Validators.maxLength(500)]],
-      duration: [this.listItem.duration, [Validators.required, NumbersOnly]],
-      createDate: [this.listItem.createDate, [Validators.required, DateValidator]],
+      duration: [this.listItem.duration, [Validators.required, numbersonly]],
+      createDate: [this.listItem.createDate, [Validators.required, dateValidator]],
       authors: [this.listItem.authors, [Validators.required]]
     });
   }
@@ -94,8 +94,8 @@ export class AddEditPageComponent implements OnInit, OnDestroy {
     this.addCourseForm = this.formBuilder.group({
       title: [this.newItem.title, [Validators.required,  Validators.maxLength(50)]],
       description: [this.newItem.description, [Validators.required, Validators.maxLength(500)]],
-      duration: [this.newItem.duration, [Validators.required, NumbersOnly]],
-      createDate: [this.newItem.createDate, [Validators.required, DateValidator]],
+      duration: [this.newItem.duration, [Validators.required, numbersonly]],
+      createDate: [this.newItem.createDate, [Validators.required, dateValidator]],
       authors: [this.newItem.authors, [Validators.required]]
     });
   }

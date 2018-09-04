@@ -7,7 +7,7 @@ import { IfDirective } from './directives/if.directive';
 import { HideDirective } from './directives/hide.directive';
 import { BorderHighlightDirective } from './directives/borderHighlight.directive';
 import { DateValidator } from './directives/validator';
-import { NumbersOnly } from './directives/onlyNumber';
+import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 
 const compDirPipes = [
   MyTimePipe,
@@ -17,13 +17,11 @@ const compDirPipes = [
   HideDirective,
   BorderHighlightDirective,
   DateValidator,
-  NumbersOnly
+  NumbersOnlyDirective
   ];
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [...compDirPipes],
   exports: [...compDirPipes]
 })

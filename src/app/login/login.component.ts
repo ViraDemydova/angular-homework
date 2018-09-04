@@ -14,20 +14,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   user: UserEntityItem = new UserModel();
   getState: Observable<any>;
   errorMessage: string | null;
   loginForm: FormGroup;
-  private usersCreateSubscription: Subscription;
+  private sub: Subscription;
 
   constructor(
               private serviceAuth: AuthService,
               private loaderService: LoaderService,
               private store: Store<AppState>,
-              private formBuilder: FormBuilder) {
-    this.getState = this.store.pipe(select(selectAuthState));
-  }
+              private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -36,7 +34,8 @@ export class LoginComponent implements OnInit {
     });
 
     //this.init();
-    this.getState.subscribe(state => {
+    this.getState = this.store.pipe(select(selectAuthState));
+    this.sub = this.getState.subscribe(state => {
       this.errorMessage = state.errorMessage;
     });
   }
@@ -68,9 +67,9 @@ export class LoginComponent implements OnInit {
     this.loaderService.hide();
   }
 
-//  ngOnDestroy(): void {
-   // if (this.usersCreateSubscription) {
-   //   this.usersCreateSubscription.unsubscribe();
-   // }
-//  }
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

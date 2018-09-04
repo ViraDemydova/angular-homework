@@ -282,6 +282,10 @@ footer{
   margin-left: 3px;
 }
 
+.form-group.is-invalid  .invalid-feedback {
+  display: block;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
   .float-right {

@@ -603,6 +603,10 @@
     {
       "token": "app_token",
       "id": 104
+    },
+    {
+      "token": "app_token",
+      "id": 105
     }
   ],
   "register": [
@@ -894,7 +898,7 @@
     {
       "id": 22,
       "title": "Edited",
-      "createDate": "03/09/2018",
+      "createDate": "03/09/2019",
       "duration": "20",
       "description": "test",
       "authors": [
@@ -984,6 +988,32 @@
       "createDate": "2018-09-03T11:54:12.360Z",
       "duration": "360",
       "description": "item ",
+      "authors": [
+        {
+          "id": "5b7a84628298a95c17462193",
+          "name": "Carey Jarvis"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "title": "test",
+      "createDate": "2018-09-04T09:44:55.013Z",
+      "duration": "20000",
+      "description": "test",
+      "authors": [
+        {
+          "id": "5b7a84628298a95c17462193",
+          "name": "Carey Jarvis"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "title": "ccc",
+      "createDate": "2018-09-04T09:46:52.316Z",
+      "duration": "360",
+      "description": "ccc",
       "authors": [
         {
           "id": "5b7a84628298a95c17462193",
